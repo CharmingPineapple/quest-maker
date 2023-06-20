@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".PersonMakerActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Person maker"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/TV_STA"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="STA"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_STA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:ems="2"
+            android:maxEms="2"
+            android:inputType="numberSigned" />
+
+
+    </GridLayout>
+
+</LinearLayout>
