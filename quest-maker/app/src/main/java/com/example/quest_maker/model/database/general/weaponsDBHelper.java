@@ -44,16 +44,6 @@ public class weaponsDBHelper extends SQLiteOpenHelper {
                 + KEY_SELLPRICE + " integer,"
                 + KEY_DESCR  + " text,"
                 + ") ");
-
-        /*sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-                + "(" + KEY_NAME + ") " + "VALUES "
-                + "('STA'), "
-                + "('REA'), "
-                + "('FND'), "
-                + "('LVL'), "
-                + "('EXP'), "
-                + "('LCK')"
-        );*/
     }
 
     @Override

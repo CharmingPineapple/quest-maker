@@ -14,7 +14,7 @@ public class MainParametersDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "PersParamTable";
     public static final int DB_VERSION = 1;
     public static final String KEY_ID = "_id";
-    public static final String KEY_NAME = "name";
+    public static final String KEY_NAME_PARAM = "name-param";
     public static final String KEY_VALUE= "value";
 
     public MainParametersDBHelper(Context context) {
@@ -26,12 +26,12 @@ public class MainParametersDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME
                 + "("
                 + KEY_ID + " integer primary key,"
-                + KEY_NAME + " text,"
+                + KEY_NAME_PARAM + " text,"
                 + KEY_VALUE + " integer"
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-                + "(" + KEY_NAME + ") " + "VALUES "
+                + "(" + KEY_NAME_PARAM + ") " + "VALUES "
                 + "('STA'), "   // Stamina
                 + "('REA'), "   // Reason
                 + "('FND'), "   // Money

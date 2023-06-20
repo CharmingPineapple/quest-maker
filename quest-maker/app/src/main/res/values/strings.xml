@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">quest-maker</string>
+    <string name="stamina">STA</string>
+    <string name="reason">REA</string>
+    <string name="money">FND</string>
+    <string name="cigarettes">CIG</string>
+    <string name="bullets">BUL</string>
+    <string name="strength">STR</string>
+    <string name="dexterity">DEX</string>
+    <string name="perception">PER</string>
+    <string name="knowledge">KNW</string>
+    <string name="charisma">CHR</string>
+    <string name="luck">LCK</string>
 </resources>

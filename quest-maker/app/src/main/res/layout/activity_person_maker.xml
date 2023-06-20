@@ -17,31 +17,279 @@
         android:paddingBottom="20dp"
         android:paddingTop="10dp"/>
 
-    <GridLayout
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="upload image (text view)"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Characteristics"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"/>
+
+    <GridLayout
+        android:paddingStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/TV_STA"
+            android:id="@+id/TV_STR_maker"
             android:layout_column="0"
             android:layout_row="0"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:text="STA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strength"
             android:textColor="@color/black"
-            android:textSize="24dp"
+            android:textSize="24sp"
             />
 
         <EditText
-            android:id="@+id/ET_STA"
+            android:id="@+id/ET_STR_maker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
             android:ems="2"
-            android:maxEms="2"
+            android:maxLength="2"
+            android:inputType="numberSigned"  />
+
+
+        <TextView
+            android:id="@+id/TV_DEX_maker"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/dexterity"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_DEX_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:ems="2"
+            android:maxLength="2"
             android:inputType="numberSigned" />
 
+        <TextView
+            android:id="@+id/TV_PER_maker"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/perception"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_PER_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/TV_KNW_maker"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/knowledge"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_KNW_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/TV_CHR_maker"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/charisma"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_CHR_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/TV_LCK_maker"
+            android:layout_column="2"
+            android:layout_row="2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/luck"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_LCK_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="3"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Main Parameters"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"/>
+
+    <GridLayout
+        android:paddingStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/TV_STA_maker"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/stamina"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            />
+
+        <EditText
+            android:id="@+id/ET_STA_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+
+        <TextView
+            android:id="@+id/TV_REA_maker"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/reason"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_REA_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/TV_FND_maker"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/money"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_FND_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/TV_BUL_maker"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/bullets"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_BUL_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
+
+        <TextView
+            android:id="@+id/TV_CIG_maker"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/cigarettes"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/ET_CIG_maker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:ems="2"
+            android:maxLength="2"
+            android:inputType="numberSigned" />
 
     </GridLayout>
 
