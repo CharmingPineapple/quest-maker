@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonPersonMaker = findViewById(R.id.B_person_maker);
 
+
+
+
         buttonPersonMaker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
