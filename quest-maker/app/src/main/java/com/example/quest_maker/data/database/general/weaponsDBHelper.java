@@ -1,4 +1,4 @@
-package com.example.quest_maker.domain.database.general;
+package com.example.quest_maker.data.database.general;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

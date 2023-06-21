@@ -1,8 +1,10 @@
-package com.example.quest_maker;
+package com.example.quest_maker.presentation;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.quest_maker.R;
 
 public class PersonMakerActivity extends AppCompatActivity {
 
