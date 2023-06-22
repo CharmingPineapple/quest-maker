@@ -7,6 +7,6 @@ public interface AuthorRepositoryInterface {
 
     public boolean saveCharacteristic(SaveCharacteristicParam param);
 
-    public byte getCharacteristic(Characteristic param);
+    public short getCharacteristic(Characteristic param);
 
 }

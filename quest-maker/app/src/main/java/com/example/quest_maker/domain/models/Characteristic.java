@@ -8,10 +8,10 @@ public class Characteristic {
         this.CharacteristicsHashMap = CharacteristicsHashMap;
     }*/
 
-    public String characteristicName;
+    public String name;
 
-    Characteristic(String param){
-        this.characteristicName = param;
+    Characteristic(String name){
+        this.name = name;
     }
 
 }

@@ -8,9 +8,9 @@ public class GetCharacteristicUseCase {
 
     private AuthorRepositoryInterface authorRepositoryInterface;
 
-    private byte result = 1;
+    private short result = 1;
 
-    public byte execute(Characteristic param){
+    public short execute(Characteristic param){
 
         return authorRepositoryInterface.getCharacteristic(param);
 
