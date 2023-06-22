@@ -5,14 +5,20 @@ import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
 
 public class SaveCharacteristicUseCase {
 
-    /*public boolean execute(String destination, byte value){
-        if(destination.isEmpty()) return false; else return true;
-    }*/
+    // (?) - final ?? Why?
+    private final AuthorRepositoryInterface authorRepositoryInterface;
 
-    private AuthorRepositoryInterface authorRepositoryInterface;
+    public SaveCharacteristicUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
+        this.authorRepositoryInterface = authorRepositoryInterface;
+    }
 
-    public boolean execute(SaveCharacteristicParam param){
-        boolean result = authorRepositoryInterface.saveCharacteristic(param);
+    public boolean execute(SaveCharacteristicParam saveCharacteristicParam){
+
+        // (!) - Добавить в слой presentatin проверку,
+        // что saveCharacteristicParam.value == GetCharacteristicUseCase.execute()
+        // и что saveCharacteristicParam.destination и saveCharacteristicParam.value подходящее
+
+        boolean result = authorRepositoryInterface.saveCharacteristic(saveCharacteristicParam);
         return result;
     }
 
