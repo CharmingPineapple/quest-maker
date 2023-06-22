@@ -17,6 +17,8 @@ import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
 import com.example.quest_maker.domain.usecase.GetCharacteristicUseCase;
 import com.example.quest_maker.domain.usecase.SaveCharacteristicUseCase;
 
+import java.util.List;
+
 public class PersonMakerActivity extends AppCompatActivity {
 
     //private AuthorRepositoryInterface authorRepositoryInterface = new AuthorRepositoryImplementation(getApplicationContext());
@@ -38,6 +40,9 @@ public class PersonMakerActivity extends AppCompatActivity {
         TextView TV_CHR = findViewById(R.id.TV_CHR_maker);
         TextView TV_LCK = findViewById(R.id.TV_LCK_maker);
 
+        // (#)
+        TextView TV_check_characteristics= findViewById(R.id.TV_test_check_all_characteristics);
+
         EditText ET_STR = findViewById(R.id.ET_STR_maker);
         EditText ET_DEX = findViewById(R.id.ET_DEX_maker);
         EditText ET_PER = findViewById(R.id.ET_PER_maker);
@@ -48,13 +53,24 @@ public class PersonMakerActivity extends AppCompatActivity {
         Button B_save_characteristics = findViewById(R.id.B_save_characteristics);
         Button B_update_characteristics = findViewById(R.id.B_update_characteristics);
 
+        // (#)
+        Button B_check_characteristics = findViewById(R.id.B_test_check_all_characteristics);
+
         B_save_characteristics.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // (#) - потом исправить на массив
 
                 String dest = TV_STR.getText().toString();
                 int value = Integer.parseInt(ET_STR.getText().toString());
+
+                // (#)
+                //String stringValue = ET_STR.getText().toString();
+                //int value = (int) Integer.parseInt(stringValue);
+
                 SaveCharacteristicParam saveCharacteristicParam = new SaveCharacteristicParam(dest, value);
+
+                // (#)
+                //TV_STR.setText(Integer.toString(value));
 
                 saveCharacteristicUseCase.execute(saveCharacteristicParam);
 
@@ -72,6 +88,25 @@ public class PersonMakerActivity extends AppCompatActivity {
 
                 value = getCharacteristicUseCase.execute(characteristic);
                 ET_STR.setText(value);
+
+            }
+        });
+
+        // (#)
+        B_check_characteristics.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                List<SaveCharacteristicParam> list = getCharacteristicUseCase.getAll();
+
+                String string;
+                String allString = "";
+
+                for (SaveCharacteristicParam one : list){
+                    string = one.destination + one.value;
+                    allString = allString + "; " + string;
+                }
+
+                TV_check_characteristics.setText(allString);
 
             }
         });

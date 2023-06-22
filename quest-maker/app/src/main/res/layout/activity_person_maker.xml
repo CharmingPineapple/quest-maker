@@ -305,4 +305,20 @@
         android:layout_height="wrap_content"
         android:text="Update Characteristics" />
 
+    <Button
+        android:id="@+id/B_test_check_all_characteristics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test check Characteristics" />
+
+    <TextView
+        android:id="@+id/TV_test_check_all_characteristics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CharacteristicsTestCheck"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"/>
+
 </LinearLayout>

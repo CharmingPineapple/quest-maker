@@ -1,7 +1,10 @@
 package com.example.quest_maker.domain.usecase;
 
 import com.example.quest_maker.domain.models.Characteristic;
+import com.example.quest_maker.domain.models.SaveCharacteristicParam;
 import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
+
+import java.util.List;
 
 public class GetCharacteristicUseCase {
 
@@ -17,6 +20,14 @@ public class GetCharacteristicUseCase {
         // и что characteristic.name подходящее
 
         return authorRepositoryInterface.getCharacteristic(characteristic);
+    }
+
+    // (#)
+    public List<SaveCharacteristicParam> getAll(){
+        // (!) - Добавить в слой presentatin проверку,
+        // и что characteristic.name подходящее
+
+        return authorRepositoryInterface.getAll();
     }
 
 }

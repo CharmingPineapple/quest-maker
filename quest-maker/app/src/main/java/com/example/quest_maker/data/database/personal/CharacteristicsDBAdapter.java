@@ -7,6 +7,12 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.quest_maker.domain.models.Characteristic;
+import com.example.quest_maker.domain.models.SaveCharacteristicParam;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class CharacteristicsDBAdapter {
 
     private CharacteristicsDBHelper dbHelper;
@@ -27,6 +33,33 @@ public class CharacteristicsDBAdapter {
 
     public long getCount(){
         return DatabaseUtils.queryNumEntries(database, CharacteristicsDBHelper.TABLE_NAME);
+    }
+
+    // (#)
+    private Cursor getAllEntries(){
+        String[] columns = new String[] {CharacteristicsDBHelper.KEY_ID, CharacteristicsDBHelper.KEY_NAME, CharacteristicsDBHelper.KEY_VALUE};
+        return  database.query(CharacteristicsDBHelper.TABLE_NAME, columns, null, null, null, null, null);
+    }
+
+    // (#)
+    public List<SaveCharacteristicParam> getAllCharacteristics(){
+        ArrayList<SaveCharacteristicParam> characteristicParams = new ArrayList<>();
+        Cursor cursor = getAllEntries();
+
+        int id_column_id = cursor.getColumnIndex(CharacteristicsDBHelper.KEY_ID);
+        int name_column_id = cursor.getColumnIndex(CharacteristicsDBHelper.KEY_NAME);
+        int value_column_id = cursor.getColumnIndex(CharacteristicsDBHelper.KEY_VALUE);
+
+
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(id_column_id);
+            String name = cursor.getString(name_column_id);
+            int value = cursor.getInt(value_column_id);
+            characteristicParams.add(new SaveCharacteristicParam(name, value));
+        }
+
+        cursor.close();
+        return  characteristicParams;
     }
 
     public int getValueOf(String characteristicName){
@@ -57,9 +90,9 @@ public class CharacteristicsDBAdapter {
     // Возвращает количество изменённых элементов
     public int updateValue(String characteristicName, int value){
 
-        String whereClause = CharacteristicsDBHelper.KEY_NAME + " = " + characteristicName;
+        String whereClause = CharacteristicsDBHelper.KEY_NAME + " = " + "'" + characteristicName + "'";
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CharacteristicsDBHelper.KEY_VALUE, value);
+        contentValues.put(CharacteristicsDBHelper.KEY_VALUE, (int) value);
         return database.update(CharacteristicsDBHelper.TABLE_NAME, contentValues, whereClause, null);
     }
 

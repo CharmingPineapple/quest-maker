@@ -7,6 +7,8 @@ import com.example.quest_maker.domain.models.Characteristic;
 import com.example.quest_maker.domain.models.SaveCharacteristicParam;
 import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
 
+import java.util.List;
+
 public class AuthorRepositoryImplementation implements AuthorRepositoryInterface {
 
     private Context context;
@@ -41,5 +43,16 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
 
         return characteristicValue;
     }
+
+    // (#)
+    public List<SaveCharacteristicParam> getAll(){
+        CharacteristicsDBAdapter characteristicsDBAdapter = new CharacteristicsDBAdapter(context);
+        characteristicsDBAdapter.open();
+        List<SaveCharacteristicParam> list = characteristicsDBAdapter.getAllCharacteristics();
+        characteristicsDBAdapter.close();
+
+        return list;
+    }
+
 
 }
