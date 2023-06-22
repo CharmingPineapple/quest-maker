@@ -10,7 +10,7 @@ public class Characteristic {
 
     public String name;
 
-    Characteristic(String name){
+    public Characteristic(String name){
         this.name = name;
     }
 

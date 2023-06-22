@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         buttonPersonMaker.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View view) {
                 // Обработка нажатия -> переход на activity_person_maker (xml)
                 Intent intent = new Intent(MainActivity.this, PersonMakerActivity.class);

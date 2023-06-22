@@ -11,7 +11,7 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
 
     private Context context;
 
-    AuthorRepositoryImplementation(Context context){
+    public AuthorRepositoryImplementation(Context context){
         this.context = context;
     }
 
