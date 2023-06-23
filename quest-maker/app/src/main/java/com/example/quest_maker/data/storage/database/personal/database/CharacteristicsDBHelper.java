@@ -1,4 +1,4 @@
-package com.example.quest_maker.data.database.personal;
+package com.example.quest_maker.data.storage.database.personal.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,13 +34,13 @@ public class CharacteristicsDBHelper extends SQLiteOpenHelper {
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-        + "(" + KEY_NAME + ") " + "VALUES "
-        + "('STR'), "   // Strength
-        + "('DEX'), "   // Dexterity
-        + "('PER'), "   // Perception
-        + "('KNW'), "   // Knowledge
-        + "('CHR'), "   // Charisma
-        + "('LCK')"     // Luck
+        + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
+        + "('STR', 0), "   // Strength
+        + "('DEX', 0), "   // Dexterity
+        + "('PER', 0), "   // Perception
+        + "('KNW', 0), "   // Knowledge
+        + "('CHR', 0), "   // Charisma
+        + "('LCK', 0)"   // Luck
         );
     }
 

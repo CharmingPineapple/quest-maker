@@ -1,4 +1,4 @@
-package com.example.quest_maker.data.database.personal;
+package com.example.quest_maker.data.storage.database.personal.adapter;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.quest_maker.domain.models.Characteristic;
-import com.example.quest_maker.domain.models.SaveCharacteristicParam;
+import com.example.quest_maker.data.storage.database.personal.database.CharacteristicsDBHelper;
+import com.example.quest_maker.data.storage.models.CharacteristicStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +42,8 @@ public class CharacteristicsDBAdapter {
     }
 
     // (#)
-    public List<SaveCharacteristicParam> getAllCharacteristics(){
-        ArrayList<SaveCharacteristicParam> characteristicParams = new ArrayList<>();
+    public List<CharacteristicStorage> getAllCharacteristics(){
+        ArrayList<CharacteristicStorage> characteristicParams = new ArrayList<>();
         Cursor cursor = getAllEntries();
 
         int id_column_id = cursor.getColumnIndex(CharacteristicsDBHelper.KEY_ID);
@@ -55,7 +55,7 @@ public class CharacteristicsDBAdapter {
             int id = cursor.getInt(id_column_id);
             String name = cursor.getString(name_column_id);
             int value = cursor.getInt(value_column_id);
-            characteristicParams.add(new SaveCharacteristicParam(name, value));
+            characteristicParams.add(new CharacteristicStorage(name, value));
         }
 
         cursor.close();

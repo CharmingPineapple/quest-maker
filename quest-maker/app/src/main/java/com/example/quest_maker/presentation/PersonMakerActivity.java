@@ -1,6 +1,5 @@
 package com.example.quest_maker.presentation;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quest_maker.R;
 import com.example.quest_maker.data.repository.AuthorRepositoryImplementation;
+import com.example.quest_maker.data.storage.database.DatabaseAuthorStorageImplementation;
 import com.example.quest_maker.domain.models.Characteristic;
-import com.example.quest_maker.domain.models.SaveCharacteristicParam;
 import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
 import com.example.quest_maker.domain.usecase.GetCharacteristicUseCase;
 import com.example.quest_maker.domain.usecase.SaveCharacteristicUseCase;
@@ -22,7 +21,9 @@ import java.util.List;
 public class PersonMakerActivity extends AppCompatActivity {
 
     //private AuthorRepositoryInterface authorRepositoryInterface = new AuthorRepositoryImplementation(getApplicationContext());
-    private AuthorRepositoryInterface authorRepositoryInterface = new AuthorRepositoryImplementation(this);
+
+    private DatabaseAuthorStorageImplementation databaseAuthorStorageImplementation = new DatabaseAuthorStorageImplementation(this);
+    private AuthorRepositoryInterface authorRepositoryInterface = new AuthorRepositoryImplementation(databaseAuthorStorageImplementation);
     private GetCharacteristicUseCase getCharacteristicUseCase = new GetCharacteristicUseCase(authorRepositoryInterface);
     private SaveCharacteristicUseCase saveCharacteristicUseCase = new SaveCharacteristicUseCase(authorRepositoryInterface);
 
@@ -61,18 +62,23 @@ public class PersonMakerActivity extends AppCompatActivity {
                 // (#) - потом исправить на массив
 
                 String dest = TV_STR.getText().toString();
-                int value = Integer.parseInt(ET_STR.getText().toString());
+                String value = ET_STR.getText().toString();
 
                 // (#)
                 //String stringValue = ET_STR.getText().toString();
                 //int value = (int) Integer.parseInt(stringValue);
 
-                SaveCharacteristicParam saveCharacteristicParam = new SaveCharacteristicParam(dest, value);
+                Characteristic characteristic = new Characteristic(dest, value);
+
+                TV_DEX.setText(dest);
+                TV_PER.setText(value);
 
                 // (#)
                 //TV_STR.setText(Integer.toString(value));
 
-                saveCharacteristicUseCase.execute(saveCharacteristicParam);
+                saveCharacteristicUseCase.execute(characteristic);
+
+                TV_KNW.setText(getCharacteristicUseCase.execute(characteristic));
 
             }
         });
@@ -84,10 +90,7 @@ public class PersonMakerActivity extends AppCompatActivity {
                 String name = TV_STR.getText().toString();
                 Characteristic characteristic = new Characteristic(name);
 
-                short value;
-
-                value = getCharacteristicUseCase.execute(characteristic);
-                ET_STR.setText(value);
+                ET_STR.setText(getCharacteristicUseCase.execute(characteristic));
 
             }
         });
@@ -96,13 +99,13 @@ public class PersonMakerActivity extends AppCompatActivity {
         B_check_characteristics.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                List<SaveCharacteristicParam> list = getCharacteristicUseCase.getAll();
+                List<Characteristic> list = getCharacteristicUseCase.getAll();
 
                 String string;
                 String allString = "";
 
-                for (SaveCharacteristicParam one : list){
-                    string = one.destination + one.value;
+                for (Characteristic one : list){
+                    string = one.name + one.value;
                     allString = allString + "; " + string;
                 }
 

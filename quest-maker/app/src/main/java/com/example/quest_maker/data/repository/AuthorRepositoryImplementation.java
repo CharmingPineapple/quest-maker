@@ -1,57 +1,54 @@
 package com.example.quest_maker.data.repository;
 
-import android.content.Context;
-
-import com.example.quest_maker.data.database.personal.CharacteristicsDBAdapter;
+import com.example.quest_maker.data.storage.AuthorStorageInterface;
+import com.example.quest_maker.data.storage.database.personal.adapter.CharacteristicsDBAdapter;
+import com.example.quest_maker.data.storage.models.CharacteristicStorage;
 import com.example.quest_maker.domain.models.Characteristic;
-import com.example.quest_maker.domain.models.SaveCharacteristicParam;
 import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AuthorRepositoryImplementation implements AuthorRepositoryInterface {
 
-    private Context context;
+    private AuthorStorageInterface authorStorageInterface;
 
-    public AuthorRepositoryImplementation(Context context){
-        this.context = context;
+    public AuthorRepositoryImplementation(AuthorStorageInterface authorStorageInterface){
+        this.authorStorageInterface = authorStorageInterface;
     }
 
 
     @Override
-    public boolean saveCharacteristic(SaveCharacteristicParam saveCharacteristicParam) {
-
-        int savedCount;
-
-        CharacteristicsDBAdapter characteristicsDBAdapter = new CharacteristicsDBAdapter(context);
-        characteristicsDBAdapter.open();
-        savedCount = characteristicsDBAdapter.updateValue(saveCharacteristicParam.destination, saveCharacteristicParam.value);
-        characteristicsDBAdapter.close();
-
-        return savedCount == 1;
+    public boolean saveCharacteristic(Characteristic characteristic) {
+        return authorStorageInterface.saveCharacteristic(characteristicMapToStorage(characteristic));
     }
 
     @Override
-    public short getCharacteristic(Characteristic characteristic) {
+    public int getCharacteristic(Characteristic characteristic) {
+        return authorStorageInterface.getCharacteristic(characteristicMapToStorage(characteristic));
+    }
 
-        short characteristicValue;
+    private CharacteristicStorage characteristicMapToStorage(Characteristic characteristic){
+        return new CharacteristicStorage(characteristic.name, Integer.parseInt(characteristic.value));
+    }
 
-        CharacteristicsDBAdapter characteristicsDBAdapter = new CharacteristicsDBAdapter(context);
-        characteristicsDBAdapter.open();
-        characteristicValue = (short) characteristicsDBAdapter.getValueOf(characteristic.name);
-        characteristicsDBAdapter.close();
-
-        return characteristicValue;
+    private Characteristic characteristicMapToDomain(CharacteristicStorage characteristicStorage){
+        return new Characteristic(characteristicStorage.name, Integer.toString(characteristicStorage.value));
     }
 
     // (#)
-    public List<SaveCharacteristicParam> getAll(){
-        CharacteristicsDBAdapter characteristicsDBAdapter = new CharacteristicsDBAdapter(context);
-        characteristicsDBAdapter.open();
-        List<SaveCharacteristicParam> list = characteristicsDBAdapter.getAllCharacteristics();
-        characteristicsDBAdapter.close();
+    public List<Characteristic> getAll(){
 
-        return list;
+        List<CharacteristicStorage> listCS = authorStorageInterface.getAll();
+        List<Characteristic> listC = new ArrayList<>();
+
+
+        for (CharacteristicStorage one : listCS){
+            listC.add(characteristicMapToDomain(one));
+        }
+
+        return listC;
     }
 
 
