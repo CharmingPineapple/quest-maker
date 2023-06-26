@@ -9,12 +9,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quest_maker.R;
-import com.example.quest_maker.data.repository.AuthorRepositoryImplementation;
-import com.example.quest_maker.data.storage.database.DatabaseAuthorStorageImplementation;
-import com.example.quest_maker.domain.models.Characteristic;
-import com.example.quest_maker.domain.repository.AuthorRepositoryInterface;
-import com.example.quest_maker.domain.usecase.GetCharacteristicUseCase;
-import com.example.quest_maker.domain.usecase.SaveCharacteristicUseCase;
+import com.example.data.repository.AuthorRepositoryImplementation;
+import com.example.data.storage.database.DatabaseAuthorStorageImplementation;
+import com.example.domain.models.Characteristic;
+import com.example.domain.repository.AuthorRepositoryInterface;
+import com.example.domain.usecase.GetCharacteristicUseCase;
+import com.example.domain.usecase.SaveCharacteristicUseCase;
 
 import java.util.List;
 
@@ -22,6 +22,8 @@ public class PersonMakerActivity extends AppCompatActivity {
 
     //private AuthorRepositoryInterface authorRepositoryInterface = new AuthorRepositoryImplementation(getApplicationContext());
 
+
+    // (!) - Разобраться с context
     private DatabaseAuthorStorageImplementation databaseAuthorStorageImplementation = new DatabaseAuthorStorageImplementation(this);
     private AuthorRepositoryInterface authorRepositoryInterface = new AuthorRepositoryImplementation(databaseAuthorStorageImplementation);
     private GetCharacteristicUseCase getCharacteristicUseCase = new GetCharacteristicUseCase(authorRepositoryInterface);
