@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.quest_maker.R;
 import com.example.data.repository.AuthorRepositoryImplementation;
@@ -15,6 +17,7 @@ import com.example.domain.models.Characteristic;
 import com.example.domain.repository.AuthorRepositoryInterface;
 import com.example.domain.usecase.GetCharacteristicUseCase;
 import com.example.domain.usecase.SaveCharacteristicUseCase;
+import com.example.quest_maker.viewModel.PersonMakerViewModel;
 
 import java.util.List;
 
@@ -32,6 +35,8 @@ public class PersonMakerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+
 
         // загрузка интерфейса из activity_person_maker (xml)
         setContentView(R.layout.activity_person_maker);
@@ -58,6 +63,13 @@ public class PersonMakerActivity extends AppCompatActivity {
 
         // (#)
         Button B_check_characteristics = findViewById(R.id.B_test_check_all_characteristics);
+
+        //ViewModel vm = new PersonMakerViewModel();
+        // (?) - this.  AppCompatActivity вроде бы всё решает и всё окей
+       /* PersonMakerViewModel vm = new ViewModelProvider(this).get(PersonMakerViewModel.class);
+        vm.getCharacteristicLive().observe(this, Observer{
+            TV_LCK.setText();
+        });*/
 
         B_save_characteristics.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -98,7 +110,7 @@ public class PersonMakerActivity extends AppCompatActivity {
         });
 
         // (#)
-        B_check_characteristics.setOnClickListener(new View.OnClickListener() {
+        /*B_check_characteristics.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 List<Characteristic> list = getCharacteristicUseCase.getAll();
@@ -114,7 +126,7 @@ public class PersonMakerActivity extends AppCompatActivity {
                 TV_check_characteristics.setText(allString);
 
             }
-        });
+        });*/
 
     }
 

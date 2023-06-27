@@ -1,6 +1,7 @@
 package com.example.data.storage;
 
 import com.example.data.storage.models.CharacteristicStorage;
+import com.example.domain.models.CharacteristicList;
 
 import java.util.List;
 

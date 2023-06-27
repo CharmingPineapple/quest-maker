@@ -1,6 +1,7 @@
 package com.example.domain.usecase;
 
 import com.example.domain.models.Characteristic;
+import com.example.domain.models.CharacteristicList;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class GetCharacteristicUseCase {
     }
 
     // (#)
-    public List<Characteristic> getAll(){
+    public CharacteristicList getAll(){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 

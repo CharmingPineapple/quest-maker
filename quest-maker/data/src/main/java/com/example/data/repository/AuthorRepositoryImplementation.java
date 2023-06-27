@@ -3,6 +3,7 @@ package com.example.data.repository;
 import com.example.data.storage.AuthorStorageInterface;
 import com.example.data.storage.models.CharacteristicStorage;
 import com.example.domain.models.Characteristic;
+import com.example.domain.models.CharacteristicList;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.ArrayList;
@@ -36,10 +37,10 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
     }
 
     // (#)
-    public List<Characteristic> getAll(){
+    public CharacteristicList getAll(){
 
         List<CharacteristicStorage> listCS = authorStorageInterface.getAll();
-        List<Characteristic> listC = new ArrayList<>();
+        CharacteristicList listC = new CharacteristicList();
 
 
         for (CharacteristicStorage one : listCS){
