@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface AuthorStorageInterface {
 
-    public boolean saveCharacteristic(CharacteristicStorage characteristicStorage);
+    void saveCharacteristic(CharacteristicStorage characteristicStorage);
 
-    public int getCharacteristic(CharacteristicStorage characteristicStorage);
+    int getCharacteristic(CharacteristicStorage characteristicStorage);
 
-    // (#)
-    public List<CharacteristicStorage> getAll();
+    List<CharacteristicStorage> getAll();
 
+    void saveAll(List<CharacteristicStorage> listCS);
 }

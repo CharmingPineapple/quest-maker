@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface AuthorRepositoryInterface {
 
-    public boolean saveCharacteristic(Characteristic characteristic);
+    void saveCharacteristic(Characteristic characteristic);
 
-    public int getCharacteristic(Characteristic characteristic);
+    int getCharacteristic(Characteristic characteristic);
 
-    // (#)
-    public CharacteristicList getAll();
+    List<Characteristic> getAll();
+    void saveAll(List<Characteristic> characteristicList);
 
 }

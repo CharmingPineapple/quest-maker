@@ -29,7 +29,7 @@ public class GetCharacteristicUseCase {
     }
 
     // (#)
-    public CharacteristicList getAll(){
+    public List<Characteristic> getAll(){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 

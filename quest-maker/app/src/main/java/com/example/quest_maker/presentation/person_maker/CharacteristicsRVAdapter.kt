@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Characteristic
 import com.example.quest_maker.R
 
-class CharacteristicsRVAdapter(context: Context) : RecyclerView.Adapter<CharacteristicsRVAdapter.ViewHolder>() {
+class CharacteristicsRVAdapter(
+    context: Context,
+    private var list: List<Characteristic>? = null
+    ) : RecyclerView.Adapter<CharacteristicsRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater
-    private var list: MutableList<Characteristic>? = null
+    //private var list: MutableList<Characteristic>? = null
 
-    fun setList(list: MutableList<Characteristic>?){
+    fun setList(list: List<Characteristic>){
         this.list = list
         notifyDataSetChanged()
     }

@@ -19,8 +19,8 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
 
 
     @Override
-    public boolean saveCharacteristic(Characteristic characteristic) {
-        return authorStorageInterface.saveCharacteristic(characteristicMapToStorage(characteristic));
+    public void saveCharacteristic(Characteristic characteristic) {
+        authorStorageInterface.saveCharacteristic(characteristicMapToStorage(characteristic));
     }
 
     @Override
@@ -37,10 +37,10 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
     }
 
     // (#)
-    public CharacteristicList getAll(){
+    public List<Characteristic> getAll(){
 
         List<CharacteristicStorage> listCS = authorStorageInterface.getAll();
-        CharacteristicList listC = new CharacteristicList();
+        List<Characteristic> listC = new ArrayList<>();
 
 
         for (CharacteristicStorage one : listCS){
@@ -48,6 +48,17 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         }
 
         return listC;
+    }
+
+    public void saveAll(List<Characteristic> characteristicList){
+        List<CharacteristicStorage> listCS = new ArrayList<>();
+
+        for(Characteristic one: characteristicList){
+            listCS.add(characteristicMapToStorage(one));
+        }
+
+        authorStorageInterface.saveAll(listCS);
+
     }
 
 

@@ -17,16 +17,13 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
     }
 
     @Override
-    public boolean saveCharacteristic(CharacteristicStorage characteristicStorage) {
-
-        int savedCount;
+    public void saveCharacteristic(CharacteristicStorage characteristicStorage) {
 
         CharacteristicsDBAdapter characteristicsDBAdapter = new CharacteristicsDBAdapter(context);
         characteristicsDBAdapter.open();
-        savedCount = characteristicsDBAdapter.updateValue(characteristicStorage.name, characteristicStorage.value);
+        characteristicsDBAdapter.updateValue(characteristicStorage.name, characteristicStorage.value);
         characteristicsDBAdapter.close();
 
-        return savedCount == 1;
     }
 
     @Override
@@ -50,6 +47,14 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         characteristicsDBAdapter.close();
 
         return list;
+    }
+
+    @Override
+    public void saveAll(List<CharacteristicStorage> listCS){
+        CharacteristicsDBAdapter characteristicsDBAdapter = new CharacteristicsDBAdapter(context);
+        characteristicsDBAdapter.open();
+        characteristicsDBAdapter.saveAllCharacteristics(listCS);
+        characteristicsDBAdapter.close();
     }
 
 }

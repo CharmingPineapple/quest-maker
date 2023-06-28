@@ -62,6 +62,12 @@ public class CharacteristicsDBAdapter {
         return  characteristicParams;
     }
 
+    public void saveAllCharacteristics(List<CharacteristicStorage> list){
+        for(CharacteristicStorage one: list){
+            updateValue(one.name, one.value);
+        }
+    }
+
     public int getValueOf(String characteristicName){
 
         int value = -1;
@@ -88,12 +94,12 @@ public class CharacteristicsDBAdapter {
     }
 
     // Возвращает количество изменённых элементов
-    public int updateValue(String characteristicName, int value){
+    public void updateValue(String characteristicName, int value){
 
         String whereClause = CharacteristicsDBHelper.KEY_NAME + " = " + "'" + characteristicName + "'";
         ContentValues contentValues = new ContentValues();
         contentValues.put(CharacteristicsDBHelper.KEY_VALUE, (int) value);
-        return database.update(CharacteristicsDBHelper.TABLE_NAME, contentValues, whereClause, null);
+        database.update(CharacteristicsDBHelper.TABLE_NAME, contentValues, whereClause, null);
     }
 
 }

@@ -28,11 +28,12 @@ class PersonMakerActivity : AppCompatActivity() {
 
         characteristicsRV = findViewById(R.id.RV_characteristic_list)
 
-        viewModel.load()
+        viewModel.send(LoadEvent())
 
         characteristicsRVAdapter = CharacteristicsRVAdapter(this)
-        viewModel.characteristicListLive.observe(this) {list ->
-            characteristicsRVAdapter!!.setList(list)
+
+        viewModel.stateLive.observe(this) { state ->
+            characteristicsRVAdapter!!.setList(state.characteristicList)
         }
 
         characteristicsRV!!.adapter = characteristicsRVAdapter
