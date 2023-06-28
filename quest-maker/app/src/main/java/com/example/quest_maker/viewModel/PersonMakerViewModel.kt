@@ -17,7 +17,8 @@ class PersonMakerViewModel(
     private val saveCharacteristicUseCase: SaveCharacteristicUseCase
 ) : ViewModel() {
 
-    private val stateLiveMutable = MutableLiveData<PersonMakerState>()
+    //private val stateLiveMutable = MutableLiveData<PersonMakerState>()
+    val stateLiveMutable = MutableLiveData<PersonMakerState>()
     val stateLive: LiveData<PersonMakerState> = stateLiveMutable
 
     /*fun saveCharacteristic(characteristic: Characteristic){

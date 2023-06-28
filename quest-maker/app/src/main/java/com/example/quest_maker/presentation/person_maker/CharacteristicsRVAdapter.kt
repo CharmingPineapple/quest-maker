@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Characteristic
 import com.example.quest_maker.R
@@ -21,6 +22,10 @@ class CharacteristicsRVAdapter(
     fun setList(list: List<Characteristic>){
         this.list = list
         notifyDataSetChanged()
+    }
+
+    fun getList(): List<Characteristic> {
+        return list!!
     }
 
     init {
@@ -43,7 +48,22 @@ class CharacteristicsRVAdapter(
         holder.name.text = one.name
         holder.value.text = one.value
 
-        //TODO("plus and minus implementation")
+        //TODO("plus and minus implementation:
+        // ограничение !<0
+        // добавить "Осталось очков"
+        // ")
+
+        holder.plusButton.setOnClickListener{
+            list!![position].value = (one.value.toInt() + 1).toString()
+            notifyDataSetChanged()
+        }
+
+        holder.minusButton.setOnClickListener{
+            list!![position].value = (one.value.toInt() - 1).toString()
+            notifyDataSetChanged()
+        }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -63,6 +83,7 @@ class CharacteristicsRVAdapter(
             plusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_plus)
             minusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_minus)
         }
+
 
     }
 
