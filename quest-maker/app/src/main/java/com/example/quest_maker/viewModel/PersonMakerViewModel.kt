@@ -10,32 +10,25 @@ import com.example.domain.usecase.SaveCharacteristicUseCase
 
 class PersonMakerViewModel(
     // (#!) - change to private
-    public val getCharacteristicUseCase: GetCharacteristicUseCase,
+    private val getCharacteristicUseCase: GetCharacteristicUseCase,
     private val saveCharacteristicUseCase: SaveCharacteristicUseCase
 ) : ViewModel() {
 
-    // (!)
-    private val characteristicListLive = MutableLiveData<CharacteristicList>()
-    //private val characteristicListLiveMutable = MutableLiveData<CharacteristicList>()
-    //private val characteristicListLive = MutableLiveData<CharacteristicList>()
+    private var characteristicListLiveMutable = MutableLiveData<MutableList<Characteristic>>()
+    var characteristicListLive: LiveData<MutableList<Characteristic>> = characteristicListLiveMutable
 
     fun saveCharacteristic(characteristic: Characteristic){
         val bool = saveCharacteristicUseCase.execute(characteristic)
     }
 
-    /*fun getCharacteristic(characteristic: Characteristic){
-        characteristicListLive.value = getCharacteristicUseCase.execute()
-    }*/
-
-    // (!) - сделать геттер при запуске активити или при ините. геттер не возвратный
-    fun getCharacteristicListLive() : LiveData<CharacteristicList> {
-        characteristicListLive.value = getCharacteristicUseCase.all;
-        return characteristicListLive
+    fun load(){
+        characteristicListLiveMutable.value = getCharacteristicUseCase.all.getList()
     }
 
     override fun onCleared() {
         // CODE
         super.onCleared()
     }
+    
 
 }

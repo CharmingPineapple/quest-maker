@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quest_maker.R;
-import com.example.quest_maker.presentation.person_maker.PersonMakerActivityKT;
+import com.example.quest_maker.presentation.person_maker.PersonMakerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Обработка нажатия -> переход на activity_person_maker (xml)
                 //Intent intent = new Intent(MainActivity.this, PersonMakerActivity.class);
-                Intent intent = new Intent(MainActivity.this, PersonMakerActivityKT.class);
+                Intent intent = new Intent(MainActivity.this, PersonMakerActivity.class);
                 startActivity(intent);
             }
         });

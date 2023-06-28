@@ -8,17 +8,17 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Characteristic
-import com.example.domain.models.CharacteristicList
 import com.example.quest_maker.R
 
-
-// (?) - Вроде бы, внутри адаптера CharacteristicList не должен изменяться, так что поставил val
-
-class CharacteristicsRVAdapter(context: Context, private val list: CharacteristicList) : RecyclerView.Adapter<CharacteristicsRVAdapter.ViewHolder>() {
+class CharacteristicsRVAdapter(context: Context) : RecyclerView.Adapter<CharacteristicsRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater
+    private var list: MutableList<Characteristic>? = null
 
-
+    fun setList(list: MutableList<Characteristic>?){
+        this.list = list
+        notifyDataSetChanged()
+    }
 
     init {
         inflater = LayoutInflater.from(context)
@@ -35,7 +35,7 @@ class CharacteristicsRVAdapter(context: Context, private val list: Characteristi
 
 
     override fun onBindViewHolder(holder: CharacteristicsRVAdapter.ViewHolder, position: Int) {
-        val one: Characteristic = list.get(position)
+        val one: Characteristic = list!![position]
 
         holder.name.text = one.name
         holder.value.text = one.value
@@ -43,9 +43,8 @@ class CharacteristicsRVAdapter(context: Context, private val list: Characteristi
         //TODO("plus and minus implementation")
     }
 
-
     override fun getItemCount(): Int {
-       return list.size()
+       return list!!.size
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {

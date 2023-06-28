@@ -30,4 +30,10 @@ public class CharacteristicList {
         list.clear();
     }
 
+    // (#) - очень тупо и очень глупо, но для теста это необходимо,
+    // войдите в моё положение, я тут десятый час тужусь
+    // это ужасно, я хочу домой
+    public List<Characteristic> getList(){
+        return list;
+    }
 }
