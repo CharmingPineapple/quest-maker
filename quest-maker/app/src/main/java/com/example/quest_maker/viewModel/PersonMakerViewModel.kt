@@ -18,12 +18,9 @@ class PersonMakerViewModel(
 ) : ViewModel() {
 
     //private val stateLiveMutable = MutableLiveData<PersonMakerState>()
-    val stateLiveMutable = MutableLiveData<PersonMakerState>()
-    val stateLive: LiveData<PersonMakerState> = stateLiveMutable
-
-    /*fun saveCharacteristic(characteristic: Characteristic){
-        val bool = saveCharacteristicUseCase.execute(characteristic)
-    }*/
+    var stateDataMutable: PersonMakerState? = null
+    // будет ли изменяться stateData?
+    //val stateData: PersonMakerState? = stateDataMutable
 
     fun send(event: PersonMakerEvent){
         when(event){
@@ -48,7 +45,7 @@ class PersonMakerViewModel(
     private fun load(){
         val characteristicList: List<Characteristic> = getCharacteristicUseCase.all
 
-        stateLiveMutable.value = PersonMakerState(
+        stateDataMutable = PersonMakerState(
             characteristicList
         )
     }

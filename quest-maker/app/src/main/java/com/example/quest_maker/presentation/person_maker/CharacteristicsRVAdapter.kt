@@ -1,26 +1,38 @@
 package com.example.quest_maker.presentation.person_maker
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Characteristic
 import com.example.quest_maker.R
+import kotlin.math.max
 
 class CharacteristicsRVAdapter(
-    context: Context,
-    private var list: List<Characteristic>? = null
+    // (#) - was: context: Context,
+    private val context: Context,
+    private val maxScore: Int = 33,
+    private val minScore: Int = 28
     ) : RecyclerView.Adapter<CharacteristicsRVAdapter.ViewHolder>() {
 
-    private val inflater: LayoutInflater
-    //private var list: MutableList<Characteristic>? = null
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    fun setList(list: List<Characteristic>){
-        this.list = list
+    private var list: List<Characteristic>? = null
+
+    private var currentScore: Int? = null
+
+    private var lastTappedPosition: Int? = null
+
+    fun setCharacteristic(newList: List<Characteristic>){
+        this.list = newList
+        calcCurrentScore()
+        sendRemainScore()
         notifyDataSetChanged()
     }
 
@@ -28,9 +40,7 @@ class CharacteristicsRVAdapter(
         return list!!
     }
 
-    init {
-        inflater = LayoutInflater.from(context)
-    }
+    var intent: Intent = Intent("remain-characteristic-score")
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -48,26 +58,64 @@ class CharacteristicsRVAdapter(
         holder.name.text = one.name
         holder.value.text = one.value
 
+        /*if(currentScore == maxScore){
+            holder.plusButton.visibility = View.GONE
+        }*/
+
+        /*if(one.value == "0" && lastTappedPosition == position){
+            holder.minusButton.visibility = View.GONE
+        }*/
+
         //TODO("plus and minus implementation:
         // ограничение !<0
         // добавить "Осталось очков"
         // ")
 
-        holder.plusButton.setOnClickListener{
+        /*holder.plusButton.setOnClickListener{
             list!![position].value = (one.value.toInt() + 1).toString()
+
+            /*//(#)
+            intent.putExtra("testName", one.value)
+            LocalBroadcastManager.getInstance(context).sendBroadcast(intent)*/
+            calcCurrentScore()
+            sendRemainScore()
+            lastTappedPosition = holder.adapterPosition
             notifyDataSetChanged()
         }
 
         holder.minusButton.setOnClickListener{
             list!![position].value = (one.value.toInt() - 1).toString()
+
+            // (#)
+            calcCurrentScore()
+            sendRemainScore()
+            lastTappedPosition = holder.adapterPosition
             notifyDataSetChanged()
-        }
-
-
+        }*/
     }
 
     override fun getItemCount(): Int {
        return list!!.size
+    }
+
+    private fun calcCurrentScore()/*: Int*/{
+        // (#)
+
+        var sumScore: Int = 0
+
+        for(one: Characteristic in list!!){
+            sumScore += one.value.toInt()
+        }
+
+        currentScore = sumScore
+
+        //return sumScore
+    }
+
+    private fun sendRemainScore(){
+        //(#)
+        intent.putExtra("testName", (maxScore - currentScore!!).toString())
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
@@ -82,7 +130,20 @@ class CharacteristicsRVAdapter(
             value = itemView.findViewById(R.id.RV_item_TV_characteristic_value)
             plusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_plus)
             minusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_minus)
+
+            /*if(value.text.toString() == "0"){
+                minusButton.visibility = View.GONE
+            }*/
+
+
+
         }
+
+
+
+        /*if(currentScore == maxScore){
+            plusButton.visibility = View.GONE
+        }*/
 
 
     }

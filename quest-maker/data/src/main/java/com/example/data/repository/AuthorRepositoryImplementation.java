@@ -50,6 +50,7 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         return listC;
     }
 
+
     public void saveAll(List<Characteristic> characteristicList){
         List<CharacteristicStorage> listCS = new ArrayList<>();
 
