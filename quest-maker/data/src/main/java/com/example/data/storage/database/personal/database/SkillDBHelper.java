@@ -38,9 +38,9 @@ public class SkillDBHelper extends SQLiteOpenHelper {
         + "('STR', 7), "   // Strength
         + "('DEX', 7), "   // Dexterity
         + "('PER', 7), "   // Perception
-        + "('KNW', 7), "   // Knowledge
-        + "('CHR', 7), "   // Charisma
-        + "('LCK', 0)"   // Luck
+        + "('KNW', 6), "   // Knowledge
+        + "('CHR', 6), "   // Charisma
+        + "('LCK', 7)"   // Luck
         );
     }
 

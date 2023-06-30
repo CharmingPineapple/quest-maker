@@ -1,9 +1,8 @@
 package com.example.data.repository;
 
 import com.example.data.storage.AuthorStorageInterface;
-import com.example.data.storage.models.CharacteristicStorage;
+import com.example.data.storage.models.SkillStorage;
 import com.example.domain.models.Characteristic;
-import com.example.domain.models.CharacteristicList;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.ArrayList;
@@ -19,32 +18,32 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
 
 
     @Override
-    public void saveCharacteristic(Characteristic characteristic) {
-        authorStorageInterface.saveCharacteristic(characteristicMapToStorage(characteristic));
+    public void saveSkill(Characteristic characteristic) {
+        authorStorageInterface.saveSkill(skillMapToStorage(characteristic));
     }
 
     @Override
-    public int getCharacteristic(Characteristic characteristic) {
-        return authorStorageInterface.getCharacteristic(characteristicMapToStorage(characteristic));
+    public int getSkill(Characteristic characteristic) {
+        return authorStorageInterface.getSkill(skillMapToStorage(characteristic));
     }
 
-    private CharacteristicStorage characteristicMapToStorage(Characteristic characteristic){
-        return new CharacteristicStorage(characteristic.name, Integer.parseInt(characteristic.value));
+    private SkillStorage skillMapToStorage(Characteristic characteristic){
+        return new SkillStorage(characteristic.name, Integer.parseInt(characteristic.value));
     }
 
-    private Characteristic characteristicMapToDomain(CharacteristicStorage characteristicStorage){
-        return new Characteristic(characteristicStorage.name, Integer.toString(characteristicStorage.value));
+    private Characteristic skillMapToDomain(SkillStorage skillStorage){
+        return new Characteristic(skillStorage.name, Integer.toString(skillStorage.value));
     }
 
     // (#)
     public List<Characteristic> getAll(){
 
-        List<CharacteristicStorage> listCS = authorStorageInterface.getAll();
+        List<SkillStorage> listCS = authorStorageInterface.getAll();
         List<Characteristic> listC = new ArrayList<>();
 
 
-        for (CharacteristicStorage one : listCS){
-            listC.add(characteristicMapToDomain(one));
+        for (SkillStorage one : listCS){
+            listC.add(skillMapToDomain(one));
         }
 
         return listC;
@@ -52,10 +51,10 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
 
 
     public void saveAll(List<Characteristic> characteristicList){
-        List<CharacteristicStorage> listCS = new ArrayList<>();
+        List<SkillStorage> listCS = new ArrayList<>();
 
         for(Characteristic one: characteristicList){
-            listCS.add(characteristicMapToStorage(one));
+            listCS.add(skillMapToStorage(one));
         }
 
         authorStorageInterface.saveAll(listCS);

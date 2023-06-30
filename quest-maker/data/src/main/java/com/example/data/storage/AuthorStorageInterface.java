@@ -1,17 +1,16 @@
 package com.example.data.storage;
 
-import com.example.data.storage.models.CharacteristicStorage;
-import com.example.domain.models.CharacteristicList;
+import com.example.data.storage.models.SkillStorage;
 
 import java.util.List;
 
 public interface AuthorStorageInterface {
 
-    void saveCharacteristic(CharacteristicStorage characteristicStorage);
+    void saveSkill(SkillStorage skillStorage);
 
-    int getCharacteristic(CharacteristicStorage characteristicStorage);
+    int getSkill(SkillStorage skillStorage);
 
-    List<CharacteristicStorage> getAll();
+    List<SkillStorage> getAll();
 
-    void saveAll(List<CharacteristicStorage> listCS);
+    void saveAll(List<SkillStorage> listCS);
 }

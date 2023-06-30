@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Characteristic
 import com.example.quest_maker.R
 
-class CharacteristicRVAdapter(
+class SkillRVAdapter(
     // (#) - was: context: Context,
     private val context: Context,
-    private val maxScore: Int = 33,
-    private val minScore: Int = 28
-    ) : RecyclerView.Adapter<CharacteristicRVAdapter.ViewHolder>() {
+
+    ) : RecyclerView.Adapter<SkillRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -25,8 +24,13 @@ class CharacteristicRVAdapter(
 
     private var currentScore: Int? = null
 
-    fun setCharacteristic(newList: List<Characteristic>){
+    private var maxScore: Int? = null
+    private var minScore: Int? = null
+
+    fun setData(newList: List<Characteristic>, newMaxScore: Int, newMinScore: Int){
         this.list = newList
+        this.maxScore = newMaxScore
+        this.minScore = newMinScore
         notifyDataSetChanged()
     }
 
@@ -34,23 +38,23 @@ class CharacteristicRVAdapter(
         return list!!
     }
 
-    private var intent: Intent = Intent("remain-characteristic-score")
+    private var intent: Intent = Intent("current-skill-score-action")
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CharacteristicRVAdapter.ViewHolder {
+    ): SkillRVAdapter.ViewHolder {
         val view = inflater.inflate(R.layout.rv_item_characteristics_input, parent, false)
 
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CharacteristicRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SkillRVAdapter.ViewHolder, position: Int) {
         val one: Characteristic = list!![position]
         holder.name.text = one.name
         holder.value.text = one.value
 
-        sendRemainScore()
+        sendCurrentScore()
 
         // Да ну нахуй, надо было всего лишь добавить else
         if (holder.value.text.toString() == "0" || currentScore == minScore){
@@ -86,13 +90,12 @@ class CharacteristicRVAdapter(
         for(one: Characteristic in list!!){
             sumScore += one.value.toInt()
         }
-
         currentScore = sumScore
     }
 
-    private fun sendRemainScore(){
+    private fun sendCurrentScore(){
         calcCurrentScore()
-        intent.putExtra("remain-characteristic-score-name", (maxScore - currentScore!!).toString())
+        intent.putExtra("current-skill-score-name", currentScore.toString())
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
     }
 

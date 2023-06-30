@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.data.repository.AuthorRepositoryImplementation
 import com.example.data.storage.database.DatabaseAuthorStorageImplementation
 import com.example.domain.repository.AuthorRepositoryInterface
-import com.example.domain.usecase.GetCharacteristicUseCase
-import com.example.domain.usecase.SaveCharacteristicUseCase
+import com.example.domain.usecase.GetSkillUseCase
+import com.example.domain.usecase.SaveSkillUseCase
 
 class PersonMakerViewModelFactory(context: Context) : ViewModelProvider.Factory {
 
@@ -17,15 +17,17 @@ class PersonMakerViewModelFactory(context: Context) : ViewModelProvider.Factory 
     private val authorRepositoryInterface: AuthorRepositoryInterface =
         AuthorRepositoryImplementation(databaseAuthorStorageImplementation)
 
-    private val getCharacteristicUseCase = GetCharacteristicUseCase(authorRepositoryInterface)
+    private val getSkillUseCase =
+        GetSkillUseCase(authorRepositoryInterface)
 
-    private val saveCharacteristicUseCase = SaveCharacteristicUseCase(authorRepositoryInterface)
+    private val saveSkillUseCase =
+        SaveSkillUseCase(authorRepositoryInterface)
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         //return super.create(modelClass)
         return PersonMakerViewModel(
-            getCharacteristicUseCase = getCharacteristicUseCase,
-            saveCharacteristicUseCase = saveCharacteristicUseCase
+            getSkillUseCase = getSkillUseCase,
+            saveSkillUseCase = saveSkillUseCase
         ) as T
     }
 

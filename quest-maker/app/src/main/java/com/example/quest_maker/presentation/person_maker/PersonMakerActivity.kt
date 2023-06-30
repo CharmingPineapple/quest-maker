@@ -19,9 +19,10 @@ class PersonMakerActivity : AppCompatActivity() {
 
     private lateinit var viewModel: PersonMakerViewModel
 
-    private var characteristicsRV: RecyclerView? = null
-    private var characteristicsRVAdapter: CharacteristicsRVAdapter? = null
-    private var remainScoreText: TextView? = null
+    private var skillRV: RecyclerView? = null
+    private var skillRVAdapter: SkillRVAdapter? = null
+    private var limitScoreText: TextView? = null
+    private var currentScoreText: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,33 +30,29 @@ class PersonMakerActivity : AppCompatActivity() {
         // загрузка интерфейса из activity_person_maker_rv (xml)
         setContentView(R.layout.activity_person_maker_rv)
 
-        remainScoreText = findViewById(R.id.TV_remain_score)
+        limitScoreText = findViewById(R.id.TV_limit_score)
+        currentScoreText = findViewById(R.id.TV_current_score)
 
         viewModel = ViewModelProvider(this, PersonMakerViewModelFactory(this))
             .get(PersonMakerViewModel::class.java)
 
 
-        characteristicsRV = findViewById(R.id.RV_characteristic_list)
-        characteristicsRVAdapter = CharacteristicsRVAdapter(this)
+        skillRV = findViewById(R.id.RV_skill_list)
+        skillRVAdapter = SkillRVAdapter(this)
 
         // TODO("
         //  Будет "Осталось очков", так что кажется тут понадобится diffUtils
         //  mvvm или mvi, я пока что не понимаю
         //  ")
 
-        /*viewModel.stateLive.observe(this) { state ->
-            characteristicsRVAdapter!!.setList(state.characteristicList)
-        }*/
-        //characteristicsRVAdapter!!.setList()
-
         viewModel.send(LoadEvent())
-        characteristicsRVAdapter!!.setCharacteristic(viewModel.stateDataMutable!!.characteristicList)
+        skillRVAdapter!!.setData(viewModel.stateDataMutable!!.skillList, viewModel.stateDataMutable!!.maxSkillScore, viewModel.stateDataMutable!!.minSkillScore)
+        skillRV!!.adapter = skillRVAdapter
+        skillRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
-        characteristicsRV!!.adapter = characteristicsRVAdapter
-        characteristicsRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-
+        limitScoreText?.text = "Limit sum score: " + viewModel.stateDataMutable!!.minSkillScore.toString() + "-" + viewModel.stateDataMutable!!.maxSkillScore.toString()
         // (#)
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("remain-characteristic-score"))
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-skill-score-action"))
 
     }
 
@@ -66,7 +63,7 @@ class PersonMakerActivity : AppCompatActivity() {
     }
 
     override fun onPause(){
-        viewModel.send(SaveEvent(characteristicsRVAdapter!!.getList()))
+        viewModel.send(SaveEvent(skillRVAdapter!!.getList()))
 
         super.onPause()
     }
@@ -75,9 +72,9 @@ class PersonMakerActivity : AppCompatActivity() {
     var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent
-            val ItemName: String? = intent.getStringExtra("remain-characteristic-score-name")
+            val ItemName: String? = intent.getStringExtra("current-skill-score-name")
             //val qty: String? = intent.getStringExtra("quantity")
-            remainScoreText?.setText("Осталось очков: $ItemName")
+            currentScoreText?.text = "Сумма очков: $ItemName"
         }
     }
 
