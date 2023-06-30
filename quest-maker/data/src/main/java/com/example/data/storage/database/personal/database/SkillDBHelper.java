@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 // (?) - thinking
 // (#) - testing
 
-public class CharacteristicsDBHelper extends SQLiteOpenHelper {
+public class SkillDBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "CharacteristicsDB";
-    public static final String TABLE_NAME = "CharacteristicsTable";
+    public static final String DB_NAME = "SkillDB";
+    public static final String TABLE_NAME = "SkillTable";
     public static final int DB_VERSION = 1;
 
     // (?) - Add image of weapon?
@@ -20,7 +20,7 @@ public class CharacteristicsDBHelper extends SQLiteOpenHelper {
     public static final String KEY_NAME = "name";
     public static final String KEY_VALUE= "value";
 
-    public CharacteristicsDBHelper(Context context) {
+    public SkillDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -40,7 +40,7 @@ public class CharacteristicsDBHelper extends SQLiteOpenHelper {
         + "('PER', 7), "   // Perception
         + "('KNW', 7), "   // Knowledge
         + "('CHR', 7), "   // Charisma
-        + "('LCK', 7)"   // Luck // !!!! УДАЧУ СЧИТАТЬ ОТДЕЛЬНО!!!!
+        + "('LCK', 0)"   // Luck
         );
     }
 

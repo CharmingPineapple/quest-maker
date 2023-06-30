@@ -1,17 +1,16 @@
 package com.example.domain.usecase;
 
 import com.example.domain.models.Characteristic;
-import com.example.domain.models.CharacteristicList;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
 
-public class GetCharacteristicUseCase {
+public class GetSkillUseCase {
 
     // (?) - final ?? Why?
     private final AuthorRepositoryInterface authorRepositoryInterface;
 
-    public GetCharacteristicUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
+    public GetSkillUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
@@ -19,7 +18,7 @@ public class GetCharacteristicUseCase {
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 
-        int value = authorRepositoryInterface.getCharacteristic(characteristic);
+        int value = authorRepositoryInterface.getSkill(characteristic);
 
         // (#)
         if (value >= 0)

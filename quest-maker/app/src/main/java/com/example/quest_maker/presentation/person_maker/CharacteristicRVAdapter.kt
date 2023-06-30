@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
@@ -12,14 +11,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Characteristic
 import com.example.quest_maker.R
-import kotlin.math.max
 
-class CharacteristicsRVAdapter(
+class CharacteristicRVAdapter(
     // (#) - was: context: Context,
     private val context: Context,
     private val maxScore: Int = 33,
     private val minScore: Int = 28
-    ) : RecyclerView.Adapter<CharacteristicsRVAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<CharacteristicRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -41,13 +39,13 @@ class CharacteristicsRVAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CharacteristicsRVAdapter.ViewHolder {
+    ): CharacteristicRVAdapter.ViewHolder {
         val view = inflater.inflate(R.layout.rv_item_characteristics_input, parent, false)
 
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CharacteristicsRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CharacteristicRVAdapter.ViewHolder, position: Int) {
         val one: Characteristic = list!![position]
         holder.name.text = one.name
         holder.value.text = one.value

@@ -1,18 +1,17 @@
 package com.example.domain.usecase;
 
 import com.example.domain.models.Characteristic;
-import com.example.domain.models.CharacteristicList;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
 import java.util.Objects;
 
-public class SaveCharacteristicUseCase {
+public class SaveSkillUseCase {
 
     // (?) - final ?? Why?
     private final AuthorRepositoryInterface authorRepositoryInterface;
 
-    public SaveCharacteristicUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
+    public SaveSkillUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
@@ -23,10 +22,10 @@ public class SaveCharacteristicUseCase {
         // и что saveCharacteristicParam.destination и saveCharacteristicParam.value подходящее
 
         if (!Objects.equals(characteristic.value, ""))
-            authorRepositoryInterface.saveCharacteristic(characteristic);
+            authorRepositoryInterface.saveSkill(characteristic);
         else {
             characteristic.value = "0";
-            authorRepositoryInterface.saveCharacteristic(characteristic);
+            authorRepositoryInterface.saveSkill(characteristic);
         }
     }
 
