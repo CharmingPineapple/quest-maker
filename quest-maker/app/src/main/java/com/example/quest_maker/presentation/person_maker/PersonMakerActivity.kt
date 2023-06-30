@@ -75,10 +75,9 @@ class PersonMakerActivity : AppCompatActivity() {
     var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent
-            val ItemName: String? = intent.getStringExtra("testName")
+            val ItemName: String? = intent.getStringExtra("remain-characteristic-score-name")
             //val qty: String? = intent.getStringExtra("quantity")
             remainScoreText?.setText("Осталось очков: $ItemName")
-            //Toast.makeText(this@PersonMakerActivity, "$ItemName", Toast.LENGTH_SHORT).show()
         }
     }
 

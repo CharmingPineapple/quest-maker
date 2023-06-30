@@ -35,12 +35,12 @@ public class CharacteristicsDBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
         + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
-        + "('STR', 0), "   // Strength
-        + "('DEX', 0), "   // Dexterity
-        + "('PER', 0), "   // Perception
-        + "('KNW', 0), "   // Knowledge
-        + "('CHR', 0), "   // Charisma
-        + "('LCK', 0)"   // Luck
+        + "('STR', 7), "   // Strength
+        + "('DEX', 7), "   // Dexterity
+        + "('PER', 7), "   // Perception
+        + "('KNW', 7), "   // Knowledge
+        + "('CHR', 7), "   // Charisma
+        + "('LCK', 7)"   // Luck // !!!! УДАЧУ СЧИТАТЬ ОТДЕЛЬНО!!!!
         );
     }
 

@@ -27,12 +27,8 @@ class CharacteristicsRVAdapter(
 
     private var currentScore: Int? = null
 
-    private var lastTappedPosition: Int? = null
-
     fun setCharacteristic(newList: List<Characteristic>){
         this.list = newList
-        calcCurrentScore()
-        sendRemainScore()
         notifyDataSetChanged()
     }
 
@@ -40,7 +36,7 @@ class CharacteristicsRVAdapter(
         return list!!
     }
 
-    var intent: Intent = Intent("remain-characteristic-score")
+    private var intent: Intent = Intent("remain-characteristic-score")
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -51,47 +47,35 @@ class CharacteristicsRVAdapter(
         return ViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: CharacteristicsRVAdapter.ViewHolder, position: Int) {
         val one: Characteristic = list!![position]
-
         holder.name.text = one.name
         holder.value.text = one.value
 
-        /*if(currentScore == maxScore){
-            holder.plusButton.visibility = View.GONE
-        }*/
+        sendRemainScore()
 
-        /*if(one.value == "0" && lastTappedPosition == position){
+        // Да ну нахуй, надо было всего лишь добавить else
+        if (holder.value.text.toString() == "0" || currentScore == minScore){
             holder.minusButton.visibility = View.GONE
-        }*/
+        } else {
+            holder.minusButton.visibility = View.VISIBLE
+        }
 
-        //TODO("plus and minus implementation:
-        // ограничение !<0
-        // добавить "Осталось очков"
-        // ")
+        if (currentScore == maxScore){
+            holder.plusButton.visibility = View.INVISIBLE
+        } else {
+            holder.plusButton.visibility = View.VISIBLE
+        }
 
-        /*holder.plusButton.setOnClickListener{
+        holder.plusButton.setOnClickListener{
             list!![position].value = (one.value.toInt() + 1).toString()
-
-            /*//(#)
-            intent.putExtra("testName", one.value)
-            LocalBroadcastManager.getInstance(context).sendBroadcast(intent)*/
-            calcCurrentScore()
-            sendRemainScore()
-            lastTappedPosition = holder.adapterPosition
             notifyDataSetChanged()
         }
 
         holder.minusButton.setOnClickListener{
             list!![position].value = (one.value.toInt() - 1).toString()
-
-            // (#)
-            calcCurrentScore()
-            sendRemainScore()
-            lastTappedPosition = holder.adapterPosition
             notifyDataSetChanged()
-        }*/
+        }
     }
 
     override fun getItemCount(): Int {
@@ -99,8 +83,6 @@ class CharacteristicsRVAdapter(
     }
 
     private fun calcCurrentScore()/*: Int*/{
-        // (#)
-
         var sumScore: Int = 0
 
         for(one: Characteristic in list!!){
@@ -108,13 +90,11 @@ class CharacteristicsRVAdapter(
         }
 
         currentScore = sumScore
-
-        //return sumScore
     }
 
     private fun sendRemainScore(){
-        //(#)
-        intent.putExtra("testName", (maxScore - currentScore!!).toString())
+        calcCurrentScore()
+        intent.putExtra("remain-characteristic-score-name", (maxScore - currentScore!!).toString())
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
     }
 
@@ -130,22 +110,7 @@ class CharacteristicsRVAdapter(
             value = itemView.findViewById(R.id.RV_item_TV_characteristic_value)
             plusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_plus)
             minusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_minus)
-
-            /*if(value.text.toString() == "0"){
-                minusButton.visibility = View.GONE
-            }*/
-
-
-
         }
-
-
-
-        /*if(currentScore == maxScore){
-            plusButton.visibility = View.GONE
-        }*/
-
-
     }
 
 }
