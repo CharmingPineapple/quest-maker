@@ -32,14 +32,14 @@ public class MainParametersDBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
                 + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
-                + "('STA', 21), "  // Stamina
-                + "('REA', 21), "  // Reason
-                + "('FND', 6), "   // Money
-                + "('LVL', 1), "   // Level
-                + "('EXP', 0), "   // Experience
-                + "('BUL', 0), "   // Bullets
-                + "('CIG', 0),"    // Cigarettes
-                + "('DOOM' 0)"     // Doom
+                + "('STA', 21), "   // Stamina
+                + "('REA', 21), "   // Reason
+                + "('FND', 6), "    // Money
+                //+ "('LVL', 1), "  // Level
+                //+ "('EXP', 0), "  // Experience
+                //+ "('DOOM' 0), "  // Doom
+                + "('BUL', 0), "    // Bullets
+                + "('CIG', 0)"      // Cigarettes
         );
     }
 
