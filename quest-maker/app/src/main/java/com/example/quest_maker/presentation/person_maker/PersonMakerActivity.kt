@@ -7,17 +7,17 @@ import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
 import com.example.quest_maker.viewModel.PersonMakerViewModel
-import com.example.quest_maker.viewModel.PersonMakerViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PersonMakerActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: PersonMakerViewModel
+    //private lateinit var viewModel: PersonMakerViewModel
+    private val viewModel by viewModel<PersonMakerViewModel>()
 
     private var skillRV: RecyclerView? = null
     private var skillRVAdapter: SkillRVAdapter? = null
@@ -33,8 +33,8 @@ class PersonMakerActivity : AppCompatActivity() {
         limitScoreText = findViewById(R.id.TV_limit_score)
         currentScoreText = findViewById(R.id.TV_current_score)
 
-        viewModel = ViewModelProvider(this, PersonMakerViewModelFactory(this))
-            .get(PersonMakerViewModel::class.java)
+        /*viewModel = ViewModelProvider(this, PersonMakerViewModelFactory(this))
+            .get(PersonMakerViewModel::class.java)*/
 
 
         skillRV = findViewById(R.id.RV_skill_list)

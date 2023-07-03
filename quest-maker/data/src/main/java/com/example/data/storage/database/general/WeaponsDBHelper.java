@@ -14,7 +14,11 @@ public class WeaponsDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "weaponsTable";
     public static final int DB_VERSION = 1;
 
-    // TODO("Добавить поле дял добавления картинки")
+    // TODO("Добавить поле дял добавления картинки
+    //  fast to equip
+    //  extra damage against smbd
+    //  [feature] = -1 STR (example)
+    //  Может добавить DB особенностей предметов")
 
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
