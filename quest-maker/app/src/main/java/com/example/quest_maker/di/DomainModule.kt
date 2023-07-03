@@ -1,6 +1,8 @@
 package com.example.quest_maker.di
 
+import com.example.domain.usecase.GetMainParameterUseCase
 import com.example.domain.usecase.GetSkillUseCase
+import com.example.domain.usecase.SaveMainParameterUseCase
 import com.example.domain.usecase.SaveSkillUseCase
 import org.koin.dsl.module
 
@@ -20,6 +22,14 @@ val domainModule = module {
 
     factory<SaveSkillUseCase> {
         SaveSkillUseCase(get())
+    }
+
+    factory<GetMainParameterUseCase> {
+        GetMainParameterUseCase(get())
+    }
+
+    factory<SaveMainParameterUseCase> {
+        SaveMainParameterUseCase(get())
     }
 
 }
