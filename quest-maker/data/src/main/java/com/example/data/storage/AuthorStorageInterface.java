@@ -10,7 +10,7 @@ public interface AuthorStorageInterface {
 
     int getSkill(SkillStorage skillStorage);
 
-    List<SkillStorage> getAll();
+    List<SkillStorage> getAllSkill();
 
-    void saveAll(List<SkillStorage> listCS);
+    void saveAllSkill(List<SkillStorage> listCS);
 }

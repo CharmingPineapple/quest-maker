@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 // (?) - don't know
 // (#) - testing
 
-public class MainParametersDBHelper extends SQLiteOpenHelper {
+public class MainParameterDBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "CharacteristicsDB";
     public static final String TABLE_NAME = "PersParamTable";
@@ -17,7 +17,7 @@ public class MainParametersDBHelper extends SQLiteOpenHelper {
     public static final String KEY_NAME = "name-param";
     public static final String KEY_VALUE= "value";
 
-    public MainParametersDBHelper(Context context) {
+    public MainParameterDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -32,9 +32,9 @@ public class MainParametersDBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
                 + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
-                + "('STA', 21), "   // Stamina
-                + "('REA', 21), "   // Reason
-                + "('FND', 6), "    // Money
+                + "('STA', 17), "   // Stamina
+                + "('REA', 17), "   // Reason
+                + "('FND', 4), "    // Money
                 //+ "('LVL', 1), "  // Level
                 //+ "('EXP', 0), "  // Experience
                 //+ "('DOOM' 0), "  // Doom

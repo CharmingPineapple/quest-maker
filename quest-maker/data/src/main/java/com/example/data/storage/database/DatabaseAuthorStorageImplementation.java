@@ -40,17 +40,17 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
     }
 
     @Override
-    public List<SkillStorage> getAll(){
+    public List<SkillStorage> getAllSkill(){
         SkillDBAdapter skillDBAdapter = new SkillDBAdapter(context);
         skillDBAdapter.open();
-        List<SkillStorage> list = skillDBAdapter.getAllCharacteristics();
+        List<SkillStorage> list = skillDBAdapter.getAllSkill();
         skillDBAdapter.close();
 
         return list;
     }
 
     @Override
-    public void saveAll(List<SkillStorage> listCS){
+    public void saveAllSkill(List<SkillStorage> listCS){
         SkillDBAdapter skillDBAdapter = new SkillDBAdapter(context);
         skillDBAdapter.open();
         skillDBAdapter.saveAllSkill(listCS);

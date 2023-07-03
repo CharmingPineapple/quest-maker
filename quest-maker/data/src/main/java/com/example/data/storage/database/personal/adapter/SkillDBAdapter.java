@@ -42,8 +42,8 @@ public class SkillDBAdapter {
     }
 
     // (#)
-    public List<SkillStorage> getAllCharacteristics(){
-        ArrayList<SkillStorage> characteristicParams = new ArrayList<>();
+    public List<SkillStorage> getAllSkill(){
+        ArrayList<SkillStorage> SkillParams = new ArrayList<>();
         Cursor cursor = getAllEntries();
 
         int id_column_id = cursor.getColumnIndex(SkillDBHelper.KEY_ID);
@@ -55,11 +55,11 @@ public class SkillDBAdapter {
             int id = cursor.getInt(id_column_id);
             String name = cursor.getString(name_column_id);
             int value = cursor.getInt(value_column_id);
-            characteristicParams.add(new SkillStorage(name, value));
+            SkillParams.add(new SkillStorage(name, value));
         }
 
         cursor.close();
-        return  characteristicParams;
+        return  SkillParams;
     }
 
     public void saveAllSkill(List<SkillStorage> list){

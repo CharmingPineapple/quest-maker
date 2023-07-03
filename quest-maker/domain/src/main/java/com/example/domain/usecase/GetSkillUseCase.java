@@ -1,6 +1,6 @@
 package com.example.domain.usecase;
 
-import com.example.domain.models.Characteristic;
+import com.example.domain.models.Skill;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -14,11 +14,12 @@ public class GetSkillUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public String execute(Characteristic characteristic){
+    // (#) - одиночные get и save в мейкере не нужны
+    public String execute(Skill skill){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 
-        int value = authorRepositoryInterface.getSkill(characteristic);
+        int value = authorRepositoryInterface.getSkill(skill);
 
         // (#)
         if (value >= 0)
@@ -27,12 +28,11 @@ public class GetSkillUseCase {
             return "v<0";   // (!) - Один раз возвращает верное значение, а потом только "lol"
     }
 
-    // (#)
-    public List<Characteristic> getAll(){
+    public List<Skill> getAll(){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 
-        return authorRepositoryInterface.getAll();
+        return authorRepositoryInterface.getAllSkill();
     }
 
 }

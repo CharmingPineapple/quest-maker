@@ -1,7 +1,7 @@
 package com.example.quest_maker.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.domain.models.Characteristic
+import com.example.domain.models.Skill
 import com.example.domain.usecase.GetSkillUseCase
 import com.example.domain.usecase.SaveSkillUseCase
 import com.example.quest_maker.presentation.person_maker.LoadEvent
@@ -23,7 +23,7 @@ class PersonMakerViewModel(
     fun send(event: PersonMakerEvent){
         when(event){
             is SaveEvent -> {
-                save(event.characteristicList)
+                save(event.skillList)
             }
             is LoadEvent -> {
                 load()
@@ -31,8 +31,8 @@ class PersonMakerViewModel(
         }
     }
 
-    private fun save(characteristicList: List<Characteristic>){
-        saveSkillUseCase.saveAll(characteristicList)
+    private fun save(skillList: List<Skill>){
+        saveSkillUseCase.saveAll(skillList)
 
         // Если save() вызывается не в onStop
         // или сохраняет только какие-то одни параметры,
@@ -41,10 +41,10 @@ class PersonMakerViewModel(
     }
 
     private fun load(){
-        val characteristicList: List<Characteristic> = getSkillUseCase.all
+        val skillList: List<Skill> = getSkillUseCase.all
 
         stateDataMutable = PersonMakerState(
-            characteristicList
+            skillList
         )
     }
 

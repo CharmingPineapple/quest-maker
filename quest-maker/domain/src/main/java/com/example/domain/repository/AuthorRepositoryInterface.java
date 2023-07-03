@@ -1,16 +1,16 @@
 package com.example.domain.repository;
 
-import com.example.domain.models.Characteristic;
+import com.example.domain.models.Skill;
 
 import java.util.List;
 
 public interface AuthorRepositoryInterface {
 
-    void saveSkill(Characteristic characteristic);
+    void saveSkill(Skill skill);
 
-    int getSkill(Characteristic characteristic);
+    int getSkill(Skill skill);
 
-    List<Characteristic> getAll();
-    void saveAll(List<Characteristic> characteristicList);
+    List<Skill> getAllSkill();
+    void saveAllSkill(List<Skill> skillList);
 
 }

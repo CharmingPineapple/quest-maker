@@ -1,16 +1,16 @@
 package com.example.domain.models;
 
-public class Characteristic {
+public class Skill {
 
     public String name;
     public String value;
 
-    public Characteristic(String name, String value){
+    public Skill(String name, String value){
         this.name = name;
         this.value = value;
     }
 
-    public Characteristic(String name){
+    public Skill(String name){
         this.name = name;
         this.value = "0";
     }

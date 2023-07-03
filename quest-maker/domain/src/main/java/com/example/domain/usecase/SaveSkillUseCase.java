@@ -1,6 +1,6 @@
 package com.example.domain.usecase;
 
-import com.example.domain.models.Characteristic;
+import com.example.domain.models.Skill;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -15,25 +15,25 @@ public class SaveSkillUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public void execute(Characteristic characteristic){
+    public void execute(Skill skill){
 
         // (!) - Добавить в слой presentatin проверку,
         // что saveCharacteristicParam.value == GetCharacteristicUseCase.execute()
         // и что saveCharacteristicParam.destination и saveCharacteristicParam.value подходящее
 
-        if (!Objects.equals(characteristic.value, ""))
-            authorRepositoryInterface.saveSkill(characteristic);
+        if (!Objects.equals(skill.value, ""))
+            authorRepositoryInterface.saveSkill(skill);
         else {
-            characteristic.value = "0";
-            authorRepositoryInterface.saveSkill(characteristic);
+            skill.value = "0";
+            authorRepositoryInterface.saveSkill(skill);
         }
     }
 
-    public void saveAll(List<Characteristic> list){
+    public void saveAll(List<Skill> list){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 
-        authorRepositoryInterface.saveAll(list);
+        authorRepositoryInterface.saveAllSkill(list);
     }
 
 }
