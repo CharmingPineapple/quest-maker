@@ -1,4 +1,4 @@
-package com.example.data.storage.database.general;
+package com.example.data.storage.database.database.general;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

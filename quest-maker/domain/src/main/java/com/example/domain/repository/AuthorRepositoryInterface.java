@@ -1,5 +1,6 @@
 package com.example.domain.repository;
 
+import com.example.domain.models.MainParameter;
 import com.example.domain.models.Skill;
 
 import java.util.List;
@@ -12,5 +13,9 @@ public interface AuthorRepositoryInterface {
 
     List<Skill> getAllSkill();
     void saveAllSkill(List<Skill> skillList);
+
+    List<MainParameter> getAllMainParameter();
+
+    void saveAllMainParameter(List<MainParameter> mpList);
 
 }

@@ -1,23 +1,26 @@
-package com.example.data.storage.database.personal.database;
+package com.example.data.storage.database.database.personal;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 // (!) - problem
-// (?) - don't know
+// (?) - thinking
 // (#) - testing
 
-public class MainParameterDBHelper extends SQLiteOpenHelper {
+public class SkillDBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "CharacteristicsDB";
-    public static final String TABLE_NAME = "PersParamTable";
+    public static final String DB_NAME = "SkillDB";
+    public static final String TABLE_NAME = "SkillTable";
     public static final int DB_VERSION = 1;
+
+    // (?) - Add image of weapon?
+
     public static final String KEY_ID = "_id";
-    public static final String KEY_NAME = "name-param";
+    public static final String KEY_NAME = "name";
     public static final String KEY_VALUE= "value";
 
-    public MainParameterDBHelper(Context context) {
+    public SkillDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -31,15 +34,13 @@ public class MainParameterDBHelper extends SQLiteOpenHelper {
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-                + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
-                + "('STA', 17), "   // Stamina
-                + "('REA', 17), "   // Reason
-                + "('FND', 4), "    // Money
-                //+ "('LVL', 1), "  // Level
-                //+ "('EXP', 0), "  // Experience
-                //+ "('DOOM' 0), "  // Doom
-                + "('BUL', 0), "    // Bullets
-                + "('CIG', 0)"      // Cigarettes
+        + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
+        + "('STR', 7), "   // Strength
+        + "('DEX', 7), "   // Dexterity
+        + "('PER', 7), "   // Perception
+        + "('KNW', 6), "   // Knowledge
+        + "('CHR', 6), "   // Charisma
+        + "('LCK', 7)"   // Luck
         );
     }
 

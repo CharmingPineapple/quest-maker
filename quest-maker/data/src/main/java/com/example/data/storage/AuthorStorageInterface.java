@@ -1,5 +1,6 @@
 package com.example.data.storage;
 
+import com.example.data.storage.models.MainParameterStorage;
 import com.example.data.storage.models.SkillStorage;
 
 import java.util.List;
@@ -13,4 +14,8 @@ public interface AuthorStorageInterface {
     List<SkillStorage> getAllSkill();
 
     void saveAllSkill(List<SkillStorage> listCS);
+
+    List<MainParameterStorage> getAllMainParameter();
+
+    void saveAllMainParameter(List<MainParameterStorage> listCS);
 }

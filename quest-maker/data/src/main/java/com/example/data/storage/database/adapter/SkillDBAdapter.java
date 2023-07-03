@@ -1,4 +1,4 @@
-package com.example.data.storage.database.personal.adapter;
+package com.example.data.storage.database.adapter;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.data.storage.database.personal.database.SkillDBHelper;
+import com.example.data.storage.database.database.personal.SkillDBHelper;
 import com.example.data.storage.models.SkillStorage;
 
 import java.util.ArrayList;
