@@ -17,13 +17,13 @@
         />
 
     <Button
-        android:id="@+id/RV_item_Button_characteristic_plus"
+        android:id="@+id/RV_item_Button_characteristic_minus"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="1"
         android:gravity="center_horizontal"
-        android:text="+"
+        android:text="-"
         android:textColor="@color/black"
         android:textSize="24sp" />
 
@@ -42,13 +42,13 @@
         />
 
     <Button
-        android:id="@+id/RV_item_Button_characteristic_minus"
+        android:id="@+id/RV_item_Button_characteristic_plus"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="1"
         android:gravity="center_horizontal"
-        android:text="-"
+        android:text="+"
         android:textColor="@color/black"
         android:textSize="24sp" />
 

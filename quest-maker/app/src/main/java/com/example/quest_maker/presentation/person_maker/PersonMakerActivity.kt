@@ -20,7 +20,11 @@ class PersonMakerActivity : AppCompatActivity() {
     private val viewModel by viewModel<PersonMakerViewModel>()
 
     private var skillRV: RecyclerView? = null
+    private var mpRV: RecyclerView? = null
+
     private var skillRVAdapter: SkillRVAdapter? = null
+    private var mpRVAdapter: MainParameterRVAdapter? = null
+
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
 
@@ -40,41 +44,43 @@ class PersonMakerActivity : AppCompatActivity() {
         skillRV = findViewById(R.id.RV_skill_list)
         skillRVAdapter = SkillRVAdapter(this)
 
-        // TODO("
-        //  Будет "Осталось очков", так что кажется тут понадобится diffUtils
-        //  mvvm или mvi, я пока что не понимаю
-        //  ")
+        mpRV = findViewById(R.id.RV_main_param_list)
+        mpRVAdapter = MainParameterRVAdapter(this)
 
-        viewModel.send(LoadEvent())
-        skillRVAdapter!!.setData(viewModel.stateDataMutable!!.skillList, viewModel.stateDataMutable!!.maxSkillScore, viewModel.stateDataMutable!!.minSkillScore)
+        viewModel.load()
+
+        skillRVAdapter!!.setData(viewModel.getSkillList(), viewModel.getMaxSkillScore(), viewModel.getMinSkillScore())
         skillRV!!.adapter = skillRVAdapter
         skillRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
-        limitScoreText?.text = "Limit sum score: " + viewModel.stateDataMutable!!.minSkillScore.toString() + "-" + viewModel.stateDataMutable!!.maxSkillScore.toString()
-        // (#)
+        mpRVAdapter!!.setData(viewModel.getMPList(), viewModel.getMaxHealth(), viewModel.getMinHealth(), viewModel.getMaxFND(), viewModel.getMaxBullet())
+        mpRV!!.adapter = mpRVAdapter
+        mpRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        limitScoreText?.text = "Limit sum score: " + viewModel.getMinSkillScore().toString() + "-" + viewModel.getMaxSkillScore().toString()
+
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-skill-score-action"))
 
     }
 
     override fun onResume() {
-        viewModel.send(LoadEvent())
-
         super.onResume()
+        viewModel.load()
     }
 
+    // (!) - Сделать save с rvMainParam
     override fun onPause(){
-        viewModel.send(SaveEvent(skillRVAdapter!!.getList()))
+        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList())
 
         super.onPause()
     }
 
-    // (#)
-    var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+    private var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent
-            val ItemName: String? = intent.getStringExtra("current-skill-score-name")
-            //val qty: String? = intent.getStringExtra("quantity")
-            currentScoreText?.text = "Сумма очков: $ItemName"
+            val itemName: String? = intent.getStringExtra("current-skill-score-name")
+            // (?) - точно ли это должно происходить здесь
+            currentScoreText?.text = "Сумма очков: $itemName"
         }
     }
 

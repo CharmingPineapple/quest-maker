@@ -10,11 +10,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class MainParameterDBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "CharacteristicsDB";
-    public static final String TABLE_NAME = "PersParamTable";
+    public static final String DB_NAME = "MainParameterDB";
+    public static final String TABLE_NAME = "MainParameterTable";
     public static final int DB_VERSION = 1;
     public static final String KEY_ID = "_id";
-    public static final String KEY_NAME = "name-param";
+    public static final String KEY_NAME = "name_param";
     public static final String KEY_VALUE= "value";
 
     public MainParameterDBHelper(Context context) {
@@ -38,8 +38,8 @@ public class MainParameterDBHelper extends SQLiteOpenHelper {
                 //+ "('LVL', 1), "  // Level
                 //+ "('EXP', 0), "  // Experience
                 //+ "('DOOM' 0), "  // Doom
-                + "('BUL', 0), "    // Bullets
-                + "('CIG', 0)"      // Cigarettes
+                + "('BUL', 0) "     // Bullets
+                //+ "('CIG', 0)"    // Cigarettes
         );
     }
 

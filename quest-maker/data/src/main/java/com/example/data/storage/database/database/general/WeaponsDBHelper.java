@@ -22,14 +22,14 @@ public class WeaponsDBHelper extends SQLiteOpenHelper {
 
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
-    public static final String KEY_DAMAGETYPE = "damage-type";
+    public static final String KEY_DAMAGETYPE = "damage_type";
     public static final String KEY_HANDED = "handed";
-    public static final String KEY_PREFSTAT = "preferred-stat";
+    public static final String KEY_PREFSTAT = "preferred_stat";
     public static final String KEY_DAMAGE = "damage";
     public static final String KEY_SPEED = "speed";
-    public static final String KEY_HITCHANCE = "hit-chance";
-    public static final String KEY_THROWDAMAGE = "throw-damage";
-    public static final String KEY_SELLPRICE = "sell-price";
+    public static final String KEY_HITCHANCE = "hit_chance";
+    public static final String KEY_THROWDAMAGE = "throw_damage";
+    public static final String KEY_SELLPRICE = "sell_price";
     public static final String KEY_DESCR = "description";
 
     public WeaponsDBHelper(Context context) {

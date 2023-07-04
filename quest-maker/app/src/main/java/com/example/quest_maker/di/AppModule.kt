@@ -10,7 +10,9 @@ val appModule = module {
     viewModel<PersonMakerViewModel>{
         PersonMakerViewModel(
             getSkillUseCase = get(),
-            saveSkillUseCase = get()
+            saveSkillUseCase = get(),
+            getMainParameterUseCase = get(),
+            saveMainParameterUseCase = get()
         )
     }
 
