@@ -1,8 +1,7 @@
 package com.example.quest_maker.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.domain.models.MainParameter
-import com.example.domain.models.Skill
+import com.example.domain.models.PersonItem
 import com.example.domain.usecase.GetMainParameterUseCase
 import com.example.domain.usecase.GetSkillUseCase
 import com.example.domain.usecase.SaveMainParameterUseCase
@@ -33,7 +32,7 @@ class PersonMakerViewModel(
         }
     }*/
 
-    fun save(skillList: List<Skill>, mpList: List<MainParameter>){
+    fun save(skillList: List<PersonItem>, mpList: List<PersonItem>){
         saveSkillUseCase.saveAll(skillList)
         saveMainParameterUseCase.saveAll(mpList)
 
@@ -45,11 +44,11 @@ class PersonMakerViewModel(
     }
 
     // (!) - Нужно ли?
-    fun getSkillList() : List<Skill>{
+    fun getSkillList() : List<PersonItem>{
         return dataMutable!!.skillList
     }
 
-    fun getMPList() : List<MainParameter>{
+    fun getMPList() : List<PersonItem>{
         return dataMutable!!.mpList
     }
 
@@ -78,8 +77,8 @@ class PersonMakerViewModel(
     }
 
     fun load(){
-        val skillList: List<Skill> = getSkillUseCase.all
-        val mpList: List<MainParameter> = getMainParameterUseCase.all
+        val skillList: List<PersonItem> = getSkillUseCase.all
+        val mpList: List<PersonItem> = getMainParameterUseCase.all
 
         dataMutable = PersonMakerData(
             skillList,

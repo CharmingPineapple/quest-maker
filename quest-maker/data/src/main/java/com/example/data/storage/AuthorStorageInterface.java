@@ -1,21 +1,21 @@
 package com.example.data.storage;
 
-import com.example.data.storage.models.MainParameterStorage;
-import com.example.data.storage.models.SkillStorage;
+import com.example.data.storage.models.PersonItemStorage;
+
 
 import java.util.List;
 
 public interface AuthorStorageInterface {
 
-    void saveSkill(SkillStorage skillStorage);
+    void saveSkill(PersonItemStorage skillStorage);
 
-    int getSkill(SkillStorage skillStorage);
+    int getSkill(PersonItemStorage skillStorage);
 
-    List<SkillStorage> getAllSkill();
+    List<PersonItemStorage> getAllSkill();
 
-    void saveAllSkill(List<SkillStorage> listCS);
+    void saveAllSkill(List<PersonItemStorage> listCS);
 
-    List<MainParameterStorage> getAllMainParameter();
+    List<PersonItemStorage> getAllMainParameter();
 
-    void saveAllMainParameter(List<MainParameterStorage> listCS);
+    void saveAllMainParameter(List<PersonItemStorage> listCS);
 }

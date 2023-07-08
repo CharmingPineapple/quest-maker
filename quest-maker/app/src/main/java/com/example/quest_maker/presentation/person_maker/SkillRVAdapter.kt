@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.Skill
+import com.example.domain.models.PersonItem
 import com.example.quest_maker.R
 
 class SkillRVAdapter(
@@ -20,21 +20,21 @@ class SkillRVAdapter(
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var list: List<Skill>? = null
+    private var list: List<PersonItem>? = null
 
     private var currentScore: Int? = null
 
     private var maxScore: Int? = null
     private var minScore: Int? = null
 
-    fun setData(newList: List<Skill>, newMaxScore: Int, newMinScore: Int){
+    fun setData(newList: List<PersonItem>, newMaxScore: Int, newMinScore: Int){
         this.list = newList
         this.maxScore = newMaxScore
         this.minScore = newMinScore
         notifyDataSetChanged()
     }
 
-    fun getList(): List<Skill> {
+    fun getList(): List<PersonItem> {
         return list!!
     }
 
@@ -50,8 +50,8 @@ class SkillRVAdapter(
     }
 
     override fun onBindViewHolder(holder: SkillRVAdapter.ViewHolder, position: Int) {
-        val one: Skill = list!![position]
-        holder.name.text = one.name
+        val one: PersonItem = list!![position]
+        holder.name.text = one.text
         holder.value.text = one.value
 
         sendCurrentScore()
@@ -87,7 +87,7 @@ class SkillRVAdapter(
     private fun calcCurrentScore()/*: Int*/{
         var sumScore: Int = 0
 
-        for(one: Skill in list!!){
+        for(one: PersonItem in list!!){
             sumScore += one.value.toInt()
         }
         currentScore = sumScore

@@ -1,6 +1,6 @@
 package com.example.domain.usecase;
 
-import com.example.domain.models.Skill;
+import com.example.domain.models.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class SaveSkillUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public void execute(Skill skill){
+    public void execute(PersonItem skill){
 
         // (!) - Добавить в слой presentatin проверку,
         // что saveCharacteristicParam.value == GetCharacteristicUseCase.execute()
@@ -29,7 +29,7 @@ public class SaveSkillUseCase {
         }
     }
 
-    public void saveAll(List<Skill> list){
+    public void saveAll(List<PersonItem> list){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 

@@ -1,6 +1,6 @@
 package com.example.domain.usecase;
 
-import com.example.domain.models.Skill;
+import com.example.domain.models.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class GetSkillUseCase {
 
 
     // (#) - одиночные get и save в мейкере не нужны
-    public String execute(Skill skill){
+    public String execute(PersonItem skill){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 
@@ -30,7 +30,7 @@ public class GetSkillUseCase {
             return "v<0";   // (!) - Один раз возвращает верное значение, а потом только "lol"
     }
 
-    public List<Skill> getAll(){
+    public List<PersonItem> getAll(){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 

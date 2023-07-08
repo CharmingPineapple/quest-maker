@@ -5,8 +5,7 @@ import android.content.Context;
 import com.example.data.storage.AuthorStorageInterface;
 import com.example.data.storage.database.adapter.MainParameterDBAdapter;
 import com.example.data.storage.database.adapter.SkillDBAdapter;
-import com.example.data.storage.models.MainParameterStorage;
-import com.example.data.storage.models.SkillStorage;
+import com.example.data.storage.models.PersonItemStorage;
 
 import java.util.List;
 
@@ -19,40 +18,40 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
     }
 
     @Override
-    public void saveSkill(SkillStorage skillStorage) {
+    public void saveSkill(PersonItemStorage skillStorage) {
 
         SkillDBAdapter skillDBAdapter = new SkillDBAdapter(context);
         skillDBAdapter.open();
-        skillDBAdapter.updateValue(skillStorage.name, skillStorage.value);
+        skillDBAdapter.updateValue(skillStorage.text, skillStorage.value);
         skillDBAdapter.close();
 
     }
 
     @Override
-    public int getSkill(SkillStorage skillStorage) {
+    public int getSkill(PersonItemStorage skillStorage) {
 
         int skillValue;
 
         SkillDBAdapter skillDBAdapter = new SkillDBAdapter(context);
         skillDBAdapter.open();
-        skillValue = (int) skillDBAdapter.getValueOf(skillStorage.name);
+        skillValue = (int) skillDBAdapter.getValueOf(skillStorage.text);
         skillDBAdapter.close();
 
         return skillValue;
     }
 
     @Override
-    public List<SkillStorage> getAllSkill(){
+    public List<PersonItemStorage> getAllSkill(){
         SkillDBAdapter skillDBAdapter = new SkillDBAdapter(context);
         skillDBAdapter.open();
-        List<SkillStorage> list = skillDBAdapter.getAllSkill();
+        List<PersonItemStorage> list = skillDBAdapter.getAllSkill();
         skillDBAdapter.close();
 
         return list;
     }
 
     @Override
-    public void saveAllSkill(List<SkillStorage> listCS){
+    public void saveAllSkill(List<PersonItemStorage> listCS){
         SkillDBAdapter skillDBAdapter = new SkillDBAdapter(context);
         skillDBAdapter.open();
         skillDBAdapter.saveAllSkill(listCS);
@@ -60,17 +59,17 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
     }
 
     @Override
-    public List<MainParameterStorage> getAllMainParameter(){
+    public List<PersonItemStorage> getAllMainParameter(){
         MainParameterDBAdapter mainParameterDBAdapter = new MainParameterDBAdapter(context);
         mainParameterDBAdapter.open();
-        List<MainParameterStorage> list = mainParameterDBAdapter.getAllMainParameter();
+        List<PersonItemStorage> list = mainParameterDBAdapter.getAllMainParameter();
         mainParameterDBAdapter.close();
 
         return list;
     }
 
     @Override
-    public void saveAllMainParameter(List<MainParameterStorage> listCS){
+    public void saveAllMainParameter(List<PersonItemStorage> listCS){
         MainParameterDBAdapter mainParameterDBAdapter = new MainParameterDBAdapter(context);
         mainParameterDBAdapter.open();
         mainParameterDBAdapter.saveAllMainParameter(listCS);

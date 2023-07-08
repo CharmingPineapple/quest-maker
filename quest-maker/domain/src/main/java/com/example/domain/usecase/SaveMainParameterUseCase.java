@@ -1,6 +1,6 @@
 package com.example.domain.usecase;
 
-import com.example.domain.models.MainParameter;
+import com.example.domain.models.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class SaveMainParameterUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public void saveAll(List<MainParameter> list){
+    public void saveAll(List<PersonItem> list){
         // (!) - Добавить в слой presentatin проверку,
         // и что characteristic.name подходящее
 
