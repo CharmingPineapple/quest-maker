@@ -2,8 +2,10 @@ package com.example.quest_maker.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.PersonItem
+import com.example.domain.usecase.GetItemUseCase
 import com.example.domain.usecase.GetMainParameterUseCase
 import com.example.domain.usecase.GetSkillUseCase
+import com.example.domain.usecase.SaveItemUseCase
 import com.example.domain.usecase.SaveMainParameterUseCase
 import com.example.domain.usecase.SaveSkillUseCase
 import com.example.quest_maker.presentation.person_maker.PersonMakerData
@@ -13,7 +15,9 @@ class PersonMakerViewModel(
     private val getSkillUseCase: GetSkillUseCase,
     private val saveSkillUseCase: SaveSkillUseCase,
     private val getMainParameterUseCase: GetMainParameterUseCase,
-    private val saveMainParameterUseCase: SaveMainParameterUseCase
+    private val saveMainParameterUseCase: SaveMainParameterUseCase,
+    private val getItemUseCase: GetItemUseCase,
+    private val saveItemUseCase: SaveItemUseCase
 ) : ViewModel() {
 
     //private val stateLiveMutable = MutableLiveData<PersonMakerState>()
