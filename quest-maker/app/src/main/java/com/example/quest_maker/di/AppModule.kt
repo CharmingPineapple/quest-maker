@@ -1,6 +1,8 @@
 package com.example.quest_maker.di
 
+import com.example.domain.usecase.GetItemUseCase
 import com.example.domain.usecase.GetSkillUseCase
+import com.example.domain.usecase.SaveItemUseCase
 import com.example.quest_maker.viewModel.PersonMakerViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -12,7 +14,9 @@ val appModule = module {
             getSkillUseCase = get(),
             saveSkillUseCase = get(),
             getMainParameterUseCase = get(),
-            saveMainParameterUseCase = get()
+            saveMainParameterUseCase = get(),
+            getItemUseCase = get(),
+            saveItemUseCase = get()
         )
     }
 
