@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.MainParameter
+import com.example.domain.models.PersonItem
 import com.example.quest_maker.R
 
 class MainParameterRVAdapter(
@@ -16,14 +16,14 @@ class MainParameterRVAdapter(
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var list: List<MainParameter>? = null
+    private var list: List<PersonItem>? = null
 
     private var maxHealth: Int? = null
     private var minHealth: Int? = null
     private var maxFND: Int? = null
     private var maxBullet: Int? = null
 
-    fun setData(newList: List<MainParameter>, newMaxHealth: Int, newMinHealth: Int, newMaxFND: Int, newMaxBullet: Int){
+    fun setData(newList: List<PersonItem>, newMaxHealth: Int, newMinHealth: Int, newMaxFND: Int, newMaxBullet: Int){
         this.list = newList
         this.maxHealth = newMaxHealth
         this.minHealth = newMinHealth
@@ -32,7 +32,7 @@ class MainParameterRVAdapter(
         notifyDataSetChanged()
     }
 
-    fun getList(): List<MainParameter> {
+    fun getList(): List<PersonItem> {
         return list!!
     }
 
@@ -46,8 +46,8 @@ class MainParameterRVAdapter(
     }
 
     override fun onBindViewHolder(holder: MainParameterRVAdapter.ViewHolder, position: Int) {
-        val one: MainParameter = list!![position]
-        holder.name.text = one.name
+        val one: PersonItem = list!![position]
+        holder.name.text = one.text
         holder.value.text = one.value
 
         if (holder.value.text.toString() == "0" || one.value.toInt() == minHealth){
@@ -58,8 +58,8 @@ class MainParameterRVAdapter(
 
         if (
             one.value.toInt() == maxHealth
-            || (one.value.toInt() == maxBullet && one.name.toString() == "BUL")
-            || (one.value.toInt() == maxFND && one.name.toString() == "FND")
+            || (one.value.toInt() == maxBullet && one.text.toString() == "BUL")
+            || (one.value.toInt() == maxFND && one.text.toString() == "FND")
         ) {
             holder.plusButton.visibility = View.INVISIBLE
         } else {

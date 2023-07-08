@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.data.storage.database.database.personal.SkillDBHelper;
-import com.example.data.storage.models.SkillStorage;
+import com.example.data.storage.models.PersonItemStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +42,8 @@ public class SkillDBAdapter {
     }
 
     // (#)
-    public List<SkillStorage> getAllSkill(){
-        ArrayList<SkillStorage> SkillParams = new ArrayList<>();
+    public List<PersonItemStorage> getAllSkill(){
+        ArrayList<PersonItemStorage> SkillParams = new ArrayList<>();
         Cursor cursor = getAllEntries();
 
         int id_column_id = cursor.getColumnIndex(SkillDBHelper.KEY_ID);
@@ -55,16 +55,16 @@ public class SkillDBAdapter {
             int id = cursor.getInt(id_column_id);
             String name = cursor.getString(name_column_id);
             int value = cursor.getInt(value_column_id);
-            SkillParams.add(new SkillStorage(name, value));
+            SkillParams.add(new PersonItemStorage(name, value));
         }
 
         cursor.close();
         return  SkillParams;
     }
 
-    public void saveAllSkill(List<SkillStorage> list){
-        for(SkillStorage one: list){
-            updateValue(one.name, one.value);
+    public void saveAllSkill(List<PersonItemStorage> list){
+        for(PersonItemStorage one: list){
+            updateValue(one.text, one.value);
         }
     }
 
@@ -77,18 +77,6 @@ public class SkillDBAdapter {
         String query = String.format("select * from %s where %s=?", SkillDBHelper.TABLE_NAME, SkillDBHelper.KEY_NAME);
         Cursor cursor = database.rawQuery(query, new String[]{ skillName });
         int columnIndex = cursor.getColumnIndex(SkillDBHelper.KEY_VALUE);
-
-
-        // (#)
-        if (cursor.moveToFirst()){
-          if (columnIndex != -1){
-                value = cursor.getInt(columnIndex);
-            }  else {
-              Log.e("CharacteristicsDBAdapter", "getValueOf(String skillName) can't find CharacteristicsDBHelper.KEY_VALUE in CharacteristicsDBHelper.TABLE_NAME");
-            }
-        } else {
-            Log.e("CharacteristicsDBAdapter", "getValueOf(String skillName) can't find skillName in CharacteristicsDBHelper.KEY_NAME");
-        }
 
         return value;
     }
