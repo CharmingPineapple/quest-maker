@@ -27,8 +27,6 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
     }
 
 
-
-    // (#)
     public List<PersonItem> getAllSkill(){
         List<PersonItemStorage> listCS = authorStorageInterface.getAllSkill();
         List<PersonItem> listC = new ArrayList<>();
@@ -72,6 +70,23 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         }
 
         authorStorageInterface.saveAllMainParameter(listCS);
+    }
+
+
+    public List<PersonItem> getAllItem(){
+
+        List<PersonItemStorage> listS = authorStorageInterface.getAllItem();
+        List<PersonItem> listD = new ArrayList<>();
+
+        for (PersonItemStorage one: listS){
+            listD.add(PersonItemMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public void saveAllItem(List<PersonItem> itemList){
+
     }
 
 

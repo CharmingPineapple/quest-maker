@@ -1,6 +1,7 @@
 package com.example.data.storage;
 
 import com.example.data.storage.models.PersonItemStorage;
+import com.example.domain.models.PersonItem;
 
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface AuthorStorageInterface {
     List<PersonItemStorage> getAllMainParameter();
 
     void saveAllMainParameter(List<PersonItemStorage> listCS);
+
+    List<PersonItemStorage> getAllItem();
 }

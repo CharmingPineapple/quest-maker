@@ -3,9 +3,11 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.AuthorStorageInterface;
+import com.example.data.storage.database.adapter.ItemDBAdapter;
 import com.example.data.storage.database.adapter.MainParameterDBAdapter;
 import com.example.data.storage.database.adapter.SkillDBAdapter;
 import com.example.data.storage.models.PersonItemStorage;
+import com.example.domain.models.PersonItem;
 
 import java.util.List;
 
@@ -74,6 +76,15 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         mainParameterDBAdapter.open();
         mainParameterDBAdapter.saveAllMainParameter(listCS);
         mainParameterDBAdapter.close();
+    }
+
+    public List<PersonItemStorage> getAllItem(){
+        ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
+        itemDBAdapter.open();
+        List<PersonItemStorage> list = itemDBAdapter.getAllItem();
+        itemDBAdapter.close();
+
+        return list;
     }
 
 }
