@@ -57,7 +57,7 @@ public class MainParameterDBAdapter {
         }
 
         cursor.close();
-        return  mainParameterStorageParams;
+        return mainParameterStorageParams;
     }
 
     public void saveAllMainParameter(List<MainParameterStorage> list){

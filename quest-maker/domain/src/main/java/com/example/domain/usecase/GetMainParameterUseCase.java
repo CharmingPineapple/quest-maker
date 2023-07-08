@@ -1,7 +1,6 @@
 package com.example.domain.usecase;
 
 import com.example.domain.models.MainParameter;
-import com.example.domain.models.Skill;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;

@@ -38,8 +38,10 @@ public class MainParameterDBHelper extends SQLiteOpenHelper {
                 //+ "('LVL', 1), "  // Level
                 //+ "('EXP', 0), "  // Experience
                 //+ "('DOOM' 0), "  // Doom
+                //+ "('CIG', 0),"   // Cigarettes
+                //+ "('MXS', 0),"   // Maximum number of spells
+                //+ "('MXI', 0),"   // Maximum number of items
                 + "('BUL', 0) "     // Bullets
-                //+ "('CIG', 0)"    // Cigarettes
         );
     }
 
