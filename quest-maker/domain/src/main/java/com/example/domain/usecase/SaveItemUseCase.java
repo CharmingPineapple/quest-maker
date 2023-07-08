@@ -5,16 +5,16 @@ import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
 
-public class SaveMainParameterUseCase {
+public class SaveItemUseCase {
 
     private final AuthorRepositoryInterface authorRepositoryInterface;
 
-    public SaveMainParameterUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
+    public SaveItemUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public void saveAll(List<PersonItem> list){
-        authorRepositoryInterface.saveAllMainParameter(list);
+    public void saveAll(List<PersonItem> itemList){
+        authorRepositoryInterface.saveAllItem(itemList);
     }
 
 }

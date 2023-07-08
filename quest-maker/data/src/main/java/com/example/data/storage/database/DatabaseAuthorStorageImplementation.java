@@ -87,4 +87,11 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         return list;
     }
 
+    public void saveAllItem(List<PersonItemStorage> list){
+        ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
+        itemDBAdapter.open();
+        itemDBAdapter.saveAllItem(list);
+        itemDBAdapter.close();
+    }
+
 }

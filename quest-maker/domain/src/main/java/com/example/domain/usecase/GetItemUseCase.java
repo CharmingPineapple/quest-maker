@@ -13,9 +13,8 @@ public class GetItemUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    // (!)
     public List<PersonItem> getAll(){
-        return authorRepositoryInterface.getAllItem(); // getAllItem
+        return authorRepositoryInterface.getAllItem();
     }
 
 }

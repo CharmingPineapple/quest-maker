@@ -74,7 +74,6 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
 
 
     public List<PersonItem> getAllItem(){
-
         List<PersonItemStorage> listS = authorStorageInterface.getAllItem();
         List<PersonItem> listD = new ArrayList<>();
 
@@ -85,8 +84,14 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         return listD;
     }
 
-    public void saveAllItem(List<PersonItem> itemList){
+    public void saveAllItem(List<PersonItem> listD){
+        List<PersonItemStorage> listS = new ArrayList<>();
 
+        for (PersonItem one: listD){
+            listS.add(PersonItemMapToStorage(one));
+        }
+
+        authorStorageInterface.saveAllItem(listS);
     }
 
 

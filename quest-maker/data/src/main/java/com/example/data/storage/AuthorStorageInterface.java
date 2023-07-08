@@ -21,4 +21,6 @@ public interface AuthorStorageInterface {
     void saveAllMainParameter(List<PersonItemStorage> listCS);
 
     List<PersonItemStorage> getAllItem();
+
+    void saveAllItem(List<PersonItemStorage> list);
 }
