@@ -50,7 +50,7 @@ public class WeaponsDBHelper extends SQLiteOpenHelper {
                 + KEY_HITCHANCE + " integer,"
                 + KEY_THROWDAMAGE + " integer,"
                 + KEY_SELLPRICE + " integer,"
-                + KEY_DESCR  + " text,"
+                + KEY_DESCR  + " text"
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
