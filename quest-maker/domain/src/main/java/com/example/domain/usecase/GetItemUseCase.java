@@ -1,5 +1,6 @@
 package com.example.domain.usecase;
 
+import com.example.domain.models.InventoryItem;
 import com.example.domain.models.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
@@ -13,7 +14,7 @@ public class GetItemUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public List<PersonItem> getAll(){
+    public List<InventoryItem> getAll(){
         return authorRepositoryInterface.getAllItem();
     }
 

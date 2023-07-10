@@ -1,5 +1,6 @@
 package com.example.data.storage;
 
+import com.example.data.storage.models.InventoryItemStorage;
 import com.example.data.storage.models.PersonItemStorage;
 import com.example.domain.models.PersonItem;
 
@@ -20,7 +21,7 @@ public interface AuthorStorageInterface {
 
     void saveAllMainParameter(List<PersonItemStorage> listCS);
 
-    List<PersonItemStorage> getAllItem();
+    List<InventoryItemStorage> getAllItem();
 
-    void saveAllItem(List<PersonItemStorage> list);
+    void saveAllItem(List<InventoryItemStorage> list);
 }

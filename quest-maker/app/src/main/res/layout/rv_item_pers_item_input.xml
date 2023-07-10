@@ -6,7 +6,7 @@
     android:layout_margin="10dp">
 
     <TextView
-        android:id="@+id/RV_item_TV_characteristic_name"
+        android:id="@+id/RV_item_TV_pers_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -17,7 +17,7 @@
         />
 
     <Button
-        android:id="@+id/RV_item_Button_characteristic_minus"
+        android:id="@+id/RV_item_Button_pers_item_minus"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/RV_item_TV_characteristic_value"
+        android:id="@+id/RV_item_TV_pers_item_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -42,7 +42,7 @@
         />
 
     <Button
-        android:id="@+id/RV_item_Button_characteristic_plus"
+        android:id="@+id/RV_item_Button_pers_item_plus"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

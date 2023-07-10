@@ -1,6 +1,7 @@
 package com.example.quest_maker.viewModel
 
 import androidx.lifecycle.ViewModel
+import com.example.domain.models.InventoryItem
 import com.example.domain.models.PersonItem
 import com.example.domain.usecase.GetItemUseCase
 import com.example.domain.usecase.GetMainParameterUseCase
@@ -80,14 +81,14 @@ class PersonMakerViewModel(
         return dataMutable!!.maxBullet
     }
 
-    fun getItemList() : List<PersonItem>{
+    fun getItemList() : List<InventoryItem>{
         return dataMutable!!.itemList
     }
 
     fun load(){
         val skillList: List<PersonItem> = getSkillUseCase.all
         val mpList: List<PersonItem> = getMainParameterUseCase.all
-        val itemList: List<PersonItem> = getItemUseCase.all
+        val itemList: List<InventoryItem> = getItemUseCase.all
 
         dataMutable = PersonMakerData(
             skillList,

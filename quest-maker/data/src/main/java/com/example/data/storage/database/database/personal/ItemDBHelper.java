@@ -10,8 +10,8 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "ItemTable";
     public static final int DB_VERSION = 1;
     public static final String KEY_ID = "_id";
+    public static final String KEY_NAME = "name";
     public static final String KEY_TYPE = "type";
-    public static final String KEY_NAME = "type";
     public static final String KEY_ITEM_ID = "item_id";
 
 

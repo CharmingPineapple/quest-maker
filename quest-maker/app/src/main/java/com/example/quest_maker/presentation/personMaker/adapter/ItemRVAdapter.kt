@@ -1,15 +1,12 @@
 package com.example.quest_maker.presentation.personMaker.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.PersonItem
+import com.example.domain.models.InventoryItem
 import com.example.quest_maker.R
 
 class ItemRVAdapter (
@@ -18,14 +15,14 @@ class ItemRVAdapter (
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var list: List<PersonItem>? = null
+    private var list: List<InventoryItem>? = null
 
-    fun setData(newList: List<PersonItem>){
+    fun setData(newList: List<InventoryItem>){
         this.list = newList
         notifyDataSetChanged()
     }
 
-    fun getList(): List<PersonItem> {
+    fun getList(): List<InventoryItem> {
         return list!!
     }
 
@@ -33,14 +30,15 @@ class ItemRVAdapter (
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = inflater.inflate(R.layout.rv_item_characteristics_input, parent, false)
+        val view = inflater.inflate(R.layout.rv_item_inv_item_input, parent, false)
 
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val one: PersonItem = list!![position]
-        holder.name.text = one.text
+        val one: InventoryItem = list!![position]
+        holder.name.text = one.name
+        holder.type.text = one.type
 
         // Да ну нахуй, надо было всего лишь добавить else
         /*if (holder.value.text.toString() == "0" || currentScore == minScore){
@@ -73,9 +71,11 @@ class ItemRVAdapter (
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
         var name: TextView
+        var type: TextView
 
         init {
-            name = itemView.findViewById(R.id.RV_item_TV_characteristic_name)
+            name = itemView.findViewById(R.id.RV_item_TV_inv_item_name)
+            type = itemView.findViewById(R.id.RV_item_TV_inv_item_type)
         }
     }
 }

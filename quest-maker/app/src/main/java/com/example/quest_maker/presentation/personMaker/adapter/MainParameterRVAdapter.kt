@@ -40,7 +40,7 @@ class MainParameterRVAdapter(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = inflater.inflate(R.layout.rv_item_characteristics_input, parent, false)
+        val view = inflater.inflate(R.layout.rv_item_pers_item_input, parent, false)
 
         return ViewHolder(view)
     }
@@ -89,10 +89,10 @@ class MainParameterRVAdapter(
         var minusButton: Button
 
         init {
-            name = itemView.findViewById(R.id.RV_item_TV_characteristic_name)
-            value = itemView.findViewById(R.id.RV_item_TV_characteristic_value)
-            plusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_plus)
-            minusButton = itemView.findViewById(R.id.RV_item_Button_characteristic_minus)
+            name = itemView.findViewById(R.id.RV_item_TV_pers_item_name)
+            value = itemView.findViewById(R.id.RV_item_TV_pers_item_value)
+            plusButton = itemView.findViewById(R.id.RV_item_Button_pers_item_plus)
+            minusButton = itemView.findViewById(R.id.RV_item_Button_pers_item_minus)
         }
     }
 

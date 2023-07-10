@@ -1,11 +1,12 @@
 package com.example.quest_maker.presentation.personMaker
 
+import com.example.domain.models.InventoryItem
 import com.example.domain.models.PersonItem
 
 data class PersonMakerData(
     val skillList: List<PersonItem>,
     val mpList: List<PersonItem>,
-    val itemList: List<PersonItem>,
+    val itemList: List<InventoryItem>,
 
     val maxSkillScore: Int = 40,
     val minSkillScore: Int = 34,
