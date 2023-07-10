@@ -8,7 +8,7 @@ import com.example.domain.usecase.GetSkillUseCase
 import com.example.domain.usecase.SaveItemUseCase
 import com.example.domain.usecase.SaveMainParameterUseCase
 import com.example.domain.usecase.SaveSkillUseCase
-import com.example.quest_maker.presentation.person_maker.PersonMakerData
+import com.example.quest_maker.presentation.personMaker.PersonMakerData
 
 class PersonMakerViewModel(
     // (#!) - change to private
@@ -78,6 +78,10 @@ class PersonMakerViewModel(
 
     fun getMaxBullet() : Int {
         return dataMutable!!.maxBullet
+    }
+
+    fun getItemList() : List<PersonItem>{
+        return dataMutable!!.itemList
     }
 
     fun load(){

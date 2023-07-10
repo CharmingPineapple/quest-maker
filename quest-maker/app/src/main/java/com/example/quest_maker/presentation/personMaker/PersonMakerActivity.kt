@@ -1,4 +1,4 @@
-package com.example.quest_maker.presentation.person_maker
+package com.example.quest_maker.presentation.personMaker
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -11,6 +11,9 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
+import com.example.quest_maker.presentation.personMaker.adapter.ItemRVAdapter
+import com.example.quest_maker.presentation.personMaker.adapter.MainParameterRVAdapter
+import com.example.quest_maker.presentation.personMaker.adapter.SkillRVAdapter
 import com.example.quest_maker.viewModel.PersonMakerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -21,9 +24,11 @@ class PersonMakerActivity : AppCompatActivity() {
 
     private var skillRV: RecyclerView? = null
     private var mpRV: RecyclerView? = null
+    private var itemRV: RecyclerView? = null
 
     private var skillRVAdapter: SkillRVAdapter? = null
     private var mpRVAdapter: MainParameterRVAdapter? = null
+    private var itemRVAdapter: ItemRVAdapter? = null
 
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
@@ -47,18 +52,30 @@ class PersonMakerActivity : AppCompatActivity() {
         mpRV = findViewById(R.id.RV_main_param_list)
         mpRVAdapter = MainParameterRVAdapter(this)
 
+        itemRV = findViewById(R.id.RV_item_list)
+        itemRVAdapter = ItemRVAdapter(this)
+
         viewModel.load()
 
+        // Setting Skill RV
         skillRVAdapter!!.setData(viewModel.getSkillList(), viewModel.getMaxSkillScore(), viewModel.getMinSkillScore())
         skillRV!!.adapter = skillRVAdapter
         skillRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
+        // Setting MainParameter RV
         mpRVAdapter!!.setData(viewModel.getMPList(), viewModel.getMaxHealth(), viewModel.getMinHealth(), viewModel.getMaxFND(), viewModel.getMaxBullet())
         mpRV!!.adapter = mpRVAdapter
         mpRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
+        // Setting Item RV
+        itemRVAdapter!!.setData(viewModel.getItemList())
+        itemRV!!.adapter = itemRVAdapter
+        itemRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        // Show min/max and current sum of skills
         limitScoreText?.text = "Limit sum score: " + viewModel.getMinSkillScore().toString() + "-" + viewModel.getMaxSkillScore().toString()
 
+        // Load sum of skills from intent
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-skill-score-action"))
 
     }
@@ -75,6 +92,7 @@ class PersonMakerActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    // Receiver sum of skills from intent
     private var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent

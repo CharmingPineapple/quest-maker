@@ -1,4 +1,4 @@
-package com.example.quest_maker.presentation.person_maker
+package com.example.quest_maker.presentation.personMaker
 
 import com.example.domain.models.PersonItem
 
@@ -13,7 +13,9 @@ data class PersonMakerData(
     val maxHealth: Int = 21,
     val minHealth: Int = 13,
     val maxFND: Int = 10,
-    val maxBullet: Int = 4
+    val maxBullet: Int = 4,
+
+    val maxItem: Int = 2
 
     // another lists
 )

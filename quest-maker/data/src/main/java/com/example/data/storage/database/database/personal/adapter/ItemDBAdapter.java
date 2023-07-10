@@ -1,4 +1,4 @@
-package com.example.data.storage.database.adapter;
+package com.example.data.storage.database.database.personal.adapter;
 
 import android.content.ContentValues;
 import android.content.Context;

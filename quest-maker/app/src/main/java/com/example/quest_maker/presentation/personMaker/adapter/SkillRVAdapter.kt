@@ -1,4 +1,4 @@
-package com.example.quest_maker.presentation.person_maker
+package com.example.quest_maker.presentation.personMaker.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -43,13 +43,13 @@ class SkillRVAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SkillRVAdapter.ViewHolder {
+    ): ViewHolder {
         val view = inflater.inflate(R.layout.rv_item_characteristics_input, parent, false)
 
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: SkillRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val one: PersonItem = list!![position]
         holder.name.text = one.text
         holder.value.text = one.value

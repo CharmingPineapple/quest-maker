@@ -13,6 +13,7 @@ public class PersonEffectDBHelper extends SQLiteOpenHelper {
     // (?) - Add image of weapon?
 
     public static final String KEY_ID = "_id";
+    public static final String KEY_NAME = "name";
     public static final String KEY_TYPE = "type";
     public static final String KEY_ITEM_ID = "item_id";
 
@@ -25,9 +26,11 @@ public class PersonEffectDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME
                 + "("
                 + KEY_ID + " integer primary key,"
+                + KEY_NAME + " text, "
                 + KEY_TYPE + " text, "
                 + KEY_ITEM_ID + " integer"
-                + ") ");
+                + ") "
+        );
     }
 
     @Override

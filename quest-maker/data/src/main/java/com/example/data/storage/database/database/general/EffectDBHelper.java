@@ -10,6 +10,7 @@ public class EffectDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "EffectTable";
     public static final int DB_VERSION = 1;
     public static final String KEY_ID = "_id";
+    public static final String KEY_NAME = "name";
     public static final String KEY_TAG = "tag";
     public static final String KEY_DEST = "destination";
     public static final String KEY_VALUE = "value";
@@ -24,6 +25,7 @@ public class EffectDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_NAME
                 + "("
                 + KEY_ID + " integer primary key,"
+                + KEY_NAME + " text,"
                 + KEY_TAG + " text,"
                 + KEY_DEST + " text,"
                 + KEY_VALUE + " integer,"
@@ -31,14 +33,15 @@ public class EffectDBHelper extends SQLiteOpenHelper {
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-                        + "("
-                        + KEY_TAG   + ", "
-                        + KEY_DEST  + ", "
-                        + KEY_VALUE + ", "
-                        + KEY_DESCR  + ") "
-                        + "VALUES "
+                + "("
+                + KEY_NAME  + ", "
+                + KEY_TAG   + ", "
+                + KEY_DEST  + ", "
+                + KEY_VALUE + ", "
+                + KEY_DESCR + ") "
+                + "values "
 
-                        + "('test-tag', 'STR', -1, 'effect description')"
+                + "('weak', 'test-tag', 'STR', -1, 'effect description')"
                 /*+ "('STA', 21), "   // Stamina
                 + "('REA', 21), "   // Reason
                 + "('FND', 6), "    // Money

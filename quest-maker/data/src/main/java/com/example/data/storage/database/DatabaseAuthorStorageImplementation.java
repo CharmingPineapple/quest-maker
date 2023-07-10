@@ -3,11 +3,10 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.AuthorStorageInterface;
-import com.example.data.storage.database.adapter.ItemDBAdapter;
-import com.example.data.storage.database.adapter.MainParameterDBAdapter;
-import com.example.data.storage.database.adapter.SkillDBAdapter;
+import com.example.data.storage.database.database.personal.adapter.ItemDBAdapter;
+import com.example.data.storage.database.database.personal.adapter.MainParameterDBAdapter;
+import com.example.data.storage.database.database.personal.adapter.SkillDBAdapter;
 import com.example.data.storage.models.PersonItemStorage;
-import com.example.domain.models.PersonItem;
 
 import java.util.List;
 

@@ -34,13 +34,17 @@ public class SkillDBHelper extends SQLiteOpenHelper {
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-        + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
-        + "('STR', 7), "   // Strength
-        + "('DEX', 7), "   // Dexterity
-        + "('PER', 7), "   // Perception
-        + "('KNW', 6), "   // Knowledge
-        + "('CHR', 6), "   // Charisma
-        + "('LCK', 7)"   // Luck
+                + "("
+                + KEY_NAME  + ", "
+                + KEY_VALUE + ") "
+                + "values "
+
+                + "('STR', 7), "   // Strength
+                + "('DEX', 7), "   // Dexterity
+                + "('PER', 7), "   // Perception
+                + "('KNW', 6), "   // Knowledge
+                + "('CHR', 6), "   // Charisma
+                + "('LCK', 7)"   // Luck
         );
     }
 

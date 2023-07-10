@@ -31,7 +31,11 @@ public class MainParameterDBHelper extends SQLiteOpenHelper {
                 + ") ");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
-                + "(" + KEY_NAME + ", " + KEY_VALUE + ") " + "VALUES "
+                + "("
+                + KEY_NAME  + ", "
+                + KEY_VALUE + ") "
+                + "values "
+
                 + "('STA', 17), "   // Stamina
                 + "('REA', 17), "   // Reason
                 + "('FND', 4), "    // Money
