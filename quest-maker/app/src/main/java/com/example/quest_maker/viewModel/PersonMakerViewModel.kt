@@ -83,10 +83,12 @@ class PersonMakerViewModel(
     fun load(){
         val skillList: List<PersonItem> = getSkillUseCase.all
         val mpList: List<PersonItem> = getMainParameterUseCase.all
+        val itemList: List<PersonItem> = getItemUseCase.all
 
         dataMutable = PersonMakerData(
             skillList,
-            mpList
+            mpList,
+            itemList
         )
     }
 

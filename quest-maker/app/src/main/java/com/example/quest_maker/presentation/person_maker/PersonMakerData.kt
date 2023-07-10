@@ -5,6 +5,7 @@ import com.example.domain.models.PersonItem
 data class PersonMakerData(
     val skillList: List<PersonItem>,
     val mpList: List<PersonItem>,
+    val itemList: List<PersonItem>,
 
     val maxSkillScore: Int = 40,
     val minSkillScore: Int = 34,
@@ -13,5 +14,6 @@ data class PersonMakerData(
     val minHealth: Int = 13,
     val maxFND: Int = 10,
     val maxBullet: Int = 4
+
     // another lists
 )
