@@ -2,18 +2,19 @@ package com.example.domain.usecase.weapon;
 
 import com.example.domain.models.Weapon;
 import com.example.domain.repository.AuthorRepositoryInterface;
+import com.example.domain.repository.ViewerRepositoryInterface;
 
 import java.util.List;
 
 public class GetWeaponUseCase {
-    private final AuthorRepositoryInterface authorRepositoryInterface;
+    private final ViewerRepositoryInterface viewerRepositoryInterface;
 
-    public GetWeaponUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
-        this.authorRepositoryInterface = authorRepositoryInterface;
+    public GetWeaponUseCase(ViewerRepositoryInterface viewerRepositoryInterface) {
+        this.viewerRepositoryInterface = viewerRepositoryInterface;
     }
 
-    public List<Weapon> getAllWeapon(){
-        return authorRepositoryInterface.getAllWeapon();
+    public List<Weapon> getAll(){
+        return viewerRepositoryInterface.getAllWeapon();
     }
 
 }
