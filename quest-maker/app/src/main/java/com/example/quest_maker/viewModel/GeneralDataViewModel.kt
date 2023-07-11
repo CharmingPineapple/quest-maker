@@ -19,7 +19,7 @@ class GeneralDataViewModel (
 ) : ViewModel() {
 
     private var dataMutable: GeneralData? = null
-    
+
     fun getWeaponList() : List<Weapon>{
         return dataMutable!!.weaponList
     }
