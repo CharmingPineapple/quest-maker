@@ -9,7 +9,7 @@ import com.example.domain.usecase.skill.GetSkillUseCase
 import com.example.domain.usecase.inv_item.SaveItemUseCase
 import com.example.domain.usecase.main_parameter.SaveMainParameterUseCase
 import com.example.domain.usecase.skill.SaveSkillUseCase
-import com.example.quest_maker.presentation.personMaker.PersonMakerData
+import com.example.quest_maker.presentation.person_maker.PersonMakerData
 
 class PersonMakerViewModel(
     // (#!) - change to private

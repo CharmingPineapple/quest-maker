@@ -1,4 +1,4 @@
-package com.example.quest_maker.presentation.personMaker
+package com.example.quest_maker.presentation.person_maker
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -11,13 +11,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
-import com.example.quest_maker.presentation.personMaker.adapter.ItemRVAdapter
-import com.example.quest_maker.presentation.personMaker.adapter.MainParameterRVAdapter
-import com.example.quest_maker.presentation.personMaker.adapter.SkillRVAdapter
+import com.example.quest_maker.presentation.person_maker.rv_adapter.ItemRVAdapter
+import com.example.quest_maker.presentation.person_maker.rv_adapter.MainParameterRVAdapter
+import com.example.quest_maker.presentation.person_maker.rv_adapter.SkillRVAdapter
 import com.example.quest_maker.viewModel.PersonMakerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PersonMakerActivity : AppCompatActivity() {
+class PersonMakerActivity : AppCompatActivity(){
 
     //private lateinit var viewModel: PersonMakerViewModel
     private val viewModel by viewModel<PersonMakerViewModel>()
@@ -37,7 +37,7 @@ class PersonMakerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // загрузка интерфейса из activity_person_maker_rv (xml)
-        setContentView(R.layout.activity_person_maker_rv)
+        setContentView(R.layout.activity_person_maker)
 
         limitScoreText = findViewById(R.id.TV_limit_score)
         currentScoreText = findViewById(R.id.TV_current_score)

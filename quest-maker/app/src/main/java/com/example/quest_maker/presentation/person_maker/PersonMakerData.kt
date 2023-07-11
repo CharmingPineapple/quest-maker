@@ -1,4 +1,4 @@
-package com.example.quest_maker.presentation.personMaker
+package com.example.quest_maker.presentation.person_maker
 
 import com.example.domain.models.InventoryItem
 import com.example.domain.models.PersonItem

@@ -1,4 +1,4 @@
-package com.example.quest_maker.presentation.personMaker.adapter
+package com.example.quest_maker.presentation.person_maker.rv_adapter
 
 import android.content.Context
 import android.view.LayoutInflater

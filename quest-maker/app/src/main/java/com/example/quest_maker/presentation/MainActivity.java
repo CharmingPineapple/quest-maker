@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quest_maker.R;
-import com.example.quest_maker.presentation.personMaker.PersonMakerActivity;
+import com.example.quest_maker.presentation.person_maker.PersonMakerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
