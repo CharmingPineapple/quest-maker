@@ -39,29 +39,6 @@ class ItemRVAdapter (
         val one: InventoryItem = list!![position]
         holder.name.text = one.name
         holder.type.text = one.type
-
-        // Да ну нахуй, надо было всего лишь добавить else
-        /*if (holder.value.text.toString() == "0" || currentScore == minScore){
-            holder.minusButton.visibility = View.GONE
-        } else {
-            holder.minusButton.visibility = View.VISIBLE
-        }
-
-        if (currentScore == maxItem){
-            holder.plusButton.visibility = View.INVISIBLE
-        } else {
-            holder.plusButton.visibility = View.VISIBLE
-        }*/
-
-        /*holder.plusButton.setOnClickListener{
-            list!![position].value = (one.value.toInt() + 1).toString()
-            notifyDataSetChanged()
-        }
-
-        holder.minusButton.setOnClickListener{
-            list!![position].value = (one.value.toInt() - 1).toString()
-            notifyDataSetChanged()
-        }*/
     }
 
     override fun getItemCount(): Int {
