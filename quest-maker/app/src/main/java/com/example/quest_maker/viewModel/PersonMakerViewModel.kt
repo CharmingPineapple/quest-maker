@@ -3,12 +3,12 @@ package com.example.quest_maker.viewModel
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.InventoryItem
 import com.example.domain.models.PersonItem
-import com.example.domain.usecase.GetItemUseCase
-import com.example.domain.usecase.GetMainParameterUseCase
-import com.example.domain.usecase.GetSkillUseCase
-import com.example.domain.usecase.SaveItemUseCase
-import com.example.domain.usecase.SaveMainParameterUseCase
-import com.example.domain.usecase.SaveSkillUseCase
+import com.example.domain.usecase.inv_item.GetItemUseCase
+import com.example.domain.usecase.main_parameter.GetMainParameterUseCase
+import com.example.domain.usecase.skill.GetSkillUseCase
+import com.example.domain.usecase.inv_item.SaveItemUseCase
+import com.example.domain.usecase.main_parameter.SaveMainParameterUseCase
+import com.example.domain.usecase.skill.SaveSkillUseCase
 import com.example.quest_maker.presentation.personMaker.PersonMakerData
 
 class PersonMakerViewModel(

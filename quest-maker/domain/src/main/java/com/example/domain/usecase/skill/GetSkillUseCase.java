@@ -1,4 +1,4 @@
-package com.example.domain.usecase;
+package com.example.domain.usecase.skill;
 
 import com.example.domain.models.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;

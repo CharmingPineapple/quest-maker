@@ -1,4 +1,4 @@
-package com.example.domain.usecase;
+package com.example.domain.usecase.inv_item;
 
 import com.example.domain.models.InventoryItem;
 import com.example.domain.models.PersonItem;

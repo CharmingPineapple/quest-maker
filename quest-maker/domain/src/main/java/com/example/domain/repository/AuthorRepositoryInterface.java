@@ -29,7 +29,4 @@ public interface AuthorRepositoryInterface {
     List<InventoryItem> getAllItem();
 
     void saveAllItem(List<InventoryItem> itemList);
-
-
-
 }

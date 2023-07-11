@@ -3,11 +3,13 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.AuthorStorageInterface;
+import com.example.data.storage.database.database.general.adapter.WeaponDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.ItemDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.MainParameterDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.SkillDBAdapter;
 import com.example.data.storage.models.InventoryItemStorage;
 import com.example.data.storage.models.PersonItemStorage;
+import com.example.data.storage.models.WeaponStorage;
 
 import java.util.List;
 
@@ -78,7 +80,7 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         mainParameterDBAdapter.close();
     }
 
-    public List<InventoryItemStorage> getAllItem(){
+    public List<InventoryItemStorage> getAllInvItem(){
         ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
         itemDBAdapter.open();
         List<InventoryItemStorage> list = itemDBAdapter.getAllItem();
@@ -87,11 +89,22 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         return list;
     }
 
-    public void saveAllItem(List<InventoryItemStorage> list){
+    public void saveAllInvItem(List<InventoryItemStorage> list){
         ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
         itemDBAdapter.open();
         itemDBAdapter.saveAllItem(list);
         itemDBAdapter.close();
     }
+
+    public List<WeaponStorage> getAllWeapon() {
+        WeaponDBAdapter weaponDBAdapter = new WeaponDBAdapter(context);
+        weaponDBAdapter.open();
+        List<WeaponStorage> weaponStorageList = weaponDBAdapter.getAllWeapon();
+        weaponDBAdapter.close();
+
+        return weaponStorageList;
+    }
+
+
 
 }

@@ -2,7 +2,7 @@ package com.example.data.storage;
 
 import com.example.data.storage.models.InventoryItemStorage;
 import com.example.data.storage.models.PersonItemStorage;
-import com.example.domain.models.PersonItem;
+import com.example.data.storage.models.WeaponStorage;
 
 
 import java.util.List;
@@ -21,7 +21,9 @@ public interface AuthorStorageInterface {
 
     void saveAllMainParameter(List<PersonItemStorage> listCS);
 
-    List<InventoryItemStorage> getAllItem();
+    List<InventoryItemStorage> getAllInvItem();
 
-    void saveAllItem(List<InventoryItemStorage> list);
+    void saveAllInvItem(List<InventoryItemStorage> list);
+
+    List<WeaponStorage> getAllWeapon();
 }

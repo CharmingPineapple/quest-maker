@@ -1,21 +1,20 @@
-package com.example.domain.usecase;
+package com.example.domain.usecase.main_parameter;
 
-import com.example.domain.models.InventoryItem;
 import com.example.domain.models.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
 
-public class GetItemUseCase {
+public class SaveMainParameterUseCase {
 
     private final AuthorRepositoryInterface authorRepositoryInterface;
 
-    public GetItemUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
+    public SaveMainParameterUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public List<InventoryItem> getAll(){
-        return authorRepositoryInterface.getAllItem();
+    public void saveAll(List<PersonItem> list){
+        authorRepositoryInterface.saveAllMainParameter(list);
     }
 
 }

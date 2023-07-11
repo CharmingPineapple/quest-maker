@@ -1,11 +1,12 @@
 package com.example.quest_maker.di
 
-import com.example.domain.usecase.GetItemUseCase
-import com.example.domain.usecase.GetMainParameterUseCase
-import com.example.domain.usecase.GetSkillUseCase
-import com.example.domain.usecase.SaveItemUseCase
-import com.example.domain.usecase.SaveMainParameterUseCase
-import com.example.domain.usecase.SaveSkillUseCase
+import com.example.domain.usecase.inv_item.GetItemUseCase
+import com.example.domain.usecase.main_parameter.GetMainParameterUseCase
+import com.example.domain.usecase.skill.GetSkillUseCase
+import com.example.domain.usecase.inv_item.SaveItemUseCase
+import com.example.domain.usecase.main_parameter.SaveMainParameterUseCase
+import com.example.domain.usecase.skill.SaveSkillUseCase
+import com.example.domain.usecase.weapon.GetWeaponUseCase
 import org.koin.dsl.module
 
 
@@ -40,6 +41,10 @@ val domainModule = module {
 
     factory<SaveItemUseCase> {
         SaveItemUseCase(get())
+    }
+
+    factory<GetWeaponUseCase> {
+        GetWeaponUseCase(get())
     }
 
 }
