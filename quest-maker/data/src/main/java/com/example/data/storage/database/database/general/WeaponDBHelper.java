@@ -65,20 +65,12 @@ public class WeaponDBHelper extends SQLiteOpenHelper {
                         + KEY_SPEED + ", "
                         + KEY_SPEED_EQUIP + ", "
                         + KEY_HIT_CHANCE + ", "
+                        + KEY_THROW_DAMAGE + ", "
                         + KEY_SELL_PRICE + ", "
-                        + KEY_DESCR + ") "
-                        + "VALUES "
+                        + KEY_DESCR + ")"
+                        + "values "
 
-                        + "('Baseball Bat', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.')"
-                /*+ "('STA', 21), "   // Stamina
-                + "('REA', 21), "   // Reason
-                + "('FND', 6), "    // Money
-                //+ "('LVL', 1), "  // Level
-                //+ "('EXP', 0), "  // Experience
-                //+ "('DOOM' 0), "  // Doom
-                + "('BUL', 0), "    // Bullets
-                + "('CIG', 0)"      // Cigarettes*/
-        );
+                        + "('Baseball Bat', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.')");
 
     }
 

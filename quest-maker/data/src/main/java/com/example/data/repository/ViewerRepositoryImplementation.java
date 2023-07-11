@@ -27,7 +27,7 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
         return listD;
     }
 
-    private WeaponStorage weaponMapToStorage(Weapon one){
+    /*private WeaponStorage weaponMapToStorage(Weapon one){
         return new WeaponStorage(
                 one.name,
                 one.damage_type,
@@ -41,7 +41,7 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
                 Integer.parseInt(one.sell_price),
                 one.description
         );
-    }
+    }*/
 
     private Weapon weaponMapToDomain(WeaponStorage one){
         return new Weapon(

@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quest_maker.R;
+import com.example.quest_maker.presentation.general_data.GeneralDataActivity;
 import com.example.quest_maker.presentation.person_maker.PersonMakerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonPersonMaker = findViewById(R.id.B_person_maker);
+        Button buttonGeneralData = findViewById(R.id.B_general_data);
 
 
 
@@ -30,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
                 // Обработка нажатия -> переход на activity_person_maker (xml)
                 //Intent intent = new Intent(MainActivity.this, PersonMakerActivity.class);
                 Intent intent = new Intent(MainActivity.this, PersonMakerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonGeneralData.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                // Обработка нажатия -> переход на activity_person_maker (xml)
+                //Intent intent = new Intent(MainActivity.this, PersonMakerActivity.class);
+                Intent intent = new Intent(MainActivity.this, GeneralDataActivity.class);
                 startActivity(intent);
             }
         });

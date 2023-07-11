@@ -26,6 +26,7 @@ public class Weapon {
                   String sell_price,
                   String description) {
 
+        this.name = name;
         this.damage_type = damage_type;
         this.handed = handed;
         this.preferred_stat = preferred_stat;
