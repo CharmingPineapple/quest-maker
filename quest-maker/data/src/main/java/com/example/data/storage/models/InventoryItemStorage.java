@@ -11,4 +11,11 @@ public class InventoryItemStorage {
         this.type = type;
         this.value = value;
     }
+
+    public InventoryItemStorage(String name, String type){
+        this.name = name;
+        this.type = type;
+        this.value = 0;
+    }
+
 }

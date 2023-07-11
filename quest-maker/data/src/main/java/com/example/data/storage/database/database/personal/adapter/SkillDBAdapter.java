@@ -54,6 +54,7 @@ public class SkillDBAdapter {
             int id = cursor.getInt(id_column_id);
             String name = cursor.getString(name_column_id);
             int value = cursor.getInt(value_column_id);
+
             SkillParams.add(new PersonItemStorage(name, value));
         }
 
