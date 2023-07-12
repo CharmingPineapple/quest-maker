@@ -87,7 +87,7 @@ class PersonMakerActivity : AppCompatActivity(){
 
     // (!) - Сделать save с rvMainParam
     override fun onPause(){
-        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList())
+        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList(), itemRVAdapter!!.getList())
 
         super.onPause()
     }

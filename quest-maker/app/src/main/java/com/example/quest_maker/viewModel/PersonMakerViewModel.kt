@@ -37,9 +37,10 @@ class PersonMakerViewModel(
         }
     }*/
 
-    fun save(skillList: List<PersonItem>, mpList: List<PersonItem>){
+    fun save(skillList: List<PersonItem>, mpList: List<PersonItem>, itemList: List<InventoryItem>){
         saveSkillUseCase.saveAll(skillList)
         saveMainParameterUseCase.saveAll(mpList)
+        saveItemUseCase.saveAll(itemList)
 
 
         // Если save() вызывается не в onStop

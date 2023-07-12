@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.InventoryItem
@@ -15,10 +16,10 @@ class ItemRVAdapter (
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var list: List<InventoryItem>? = null
+    private var list: MutableList<InventoryItem>? = null
 
     fun setData(newList: List<InventoryItem>){
-        this.list = newList
+        this.list = newList.toMutableList()
         notifyDataSetChanged()
     }
 
@@ -37,8 +38,13 @@ class ItemRVAdapter (
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val one: InventoryItem = list!![position]
-        holder.name.text = one.name
-        holder.type.text = "("+ one.type + ")"
+        holder.nameTextView.text = one.name
+        holder.typeTextView.text = "("+ one.type + ")"
+
+        holder.deleteButton.setOnClickListener{
+            list!!.remove(one)
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -47,12 +53,14 @@ class ItemRVAdapter (
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
-        var name: TextView
-        var type: TextView
+        var nameTextView: TextView
+        var typeTextView: TextView
+        var deleteButton: Button
 
         init {
-            name = itemView.findViewById(R.id.RV_item_TV_inv_item_name)
-            type = itemView.findViewById(R.id.RV_item_TV_inv_item_type)
+            nameTextView = itemView.findViewById(R.id.RV_item_TV_inv_item_name)
+            typeTextView = itemView.findViewById(R.id.RV_item_TV_inv_item_type)
+            deleteButton = itemView.findViewById(R.id.RV_item_Button_inv_item_delete)
         }
     }
 }
