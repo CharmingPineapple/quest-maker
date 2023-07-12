@@ -1,6 +1,6 @@
 package com.example.data.repository;
 
-import com.example.data.storage.AuthorStorageInterface;
+import com.example.data.storage.ViewerStorageInterface;
 import com.example.data.storage.models.WeaponStorage;
 import com.example.domain.models.Weapon;
 import com.example.domain.repository.ViewerRepositoryInterface;
@@ -10,14 +10,14 @@ import java.util.List;
 
 public class ViewerRepositoryImplementation  implements ViewerRepositoryInterface {
 
-    private AuthorStorageInterface authorStorageInterface;
+    private ViewerStorageInterface viewerStorageInterface;
 
-    public ViewerRepositoryImplementation(AuthorStorageInterface authorStorageInterface){
-        this.authorStorageInterface = authorStorageInterface;
+    public ViewerRepositoryImplementation(ViewerStorageInterface viewerStorageInterface){
+        this.viewerStorageInterface = viewerStorageInterface;
     }
 
     public List<Weapon> getAllWeapon(){
-        List<WeaponStorage> listS = authorStorageInterface.getAllWeapon();
+        List<WeaponStorage> listS = viewerStorageInterface.getAllWeapon();
         List<Weapon> listD = new ArrayList<>();
 
         for(WeaponStorage one : listS){

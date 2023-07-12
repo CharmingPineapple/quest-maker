@@ -2,8 +2,6 @@ package com.example.data.storage;
 
 import com.example.data.storage.models.InventoryItemStorage;
 import com.example.data.storage.models.PersonItemStorage;
-import com.example.data.storage.models.WeaponStorage;
-
 
 import java.util.List;
 
@@ -25,5 +23,5 @@ public interface AuthorStorageInterface {
 
     void saveAllInvItem(List<InventoryItemStorage> list);
 
-    List<WeaponStorage> getAllWeapon();
+
 }
