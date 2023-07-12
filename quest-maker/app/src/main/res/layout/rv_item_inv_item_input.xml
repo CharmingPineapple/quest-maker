@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_margin="10dp">
 
@@ -10,21 +12,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="EXM"
+        android:text="EXM name"
         android:layout_marginEnd="10dp"
         android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
     <TextView
         android:id="@+id/RV_item_TV_inv_item_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="0"
+        android:layout_marginEnd="12dp"
         android:gravity="center_horizontal"
+        android:text="EXM type"
         android:textColor="@color/black"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        />
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/RV_item_Button_inv_item_delete" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/RV_item_Button_inv_item_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

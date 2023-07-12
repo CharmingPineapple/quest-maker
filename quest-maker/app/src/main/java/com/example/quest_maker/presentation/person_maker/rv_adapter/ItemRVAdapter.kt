@@ -38,7 +38,7 @@ class ItemRVAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val one: InventoryItem = list!![position]
         holder.name.text = one.name
-        holder.type.text = one.type
+        holder.type.text = "("+ one.type + ")"
     }
 
     override fun getItemCount(): Int {
