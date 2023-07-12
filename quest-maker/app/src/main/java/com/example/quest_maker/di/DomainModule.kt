@@ -10,13 +10,6 @@ import com.example.domain.usecase.weapon.GetWeaponUseCase
 import org.koin.dsl.module
 
 
-/*
-private val getSkillUseCase =
-    GetSkillUseCase(authorRepositoryInterface)
-
-private val saveSkillUseCase =
-    SaveSkillUseCase(authorRepositoryInterface)*/
-
 val domainModule = module {
 
     factory<GetSkillUseCase> {
