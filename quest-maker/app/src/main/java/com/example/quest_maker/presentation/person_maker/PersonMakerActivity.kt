@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -33,6 +34,8 @@ class PersonMakerActivity : AppCompatActivity(){
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
 
+    //private var addInvItemButton: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,6 +57,7 @@ class PersonMakerActivity : AppCompatActivity(){
 
         itemRV = findViewById(R.id.RV_item_list)
         itemRVAdapter = ItemRVAdapter(this)
+
 
         viewModel.load()
 
@@ -77,6 +81,14 @@ class PersonMakerActivity : AppCompatActivity(){
 
         // Load sum of skills from intent
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-skill-score-action"))
+
+        /*addInvItemButton = findViewById(R.id.Button_add_inv_item)
+        addInvItemButton!!.setOnClickListener{
+            val intent = Intent(this@PersonMakerActivity, )
+            startActivity(intent)
+
+
+        }*/
 
     }
 

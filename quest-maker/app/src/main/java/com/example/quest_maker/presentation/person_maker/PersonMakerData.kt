@@ -16,7 +16,7 @@ data class PersonMakerData(
     val maxFND: Int = 10,
     val maxBullet: Int = 4,
 
-    val maxItem: Int = 2
+    val maxItem: Int = 4
 
     // another lists
 )
