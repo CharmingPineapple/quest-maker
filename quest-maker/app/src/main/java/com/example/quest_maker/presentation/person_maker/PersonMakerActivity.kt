@@ -59,7 +59,7 @@ class PersonMakerActivity : AppCompatActivity(){
         invItemRVAdapter = InvItemRVAdapter(this)
 
 
-        viewModel.load()
+        //viewModel.load()
 
         // Setting Skill RV
         skillRVAdapter!!.setData(viewModel.getSkillList(), viewModel.getMaxSkillScore(), viewModel.getMinSkillScore())

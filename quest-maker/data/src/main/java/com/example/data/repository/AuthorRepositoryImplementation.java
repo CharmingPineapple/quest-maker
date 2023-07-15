@@ -108,11 +108,11 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
     }
 
     private InventoryItemStorage inventoryItemMapToStorage(InventoryItem one){
-        return new InventoryItemStorage(one.name, one.type, Integer.parseInt(one.value));
+        return new InventoryItemStorage(one.name, one.type);
     }
 
     private InventoryItem inventoryItemMapToDomain(InventoryItemStorage one){
-        return new InventoryItem(one.name, one.type, Integer.toString(one.value));
+        return new InventoryItem(one.name, one.type, true);
     }
 
 }

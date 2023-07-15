@@ -18,8 +18,14 @@ class SelectionCheckBoxRVAdapter (
 
     private var list: MutableList<InventoryItem>? = null
 
-    fun setData(newList: List<InventoryItem>){
+    private var maxInventoryItem: Int? = 0
+
+    private var selectedNum: Int? = 0
+
+    fun setData(newList: List<InventoryItem>, newMaxInventoryItem: Int){
         this.list = newList.toMutableList()
+        this.maxInventoryItem = newMaxInventoryItem
+        selectedNum = list!!.size
         notifyDataSetChanged()
     }
 
@@ -40,8 +46,12 @@ class SelectionCheckBoxRVAdapter (
         val one: InventoryItem = list!![position]
         holder.nameTextView.text = one.name
 
-        // CheckBox
 
+        holder.checkBox.setOnClickListener{
+            one.using = !one.using
+        }
+
+        holder.checkBox.isChecked = one.using
     }
 
     override fun getItemCount(): Int {
@@ -58,5 +68,9 @@ class SelectionCheckBoxRVAdapter (
             checkBox = itemView.findViewById(R.id.RV_item_selection_check_box)
         }
     }
+
+    /*private fun calc() : Int{
+        var count: Int
+    }*/
 
 }
