@@ -1,7 +1,7 @@
 package com.example.quest_maker.di
 
-import com.example.quest_maker.viewModel.GeneralDataViewModel
-import com.example.quest_maker.viewModel.PersonMakerViewModel
+import com.example.quest_maker.presentation.general_data.GeneralDataViewModel
+import com.example.quest_maker.presentation.person_maker.PersonMakerViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

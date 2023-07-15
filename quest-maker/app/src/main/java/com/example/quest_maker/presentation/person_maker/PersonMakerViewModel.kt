@@ -1,4 +1,4 @@
-package com.example.quest_maker.viewModel
+package com.example.quest_maker.presentation.person_maker
 
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.InventoryItem
@@ -12,7 +12,6 @@ import com.example.domain.usecase.skill.SaveSkillUseCase
 import com.example.quest_maker.presentation.person_maker.PersonMakerData
 
 class PersonMakerViewModel(
-    // (#!) - change to private
     private val getSkillUseCase: GetSkillUseCase,
     private val saveSkillUseCase: SaveSkillUseCase,
     private val getMainParameterUseCase: GetMainParameterUseCase,

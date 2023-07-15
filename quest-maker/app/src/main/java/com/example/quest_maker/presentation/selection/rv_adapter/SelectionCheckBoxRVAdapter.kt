@@ -1,18 +1,18 @@
-package com.example.quest_maker.presentation.person_maker.rv_adapter
+package com.example.quest_maker.presentation.selection.rv_adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.InventoryItem
 import com.example.quest_maker.R
 
-class ItemRVAdapter (
+class SelectionCheckBoxRVAdapter (
     private val context: Context,
-    ) : RecyclerView.Adapter<ItemRVAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SelectionCheckBoxRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -31,7 +31,7 @@ class ItemRVAdapter (
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = inflater.inflate(R.layout.rv_item_inv_item_input, parent, false)
+        val view = inflater.inflate(R.layout.rv_item_selection_check_box, parent, false)
 
         return ViewHolder(view)
     }
@@ -39,12 +39,9 @@ class ItemRVAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val one: InventoryItem = list!![position]
         holder.nameTextView.text = one.name
-        holder.typeTextView.text = "("+ one.type + ")"
 
-        holder.deleteButton.setOnClickListener{
-            list!!.remove(one)
-            notifyDataSetChanged()
-        }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -53,14 +50,13 @@ class ItemRVAdapter (
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
+        var checkBox: CheckBox
         var nameTextView: TextView
-        var typeTextView: TextView
-        var deleteButton: Button
 
         init {
-            nameTextView = itemView.findViewById(R.id.RV_item_TV_inv_item_name)
-            typeTextView = itemView.findViewById(R.id.RV_item_TV_inv_item_type)
-            deleteButton = itemView.findViewById(R.id.RV_item_Button_inv_item_delete)
+            nameTextView = itemView.findViewById(R.id.RV_item_selection_TV_name)
+            checkBox = itemView.findViewById(R.id.RV_item_selection_check_box)
         }
     }
+
 }

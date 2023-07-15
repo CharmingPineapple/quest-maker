@@ -12,11 +12,10 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
-import com.example.quest_maker.presentation.person_maker.rv_adapter.ItemRVAdapter
+import com.example.quest_maker.presentation.person_maker.rv_adapter.InvItemRVAdapter
 import com.example.quest_maker.presentation.person_maker.rv_adapter.MainParameterRVAdapter
 import com.example.quest_maker.presentation.person_maker.rv_adapter.SkillRVAdapter
 import com.example.quest_maker.presentation.selection.SelectionActivity
-import com.example.quest_maker.viewModel.PersonMakerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PersonMakerActivity : AppCompatActivity(){
@@ -30,7 +29,7 @@ class PersonMakerActivity : AppCompatActivity(){
 
     private var skillRVAdapter: SkillRVAdapter? = null
     private var mpRVAdapter: MainParameterRVAdapter? = null
-    private var itemRVAdapter: ItemRVAdapter? = null
+    private var invItemRVAdapter: InvItemRVAdapter? = null
 
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
@@ -57,7 +56,7 @@ class PersonMakerActivity : AppCompatActivity(){
         mpRVAdapter = MainParameterRVAdapter(this)
 
         itemRV = findViewById(R.id.RV_item_list)
-        itemRVAdapter = ItemRVAdapter(this)
+        invItemRVAdapter = InvItemRVAdapter(this)
 
 
         viewModel.load()
@@ -73,8 +72,8 @@ class PersonMakerActivity : AppCompatActivity(){
         mpRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Setting Item RV
-        itemRVAdapter!!.setData(viewModel.getItemList())
-        itemRV!!.adapter = itemRVAdapter
+        invItemRVAdapter!!.setData(viewModel.getItemList())
+        itemRV!!.adapter = invItemRVAdapter
         itemRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Show min/max and current sum of skills
@@ -98,7 +97,7 @@ class PersonMakerActivity : AppCompatActivity(){
 
     // (!) - Сделать save с rvMainParam
     override fun onPause(){
-        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList(), itemRVAdapter!!.getList())
+        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList(), invItemRVAdapter!!.getList())
 
         super.onPause()
     }

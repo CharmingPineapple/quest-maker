@@ -1,16 +1,12 @@
 package com.example.quest_maker.presentation.general_data
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.Weapon
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.general_data.rv_adapter.WeaponRVAdapter
-import com.example.quest_maker.presentation.person_maker.rv_adapter.SkillRVAdapter
-import com.example.quest_maker.viewModel.GeneralDataViewModel
-import com.example.quest_maker.viewModel.PersonMakerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
