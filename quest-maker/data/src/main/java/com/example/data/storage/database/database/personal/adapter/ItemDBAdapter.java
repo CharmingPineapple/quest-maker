@@ -36,7 +36,8 @@ public class ItemDBAdapter {
 
     // (#)
     private Cursor getAllEntries(){
-        String[] columns = new String[] {ItemDBHelper.KEY_ID, ItemDBHelper.KEY_NAME, ItemDBHelper.KEY_TYPE, ItemDBHelper.KEY_ITEM_ID};
+        String[] columns = new String[] {ItemDBHelper.KEY_ID, ItemDBHelper.KEY_NAME, ItemDBHelper.KEY_TYPE};
+        //String[] columns = new String[] {ItemDBHelper.KEY_ID, ItemDBHelper.KEY_NAME, ItemDBHelper.KEY_TYPE, ItemDBHelper.KEY_ITEM_ID};
         return  database.query(ItemDBHelper.TABLE_NAME, columns, null, null, null, null, null);
     }
 
@@ -48,16 +49,15 @@ public class ItemDBAdapter {
         int id_column_id = cursor.getColumnIndex(ItemDBHelper.KEY_ID);
         int name_column_id = cursor.getColumnIndex(ItemDBHelper.KEY_NAME);
         int type_column_id = cursor.getColumnIndex(ItemDBHelper.KEY_TYPE);
-        int item_id_column_id = cursor.getColumnIndex(ItemDBHelper.KEY_ITEM_ID);
+        //int item_id_column_id = cursor.getColumnIndex(ItemDBHelper.KEY_ITEM_ID);
 
 
         while (cursor.moveToNext()){
             int id = cursor.getInt(id_column_id);
             String name = cursor.getString(name_column_id);
             String type = cursor.getString(type_column_id);
-            int item_id = cursor.getInt(item_id_column_id);
 
-            ItemParams.add(new InventoryItemStorage(name, type, item_id));
+            ItemParams.add(new InventoryItemStorage(name, type));
         }
 
         cursor.close();
@@ -78,7 +78,6 @@ public class ItemDBAdapter {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ItemDBHelper.KEY_NAME, one.name);
         contentValues.put(ItemDBHelper.KEY_TYPE, one.type);
-        contentValues.put(ItemDBHelper.KEY_ITEM_ID, one.value);
         database.insert(ItemDBHelper.TABLE_NAME, null, contentValues);
 
     }

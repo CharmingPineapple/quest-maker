@@ -15,7 +15,7 @@ public class InventoryItem {
     public InventoryItem(String name, String type){
         this.name = name;
         this.type = type;
-        this.using = true;
+        this.using = false;
     }
 
 }

@@ -12,7 +12,7 @@ public class ItemDBHelper extends SQLiteOpenHelper {
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
     public static final String KEY_TYPE = "type";
-    public static final String KEY_ITEM_ID = "item_id";
+    //public static final String KEY_ITEM_ID = "item_id";
 
 
 
@@ -26,19 +26,21 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                 + "("
                 + KEY_ID + " integer primary key,"
                 + KEY_NAME + " text, "
-                + KEY_TYPE + " text, "
-                + KEY_ITEM_ID + " integer"
+                + KEY_TYPE + " text "
+                //+ KEY_ITEM_ID + " integer"
                 + ") ");
 
         // (#)
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME
                 + "("
                 + KEY_NAME    + ", "
-                + KEY_TYPE    + ", "
-                + KEY_ITEM_ID + ")"
+                + KEY_TYPE    + " "
+                //+ KEY_ITEM_ID
+                + ")"
                 + "values "
 
-                + "('Baseball Bat', 'weapon',  0)");
+                + "('Baseball Bat', 'weapon')");
+                //+ "('Baseball Bat', 'weapon',  0)");
     }
 
     @Override

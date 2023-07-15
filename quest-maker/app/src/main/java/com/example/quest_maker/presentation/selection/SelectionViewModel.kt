@@ -32,15 +32,17 @@ class SelectionViewModel (
     fun getSimpleWeaponList() : List<InventoryItem>{
         val weaponList : List<Weapon> = getWeaponList()
         val simpleWeaponList : MutableList<InventoryItem> = ArrayList()
-        val usingItemList: List<InventoryItem> = getItemUseCase.all
+        val usingItemList: List<InventoryItem> = selectionDataMutable!!.itemList
 
         for(one: Weapon in weaponList){
             simpleWeaponList.add(InventoryItem(one.name, "weapon"))
         }
 
-        for(count: Int in 0 until simpleWeaponList.size){
-            if(simpleWeaponList[count].name == usingItemList[0].name)
-                simpleWeaponList[count].using = true
+        if (usingItemList.isNotEmpty()) {
+            for (count: Int in 0 until simpleWeaponList.size) {
+                if (simpleWeaponList[count].name == usingItemList[0].name)
+                    simpleWeaponList[count].using = true
+            }
         }
 
         return simpleWeaponList

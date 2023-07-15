@@ -28,7 +28,7 @@ class SelectionActivity : AppCompatActivity() {
         val bottomNavigation : BottomNavigationView = findViewById(R.id.selection_navigation_bar)
         bottomNavigation.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
 
-        //viewModel.load()
+        viewModel.load()
 
         recycleView = findViewById(R.id.RV_selection)
 
