@@ -48,6 +48,17 @@
 
         </activity>
 
+        <activity android:name=".presentation.selection.SelectionActivity"
+            android:theme="@style/Theme.AppCompat">
+
+            <!--
+            <intent-filter>
+                <action android:name=""
+            </intent-filter>
+            -->
+
+        </activity>
+
     </application>
 
 </manifest>

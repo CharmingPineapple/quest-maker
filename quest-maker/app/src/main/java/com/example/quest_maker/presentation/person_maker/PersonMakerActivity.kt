@@ -15,6 +15,7 @@ import com.example.quest_maker.R
 import com.example.quest_maker.presentation.person_maker.rv_adapter.ItemRVAdapter
 import com.example.quest_maker.presentation.person_maker.rv_adapter.MainParameterRVAdapter
 import com.example.quest_maker.presentation.person_maker.rv_adapter.SkillRVAdapter
+import com.example.quest_maker.presentation.selection.SelectionActivity
 import com.example.quest_maker.viewModel.PersonMakerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,7 +35,7 @@ class PersonMakerActivity : AppCompatActivity(){
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
 
-    //private var addInvItemButton: Button? = null
+    private var selectionButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,13 +83,11 @@ class PersonMakerActivity : AppCompatActivity(){
         // Load sum of skills from intent
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-skill-score-action"))
 
-        /*addInvItemButton = findViewById(R.id.Button_add_inv_item)
-        addInvItemButton!!.setOnClickListener{
-            val intent = Intent(this@PersonMakerActivity, )
+        selectionButton = findViewById(R.id.Button_selection)
+        selectionButton!!.setOnClickListener{
+            val intent = Intent(this@PersonMakerActivity, SelectionActivity::class.java)
             startActivity(intent)
-
-
-        }*/
+        }
 
     }
 
