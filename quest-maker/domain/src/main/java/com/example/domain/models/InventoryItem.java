@@ -12,4 +12,10 @@ public class InventoryItem {
         this.value = value;
     }
 
+    public InventoryItem(String name, String type){
+        this.name = name;
+        this.type = type;
+        this.value = "0";
+    }
+
 }
