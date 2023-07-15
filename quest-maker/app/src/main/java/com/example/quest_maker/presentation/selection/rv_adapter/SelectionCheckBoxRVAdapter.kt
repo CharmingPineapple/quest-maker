@@ -40,7 +40,7 @@ class SelectionCheckBoxRVAdapter (
         val one: InventoryItem = list!![position]
         holder.nameTextView.text = one.name
 
-
+        // CheckBox
 
     }
 
