@@ -29,23 +29,62 @@ class SelectionViewModel (
         return generalDataMutable!!.weaponList
     }
 
+    // (!#)
+    fun getSimpleItemList() : List<InventoryItem>{
+        val weaponList : List<Weapon> = getWeaponList()
+        //val equipmentList : List<Weapon> = getEquipmentList()
+        //val trinketsList : List<Weapon> = getTrinketsList()
+
+        val simpleItemList : MutableList<InventoryItem> = ArrayList()
+        val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
+
+        // get all weapon from DB
+        for(one: Weapon in weaponList){
+            simpleItemList.add(InventoryItem(one.name, "weapon"))
+        }
+
+        /*for(one: Equipment in equipmentList){
+            simpleItemList.add(InventoryItem(one.name, "equipment"))
+        }*/
+
+        /*for(one: Trinkets in trinketsList){
+            simpleItemList.add(InventoryItem(one.name, "trinkets"))
+        }*/
+
+        // mark the selected weapon
+        if (selectedItemList.isNotEmpty()) {
+            for (count: Int in 0 until simpleItemList.size) {
+                if (simpleItemList[count].name == selectedItemList[0].name)
+                    simpleItemList[count].selected = true
+            }
+        }
+
+        return simpleItemList
+    }
+
     fun getSimpleWeaponList() : List<InventoryItem>{
         val weaponList : List<Weapon> = getWeaponList()
         val simpleWeaponList : MutableList<InventoryItem> = ArrayList()
-        val usingItemList: List<InventoryItem> = selectionDataMutable!!.itemList
+        val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
 
+        // get all weapon from DB
         for(one: Weapon in weaponList){
             simpleWeaponList.add(InventoryItem(one.name, "weapon"))
         }
 
-        if (usingItemList.isNotEmpty()) {
+        // mark the selected weapon
+        if (selectedItemList.isNotEmpty()) {
             for (count: Int in 0 until simpleWeaponList.size) {
-                if (simpleWeaponList[count].name == usingItemList[0].name)
-                    simpleWeaponList[count].using = true
+                if (simpleWeaponList[count].name == selectedItemList[0].name)
+                    simpleWeaponList[count].selected = true
             }
         }
 
         return simpleWeaponList
+    }
+
+    fun getTypeItemList(): List<String>{
+        return generalDataMutable!!.typeItemList
     }
 
     fun getMaxInventoryItem() : Int{

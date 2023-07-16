@@ -4,18 +4,18 @@ public class InventoryItem {
 
     public String name;
     public String type;
-    public boolean using;
+    public boolean selected;
 
-    public InventoryItem(String name, String type, boolean using){
+    public InventoryItem(String name, String type, boolean selected){
         this.name = name;
         this.type = type;
-        this.using = using;
+        this.selected = selected;
     }
 
     public InventoryItem(String name, String type){
         this.name = name;
         this.type = type;
-        this.using = false;
+        this.selected = false;
     }
 
 }

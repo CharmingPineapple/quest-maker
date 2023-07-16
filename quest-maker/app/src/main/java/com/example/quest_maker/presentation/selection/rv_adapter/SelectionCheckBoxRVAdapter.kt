@@ -16,22 +16,55 @@ class SelectionCheckBoxRVAdapter (
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var list: MutableList<InventoryItem>? = null
+    private var listAll: MutableList<InventoryItem>? = null
+    //private var weaponList: MutableList<InventoryItem>? = null
+    /*private var equipmentList: MutableList<InventoryItem>? = null
+    private var trinketsList: MutableList<InventoryItem>? = null*/
 
-    private var maxInventoryItem: Int? = 0
+    //val typeItemList: List<String> = listOf("weapon", "equipment", "trinkets")
+    //private var typeList: List<String>? = null
+
+    private var currentList: MutableList<InventoryItem> = ArrayList()
+
+    private var maxItemNum: Int? = 0
 
     private var selectedNum: Int? = 0
 
-    fun setData(newList: List<InventoryItem>, newMaxInventoryItem: Int){
-        this.list = newList.toMutableList()
-        this.maxInventoryItem = newMaxInventoryItem
-        selectedNum = list!!.size
+    // Удалить '?' когда уже будут передаваться equipmentList и trinketsList
+    fun setData(newList: List<InventoryItem>, /*newEquipmentList: List<InventoryItem>?, newTrinketsList: List<InventoryItem>?,*/   /*newTypeList: List<String>,*/ newMaxItemNum: Int){
+        this.listAll = newList.toMutableList()
+        /*this.equipmentList = newEquipmentList?.toMutableList()
+        this.trinketsList = newTrinketsList?.toMutableList()*/
+
+        //this.typeList = newTypeList
+        this.maxItemNum = newMaxItemNum
+        //selectedNum = weaponList!!.size
         notifyDataSetChanged()
     }
 
-    fun getList(): List<InventoryItem> {
-        return list!!
+    //fun setData(a:Int){}
+
+    fun setList(type: String){
+        currentList.clear()
+
+        for(one: InventoryItem in listAll!!){
+            if(one.type == type)
+                currentList.add(one)
+        }
+
+        notifyDataSetChanged()
     }
+
+    /*fun getSelectedWeaponList(): List<InventoryItem> {
+        val selectedWeaponList: MutableList<InventoryItem> = ArrayList()
+
+        for(count: Int in 0 until listAll!!.size){
+            if(listAll!![count].selected)
+                selectedWeaponList.add(listAll!![count])
+        }
+
+        return selectedWeaponList
+    }*/
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -43,19 +76,19 @@ class SelectionCheckBoxRVAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val one: InventoryItem = list!![position]
+        val one: InventoryItem = currentList[position]
         holder.nameTextView.text = one.name
 
 
         holder.checkBox.setOnClickListener{
-            one.using = !one.using
+            one.selected = !one.selected
         }
 
-        holder.checkBox.isChecked = one.using
+        holder.checkBox.isChecked = one.selected
     }
 
     override fun getItemCount(): Int {
-        return list!!.size
+        return currentList.size
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
@@ -69,8 +102,12 @@ class SelectionCheckBoxRVAdapter (
         }
     }
 
+
+
     /*private fun calc() : Int{
         var count: Int
     }*/
 
 }
+
+//class MapList (var type: String, var list: MutableList<InventoryItem>)
