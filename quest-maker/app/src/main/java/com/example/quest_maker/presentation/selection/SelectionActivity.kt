@@ -57,7 +57,10 @@ class SelectionActivity : AppCompatActivity() {
         selectedNumTV = findViewById(R.id.TV_selected_num_selection)
         selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
 
+        // (#)
         //selectedLimitTV!!.text = viewModel.getMaxInventoryItem().toString()
+        selectedLimitTV?.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
+
 
         spinner!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -76,7 +79,6 @@ class SelectionActivity : AppCompatActivity() {
             }
         }
 
-        selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-selected-num-action"))
 
 
@@ -106,6 +108,7 @@ class SelectionActivity : AppCompatActivity() {
                 selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleWeaponList(), viewModel.getMaxInventoryItem())
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
                 recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
 
                 //selectionCheckBoxRVAdapter!!.weaponList
 
