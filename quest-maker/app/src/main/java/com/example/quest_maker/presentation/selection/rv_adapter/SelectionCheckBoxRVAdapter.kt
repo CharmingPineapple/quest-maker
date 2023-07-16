@@ -1,11 +1,13 @@
 package com.example.quest_maker.presentation.selection.rv_adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.InventoryItem
 import com.example.quest_maker.R
@@ -15,6 +17,8 @@ class SelectionCheckBoxRVAdapter (
 ) : RecyclerView.Adapter<SelectionCheckBoxRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
+
+    private var intent: Intent = Intent("current-selected-num-action")
 
     private var listAll: MutableList<InventoryItem>? = null
     //private var weaponList: MutableList<InventoryItem>? = null
@@ -79,9 +83,14 @@ class SelectionCheckBoxRVAdapter (
         val one: InventoryItem = currentList[position]
         holder.nameTextView.text = one.name
 
+        if (calcNumSelected() == maxItemNum && !one.selected)
+            holder.checkBox.visibility = View.INVISIBLE
+        else
+            holder.checkBox.visibility = View.VISIBLE
 
         holder.checkBox.setOnClickListener{
             one.selected = !one.selected
+            notifyDataSetChanged()
         }
 
         holder.checkBox.isChecked = one.selected
@@ -102,7 +111,19 @@ class SelectionCheckBoxRVAdapter (
         }
     }
 
+    private fun calcNumSelected(): Int{
+        var count: Int = 0
 
+        for(one: InventoryItem in listAll!!){
+            if (one.selected)
+                count++
+        }
+
+        intent.putExtra("current-selected-num-name", count.toString())
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
+
+        return count
+    }
 
     /*private fun calc() : Int{
         var count: Int

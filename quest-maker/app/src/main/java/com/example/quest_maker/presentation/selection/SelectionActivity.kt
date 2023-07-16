@@ -1,5 +1,9 @@
 package com.example.quest_maker.presentation.selection
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -8,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
@@ -26,6 +31,9 @@ class SelectionActivity : AppCompatActivity() {
 
     private var spinner: Spinner? = null
     private var spinnerAdapter: ArrayAdapter<String>? = null
+
+    private var selectedNumTV: TextView? = null
+    private var selectedLimitTV: TextView? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +54,10 @@ class SelectionActivity : AppCompatActivity() {
         displayView(R.id.inv)
 
         //(#)
-        var test: TextView = findViewById(R.id.selection_test_TV)
+        selectedNumTV = findViewById(R.id.TV_selected_num_selection)
+        selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
+
+        //selectedLimitTV!!.text = viewModel.getMaxInventoryItem().toString()
 
         spinner!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -64,6 +75,10 @@ class SelectionActivity : AppCompatActivity() {
                 // your code here
             }
         }
+
+        selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-selected-num-action"))
+
 
     }
 
@@ -102,6 +117,15 @@ class SelectionActivity : AppCompatActivity() {
             ft.replace(R.id.fragment_container_view, fragment)
             ft.commit()
         }*/
+    }
+
+    // (#)
+    private var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+            // Get extra data included in the Intent
+            val itemName: String? = intent.getStringExtra("current-selected-num-name")
+            selectedNumTV?.text = "Current num: $itemName"
+        }
     }
 
     override fun onResume() {

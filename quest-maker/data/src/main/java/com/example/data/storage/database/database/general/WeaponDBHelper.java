@@ -72,6 +72,8 @@ public class WeaponDBHelper extends SQLiteOpenHelper {
 
                         + "('Baseball Bat', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.'),"
                         + "('ABOBA', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.'),"
+                        + "('BOBA', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.'),"
+                        + "('TURUTU', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.'),"
                         + "('BIBA', 'BLUNT', 2, 'STR', 4, 95, 20, 80, 4, 1, 'Baseball bat used by schools team.')");
 
     }
