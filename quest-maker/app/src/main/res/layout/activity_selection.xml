@@ -49,7 +49,11 @@
 
         </LinearLayout>
 
-
+        <Button
+            android:id="@+id/Button_save_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="save"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RV_selection"

@@ -9,12 +9,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.models.InventoryItem
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.selection.rv_adapter.SelectionCheckBoxRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,6 +37,8 @@ class SelectionActivity : AppCompatActivity() {
     private var selectedNumTV: TextView? = null
     private var selectedLimitTV: TextView? = null
 
+    private var saveButton: Button?= null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,16 +53,18 @@ class SelectionActivity : AppCompatActivity() {
         recycleView = findViewById(R.id.RV_selection)
         spinner = findViewById(R.id.spinner_selection)
 
-        // добавить спинер
 
         displayView(R.id.inv)
 
-        //(#)
         selectedNumTV = findViewById(R.id.TV_selected_num_selection)
         selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
 
-        // (#)
-        //selectedLimitTV!!.text = viewModel.getMaxInventoryItem().toString()
+        saveButton = findViewById(R.id.Button_save_selection)
+
+        saveButton!!.setOnClickListener {
+            viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedWeaponList())
+        }
+
         selectedLimitTV?.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
 
 
@@ -69,19 +75,14 @@ class SelectionActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                // (#)
-                //test.text = spinnerAdapter!!.getItem(position).toString()
                 selectionCheckBoxRVAdapter!!.setList(spinnerAdapter!!.getItem(position).toString())
             }
-
             override fun onNothingSelected(parentView: AdapterView<*>?) {
                 // your code here
             }
         }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-selected-num-action"))
-
-
     }
 
     private fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -121,8 +122,7 @@ class SelectionActivity : AppCompatActivity() {
             ft.commit()
         }*/
     }
-
-    // (#)
+    
     private var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent

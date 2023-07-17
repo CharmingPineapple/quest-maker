@@ -62,17 +62,14 @@ class PersonMakerActivity : AppCompatActivity(){
         viewModel.load()
 
         // Setting Skill RV
-        skillRVAdapter!!.setData(viewModel.getSkillList(), viewModel.getMaxSkillScore(), viewModel.getMinSkillScore())
         skillRV!!.adapter = skillRVAdapter
         skillRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Setting MainParameter RV
-        mpRVAdapter!!.setData(viewModel.getMPList(), viewModel.getMaxHealth(), viewModel.getMinHealth(), viewModel.getMaxFND(), viewModel.getMaxBullet())
         mpRV!!.adapter = mpRVAdapter
         mpRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Setting Item RV
-        invItemRVAdapter!!.setData(viewModel.getItemList())
         itemRV!!.adapter = invItemRVAdapter
         itemRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
@@ -93,6 +90,13 @@ class PersonMakerActivity : AppCompatActivity(){
     override fun onResume() {
         super.onResume()
         viewModel.load()
+        setRVData()
+    }
+
+    private fun setRVData(){
+        skillRVAdapter!!.setData(viewModel.getSkillList(), viewModel.getMaxSkillScore(), viewModel.getMinSkillScore())
+        mpRVAdapter!!.setData(viewModel.getMPList(), viewModel.getMaxHealth(), viewModel.getMinHealth(), viewModel.getMaxFND(), viewModel.getMaxBullet())
+        invItemRVAdapter!!.setData(viewModel.getItemList())
     }
 
     // (!) - Сделать save с rvMainParam

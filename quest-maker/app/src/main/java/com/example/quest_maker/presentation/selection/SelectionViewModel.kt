@@ -8,7 +8,7 @@ import com.example.domain.usecase.inv_item.SaveItemUseCase
 import com.example.domain.usecase.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
 
-class SelectionViewModel (
+class SelectionViewModel(
     private val getItemUseCase: GetItemUseCase,
     private val saveItemUseCase: SaveItemUseCase,
 
@@ -19,27 +19,30 @@ class SelectionViewModel (
     private var selectionDataMutable: SelectionData? = null
 
 
-    fun save(itemList: List<InventoryItem>){
+    fun save(itemList: List<InventoryItem>) {
+        saveItemUseCase.saveAll(itemList)
+    }
+
+    fun saveInvItem(itemList: List<InventoryItem>) {
         saveItemUseCase.saveAll(itemList)
     }
 
 
-
-    private fun getWeaponList() : List<Weapon>{
+    private fun getWeaponList(): List<Weapon> {
         return generalDataMutable!!.weaponList
     }
 
     // (!#)
-    fun getSimpleItemList() : List<InventoryItem>{
-        val weaponList : List<Weapon> = getWeaponList()
+    fun getSimpleItemList(): List<InventoryItem> {
+        val weaponList: List<Weapon> = getWeaponList()
         //val equipmentList : List<Weapon> = getEquipmentList()
         //val trinketsList : List<Weapon> = getTrinketsList()
 
-        val simpleItemList : MutableList<InventoryItem> = ArrayList()
+        val simpleItemList: MutableList<InventoryItem> = ArrayList()
         val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
 
         // get all weapon from DB
-        for(one: Weapon in weaponList){
+        for (one: Weapon in weaponList) {
             simpleItemList.add(InventoryItem(one.name, "weapon"))
         }
 
@@ -62,52 +65,70 @@ class SelectionViewModel (
         return simpleItemList
     }
 
-    fun getSimpleWeaponList() : List<InventoryItem>{
-        val weaponList : List<Weapon> = getWeaponList()
-        val simpleWeaponList : MutableList<InventoryItem> = ArrayList()
+    fun getSimpleWeaponList(): List<InventoryItem> {
+        val weaponList: List<Weapon> = getWeaponList()
+        val simpleWeaponList: MutableList<InventoryItem> = ArrayList()
         val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
 
         // get all weapon from DB
-        for(one: Weapon in weaponList){
+        for (one: Weapon in weaponList) {
             simpleWeaponList.add(InventoryItem(one.name, "weapon"))
         }
 
         // mark the selected weapon
-        if (selectedItemList.isNotEmpty()) {
+        /*if (selectedItemList.isNotEmpty()) {
             for (count: Int in 0 until simpleWeaponList.size) {
-                if (simpleWeaponList[count].name == selectedItemList[0].name)
+                if (simpleWeaponList[count].name == selectedItemList[count].name)
                     simpleWeaponList[count].selected = true
+            }
+        }*/
+
+        if (selectedItemList.isNotEmpty()) {
+
+            for (one: InventoryItem in selectedItemList){
+                simpleWeaponList[getIndexElement(simpleWeaponList, one)].selected = true
             }
         }
 
-        return simpleWeaponList
+            return simpleWeaponList
+        }
+
+        private fun getIndexElement(list: List<InventoryItem>, element: InventoryItem): Int{
+            for(one: InventoryItem in list){
+                if(one.name == element.name){
+                    return list.indexOf(one)
+                }
+            }
+
+            return 0
+        }
+
+        fun getTypeItemList(): List<String> {
+            return generalDataMutable!!.typeItemList
+        }
+
+        fun getMaxInventoryItem(): Int {
+            return selectionDataMutable!!.maxItem
+        }
+
+        fun load() {
+            val weaponList: List<Weapon> = getWeaponUseCase.all
+            val selectedItemList: List<InventoryItem> = getItemUseCase.all
+
+            generalDataMutable = GeneralData(
+                weaponList
+            )
+
+            selectionDataMutable = SelectionData(
+                selectedItemList
+            )
+        }
+
+
+        override fun onCleared() {
+// CODE
+            super.onCleared()
+        }
+
+
     }
-
-    fun getTypeItemList(): List<String>{
-        return generalDataMutable!!.typeItemList
-    }
-
-    fun getMaxInventoryItem() : Int{
-        return selectionDataMutable!!.maxItem
-    }
-
-    fun load(){
-        val weaponList: List<Weapon> = getWeaponUseCase.all
-        val usingItemList: List<InventoryItem> = getItemUseCase.all
-
-        generalDataMutable = GeneralData(
-            weaponList
-        )
-
-        selectionDataMutable = SelectionData(
-            usingItemList
-        )
-    }
-
-    override fun onCleared() {
-        // CODE
-        super.onCleared()
-    }
-
-
-}

@@ -43,7 +43,7 @@ public class ItemDBAdapter {
 
     // (#)
     public List<InventoryItemStorage> getAllItem(){
-        ArrayList<InventoryItemStorage> ItemParams = new ArrayList<>();
+        ArrayList<InventoryItemStorage> itemList = new ArrayList<>();
         Cursor cursor = getAllEntries();
 
         int id_column_id = cursor.getColumnIndex(ItemDBHelper.KEY_ID);
@@ -57,11 +57,11 @@ public class ItemDBAdapter {
             String name = cursor.getString(name_column_id);
             String type = cursor.getString(type_column_id);
 
-            ItemParams.add(new InventoryItemStorage(name, type));
+            itemList.add(new InventoryItemStorage(name, type));
         }
 
         cursor.close();
-        return  ItemParams;
+        return  itemList;
     }
 
     public void saveAllItem(List<InventoryItemStorage> list){

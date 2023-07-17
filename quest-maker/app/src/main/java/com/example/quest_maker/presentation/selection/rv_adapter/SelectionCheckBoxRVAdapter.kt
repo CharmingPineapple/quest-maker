@@ -21,54 +21,40 @@ class SelectionCheckBoxRVAdapter (
     private var intent: Intent = Intent("current-selected-num-action")
 
     private var listAll: MutableList<InventoryItem>? = null
-    //private var weaponList: MutableList<InventoryItem>? = null
-    /*private var equipmentList: MutableList<InventoryItem>? = null
-    private var trinketsList: MutableList<InventoryItem>? = null*/
-
-    //val typeItemList: List<String> = listOf("weapon", "equipment", "trinkets")
-    //private var typeList: List<String>? = null
 
     private var currentList: MutableList<InventoryItem> = ArrayList()
 
     private var maxItemNum: Int? = 0
 
-    private var selectedNum: Int? = 0
-
-    // Удалить '?' когда уже будут передаваться equipmentList и trinketsList
-    fun setData(newList: List<InventoryItem>, /*newEquipmentList: List<InventoryItem>?, newTrinketsList: List<InventoryItem>?,*/   /*newTypeList: List<String>,*/ newMaxItemNum: Int){
+    fun setData(newList: List<InventoryItem>, newMaxItemNum: Int) {
         this.listAll = newList.toMutableList()
-        /*this.equipmentList = newEquipmentList?.toMutableList()
-        this.trinketsList = newTrinketsList?.toMutableList()*/
 
-        //this.typeList = newTypeList
         this.maxItemNum = newMaxItemNum
-        //selectedNum = weaponList!!.size
         notifyDataSetChanged()
     }
 
-    //fun setData(a:Int){}
+    fun setList(type: String) {
 
-    fun setList(type: String){
         currentList.clear()
 
-        for(one: InventoryItem in listAll!!){
-            if(one.type == type)
+        for (one: InventoryItem in listAll!!) {
+            if (one.type == type)
                 currentList.add(one)
         }
 
         notifyDataSetChanged()
     }
 
-    /*fun getSelectedWeaponList(): List<InventoryItem> {
+    fun getSelectedWeaponList(): List<InventoryItem> {
         val selectedWeaponList: MutableList<InventoryItem> = ArrayList()
 
-        for(count: Int in 0 until listAll!!.size){
-            if(listAll!![count].selected)
-                selectedWeaponList.add(listAll!![count])
+        for (one: InventoryItem in listAll!!) {
+            if (one.selected)
+                selectedWeaponList.add(one)
         }
 
         return selectedWeaponList
-    }*/
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -88,7 +74,7 @@ class SelectionCheckBoxRVAdapter (
         else
             holder.checkBox.visibility = View.VISIBLE
 
-        holder.checkBox.setOnClickListener{
+        holder.checkBox.setOnClickListener {
             one.selected = !one.selected
             notifyDataSetChanged()
         }
@@ -100,7 +86,7 @@ class SelectionCheckBoxRVAdapter (
         return currentList.size
     }
 
-    inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var checkBox: CheckBox
         var nameTextView: TextView
@@ -111,10 +97,10 @@ class SelectionCheckBoxRVAdapter (
         }
     }
 
-    private fun calcNumSelected(): Int{
-        var count: Int = 0
+    private fun calcNumSelected(): Int {
+        var count = 0
 
-        for(one: InventoryItem in listAll!!){
+        for (one: InventoryItem in listAll!!) {
             if (one.selected)
                 count++
         }
@@ -124,11 +110,4 @@ class SelectionCheckBoxRVAdapter (
 
         return count
     }
-
-    /*private fun calc() : Int{
-        var count: Int
-    }*/
-
 }
-
-//class MapList (var type: String, var list: MutableList<InventoryItem>)
