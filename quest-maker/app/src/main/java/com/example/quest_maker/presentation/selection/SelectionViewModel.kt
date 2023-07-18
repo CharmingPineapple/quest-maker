@@ -35,14 +35,14 @@ class SelectionViewModel(
         return generalDataMutable!!.weaponList
     }
 
-    private fun getEquipmentList() : List<Equipment>{
+    private fun getEquipmentList(): List<Equipment> {
         return generalDataMutable!!.equipmentList
     }
 
     // (!#)
     fun getSimpleItemList(): List<InventoryItem> {
         val weaponList: List<Weapon> = getWeaponList()
-        //val equipmentList : List<Weapon> = getEquipmentList()
+        val equipmentList: List<Equipment> = getEquipmentList()
         //val trinketsList : List<Weapon> = getTrinketsList()
 
         val simpleItemList: MutableList<InventoryItem> = ArrayList()
@@ -50,17 +50,12 @@ class SelectionViewModel(
 
         // get all weapon from DB
         for (one: Weapon in weaponList) {
-            simpleItemList.add(
-                InventoryItem(
-                    one.name,
-                    "weapon"
-                )
-            )
+            simpleItemList.add(InventoryItem(one.name, "weapon"))
         }
 
-        /*for(one: Equipment in equipmentList){
+        for (one: Equipment in equipmentList) {
             simpleItemList.add(InventoryItem(one.name, "equipment"))
-        }*/
+        }
 
         /*for(one: Trinkets in trinketsList){
             simpleItemList.add(InventoryItem(one.name, "trinkets"))
@@ -68,9 +63,9 @@ class SelectionViewModel(
 
         // mark the selected weapon
         if (selectedItemList.isNotEmpty()) {
-            for (count: Int in 0 until simpleItemList.size) {
-                if (simpleItemList[count].name == selectedItemList[0].name)
-                    simpleItemList[count].selected = true
+
+            for (one: InventoryItem in selectedItemList) {
+                simpleItemList[getIndexElement(simpleItemList, one)].selected = true
             }
         }
 
@@ -92,62 +87,54 @@ class SelectionViewModel(
             )
         }
 
-        // mark the selected weapon
-        /*if (selectedItemList.isNotEmpty()) {
-            for (count: Int in 0 until simpleWeaponList.size) {
-                if (simpleWeaponList[count].name == selectedItemList[count].name)
-                    simpleWeaponList[count].selected = true
-            }
-        }*/
-
         if (selectedItemList.isNotEmpty()) {
 
-            for (one: InventoryItem in selectedItemList){
+            for (one: InventoryItem in selectedItemList) {
                 simpleWeaponList[getIndexElement(simpleWeaponList, one)].selected = true
             }
         }
 
-            return simpleWeaponList
-        }
-
-        private fun getIndexElement(list: List<InventoryItem>, element: InventoryItem): Int{
-            for(one: InventoryItem in list){
-                if(one.name == element.name){
-                    return list.indexOf(one)
-                }
-            }
-
-            return 0
-        }
-
-        fun getTypeItemList(): List<String> {
-            return generalDataMutable!!.typeItemList
-        }
-
-        fun getMaxInventoryItem(): Int {
-            return selectionDataMutable!!.maxItem
-        }
-
-        fun load() {
-            val weaponList: List<Weapon> = getWeaponUseCase.all
-            val equipmentList: List<Equipment> = getEquipmentUseCase.all
-            val selectedItemList: List<InventoryItem> = getItemUseCase.all
-
-            generalDataMutable = GeneralData(
-                weaponList,
-                equipmentList
-            )
-
-            selectionDataMutable = SelectionData(
-                selectedItemList
-            )
-        }
-
-
-        override fun onCleared() {
-// CODE
-            super.onCleared()
-        }
-
-
+        return simpleWeaponList
     }
+
+    private fun getIndexElement(list: List<InventoryItem>, element: InventoryItem): Int {
+        for (one: InventoryItem in list) {
+            if (one.name == element.name) {
+                return list.indexOf(one)
+            }
+        }
+
+        return 0
+    }
+
+    fun getTypeItemList(): List<String> {
+        return generalDataMutable!!.typeItemList
+    }
+
+    fun getMaxInventoryItem(): Int {
+        return selectionDataMutable!!.maxItem
+    }
+
+    fun load() {
+        val weaponList: List<Weapon> = getWeaponUseCase.all
+        val equipmentList: List<Equipment> = getEquipmentUseCase.all
+        val selectedItemList: List<InventoryItem> = getItemUseCase.all
+
+        generalDataMutable = GeneralData(
+            weaponList,
+            equipmentList
+        )
+
+        selectionDataMutable = SelectionData(
+            selectedItemList
+        )
+    }
+
+
+    override fun onCleared() {
+// CODE
+        super.onCleared()
+    }
+
+
+}

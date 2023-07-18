@@ -61,7 +61,7 @@ class SelectionActivity : AppCompatActivity() {
         saveButton = findViewById(R.id.Button_save_selection)
 
         saveButton!!.setOnClickListener {
-            viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedWeaponList())
+            viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
         }
 
         selectedLimitTV?.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
@@ -105,7 +105,7 @@ class SelectionActivity : AppCompatActivity() {
                 selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
 
                 // (!#) - Заменить список оружия на список всех предметов
-                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleWeaponList(), viewModel.getMaxInventoryItem())
+                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleItemList(), viewModel.getMaxInventoryItem())
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
                 recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 

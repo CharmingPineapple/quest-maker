@@ -45,15 +45,15 @@ class SelectionCheckBoxRVAdapter (
         notifyDataSetChanged()
     }
 
-    fun getSelectedWeaponList(): List<InventoryItem> {
-        val selectedWeaponList: MutableList<InventoryItem> = ArrayList()
+    fun getSelectedItemList(): List<InventoryItem> {
+        val selectedItemList: MutableList<InventoryItem> = ArrayList()
 
         for (one: InventoryItem in listAll!!) {
             if (one.selected)
-                selectedWeaponList.add(one)
+                selectedItemList.add(one)
         }
 
-        return selectedWeaponList
+        return selectedItemList
     }
 
     override fun onCreateViewHolder(
