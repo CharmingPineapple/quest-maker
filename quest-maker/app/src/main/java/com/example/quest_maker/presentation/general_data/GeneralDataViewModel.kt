@@ -11,21 +11,25 @@ class GeneralDataViewModel (
     private val getEquipmentUseCase: GetEquipmentUseCase
 ) : ViewModel() {
 
-    private var dataMutable: GeneralData? = null
+    private var generalDataMutable: GeneralData? = null
 
     fun getWeaponList() : List<Weapon>{
-        return dataMutable!!.weaponList
+        return generalDataMutable!!.weaponList
     }
 
     fun getEquipmentList() : List<Equipment>{
-        return dataMutable!!.equipmentList
+        return generalDataMutable!!.equipmentList
+    }
+
+    fun getTypeItemList(): List<String> {
+        return generalDataMutable!!.typeItemList
     }
 
     fun load(){
         val weaponList: List<Weapon> = getWeaponUseCase.all
         val equipmentList: List<Equipment> = getEquipmentUseCase.all
 
-        dataMutable = GeneralData(
+        generalDataMutable = GeneralData(
             weaponList,
             equipmentList
         )

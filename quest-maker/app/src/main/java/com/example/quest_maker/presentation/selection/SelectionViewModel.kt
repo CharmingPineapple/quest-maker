@@ -2,6 +2,7 @@ package com.example.quest_maker.presentation.selection
 
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.author.InventoryItem
+import com.example.domain.models.viewer.Equipment
 import com.example.domain.models.viewer.Weapon
 import com.example.domain.usecase.author.inv_item.GetItemUseCase
 import com.example.domain.usecase.author.inv_item.SaveItemUseCase
@@ -32,6 +33,10 @@ class SelectionViewModel(
 
     private fun getWeaponList(): List<Weapon> {
         return generalDataMutable!!.weaponList
+    }
+
+    private fun getEquipmentList() : List<Equipment>{
+        return generalDataMutable!!.equipmentList
     }
 
     // (!#)
@@ -125,10 +130,12 @@ class SelectionViewModel(
 
         fun load() {
             val weaponList: List<Weapon> = getWeaponUseCase.all
+            val equipmentList: List<Equipment> = getEquipmentUseCase.all
             val selectedItemList: List<InventoryItem> = getItemUseCase.all
 
             generalDataMutable = GeneralData(
-                weaponList
+                weaponList,
+                equipmentList
             )
 
             selectionDataMutable = SelectionData(
