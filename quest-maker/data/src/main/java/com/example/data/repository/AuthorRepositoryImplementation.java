@@ -1,10 +1,10 @@
 package com.example.data.repository;
 
 import com.example.data.storage.AuthorStorageInterface;
-import com.example.data.storage.models.InventoryItemStorage;
-import com.example.data.storage.models.PersonItemStorage;
-import com.example.domain.models.InventoryItem;
-import com.example.domain.models.PersonItem;
+import com.example.data.storage.models.author.InventoryItemStorage;
+import com.example.data.storage.models.author.PersonItemStorage;
+import com.example.domain.models.author.InventoryItem;
+import com.example.domain.models.author.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.ArrayList;

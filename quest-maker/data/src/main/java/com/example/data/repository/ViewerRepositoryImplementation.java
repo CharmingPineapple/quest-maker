@@ -1,8 +1,10 @@
 package com.example.data.repository;
 
 import com.example.data.storage.ViewerStorageInterface;
-import com.example.data.storage.models.WeaponStorage;
-import com.example.domain.models.Weapon;
+import com.example.data.storage.models.viewer.EquipmentStorage;
+import com.example.data.storage.models.viewer.WeaponStorage;
+import com.example.domain.models.viewer.Equipment;
+import com.example.domain.models.viewer.Weapon;
 import com.example.domain.repository.ViewerRepositoryInterface;
 
 import java.util.ArrayList;
@@ -22,6 +24,17 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
 
         for(WeaponStorage one : listS){
             listD.add(weaponMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public List<Equipment> getAllEquipment(){
+        List<EquipmentStorage> listS = viewerStorageInterface.getAllEquipment();
+        List<Equipment> listD = new ArrayList<>();
+
+        for(EquipmentStorage one : listS){
+            listD.add(equipmentMapToDomain(one));
         }
 
         return listD;
@@ -54,6 +67,18 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
                 Integer.toString(one.speed_equip),
                 Integer.toString(one.hit_chance),
                 Integer.toString(one.throw_damage),
+                Integer.toString(one.sell_price),
+                one.description
+        );
+    }
+
+    private Equipment equipmentMapToDomain(EquipmentStorage one){
+        return new Equipment(
+                one.name,
+                one.traits,
+                one.effect,
+                one.source,
+                Integer.toString(one.buy_price),
                 Integer.toString(one.sell_price),
                 one.description
         );

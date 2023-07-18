@@ -6,8 +6,8 @@ import com.example.data.storage.AuthorStorageInterface;
 import com.example.data.storage.database.database.personal.adapter.ItemDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.MainParameterDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.SkillDBAdapter;
-import com.example.data.storage.models.InventoryItemStorage;
-import com.example.data.storage.models.PersonItemStorage;
+import com.example.data.storage.models.author.InventoryItemStorage;
+import com.example.data.storage.models.author.PersonItemStorage;
 
 
 import java.util.List;

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.Weapon
+import com.example.domain.models.viewer.Weapon
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.general_data.rv_adapter.WeaponRVAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel

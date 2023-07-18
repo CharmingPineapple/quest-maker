@@ -1,6 +1,6 @@
 package com.example.quest_maker.presentation.selection
 
-import com.example.domain.models.InventoryItem
+import com.example.domain.models.author.InventoryItem
 
 data class SelectionData(
     val selectedItemList: List<InventoryItem>,

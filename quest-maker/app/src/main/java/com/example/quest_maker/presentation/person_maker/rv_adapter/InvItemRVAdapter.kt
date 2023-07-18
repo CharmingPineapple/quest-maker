@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.InventoryItem
+import com.example.domain.models.author.InventoryItem
 import com.example.quest_maker.R
 
 class InvItemRVAdapter (

@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.PersonItem
+import com.example.domain.models.author.PersonItem
 import com.example.quest_maker.R
 
 class SkillRVAdapter(

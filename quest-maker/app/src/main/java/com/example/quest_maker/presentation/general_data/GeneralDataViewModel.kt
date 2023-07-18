@@ -1,21 +1,14 @@
 package com.example.quest_maker.presentation.general_data
 
 import androidx.lifecycle.ViewModel
-import com.example.domain.models.InventoryItem
-import com.example.domain.models.PersonItem
-import com.example.domain.models.Weapon
-import com.example.domain.usecase.inv_item.GetItemUseCase
-import com.example.domain.usecase.inv_item.SaveItemUseCase
-import com.example.domain.usecase.main_parameter.GetMainParameterUseCase
-import com.example.domain.usecase.main_parameter.SaveMainParameterUseCase
-import com.example.domain.usecase.skill.GetSkillUseCase
-import com.example.domain.usecase.skill.SaveSkillUseCase
-import com.example.domain.usecase.weapon.GetWeaponUseCase
-import com.example.quest_maker.presentation.general_data.GeneralData
-import com.example.quest_maker.presentation.person_maker.PersonMakerData
+import com.example.domain.models.viewer.Equipment
+import com.example.domain.models.viewer.Weapon
+import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
+import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 
 class GeneralDataViewModel (
-    private val getWeaponUseCase: GetWeaponUseCase
+    private val getWeaponUseCase: GetWeaponUseCase,
+    private val getEquipmentUseCase: GetEquipmentUseCase
 ) : ViewModel() {
 
     private var dataMutable: GeneralData? = null
@@ -24,11 +17,17 @@ class GeneralDataViewModel (
         return dataMutable!!.weaponList
     }
 
+    fun getEquipmentList() : List<Equipment>{
+        return dataMutable!!.equipmentList
+    }
+
     fun load(){
         val weaponList: List<Weapon> = getWeaponUseCase.all
+        val equipmentList: List<Equipment> = getEquipmentUseCase.all
 
         dataMutable = GeneralData(
-            weaponList
+            weaponList,
+            equipmentList
         )
     }
 

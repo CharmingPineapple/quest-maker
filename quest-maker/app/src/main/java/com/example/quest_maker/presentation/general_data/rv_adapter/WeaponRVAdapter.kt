@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.Weapon
+import com.example.domain.models.viewer.Weapon
 import com.example.quest_maker.R
 
 class WeaponRVAdapter(private val context: Context,

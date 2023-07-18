@@ -1,7 +1,7 @@
 package com.example.quest_maker.presentation.person_maker
 
-import com.example.domain.models.InventoryItem
-import com.example.domain.models.PersonItem
+import com.example.domain.models.author.InventoryItem
+import com.example.domain.models.author.PersonItem
 
 data class PersonMakerData(
     val skillList: List<PersonItem>,

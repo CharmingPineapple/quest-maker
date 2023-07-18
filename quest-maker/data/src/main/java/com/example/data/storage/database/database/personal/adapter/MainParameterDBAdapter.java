@@ -7,7 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.data.storage.database.database.personal.MainParameterDBHelper;
-import com.example.data.storage.models.PersonItemStorage;
+import com.example.data.storage.models.author.PersonItemStorage;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.InventoryItem
+import com.example.domain.models.author.InventoryItem
 import com.example.quest_maker.R
 
 class SelectionCheckBoxRVAdapter (
