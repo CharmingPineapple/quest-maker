@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.InventoryItem
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.selection.rv_adapter.SelectionCheckBoxRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -122,7 +121,7 @@ class SelectionActivity : AppCompatActivity() {
             ft.commit()
         }*/
     }
-    
+
     private var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent) {
             // Get extra data included in the Intent

@@ -1,7 +1,7 @@
 package com.example.data.storage;
 
-import com.example.data.storage.models.InventoryItemStorage;
-import com.example.data.storage.models.PersonItemStorage;
+import com.example.data.storage.models.author.InventoryItemStorage;
+import com.example.data.storage.models.author.PersonItemStorage;
 
 import java.util.List;
 

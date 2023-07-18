@@ -1,7 +1,6 @@
-package com.example.domain.usecase.inv_item;
+package com.example.domain.usecase.author.inv_item;
 
-import com.example.domain.models.InventoryItem;
-import com.example.domain.models.PersonItem;
+import com.example.domain.models.author.InventoryItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;

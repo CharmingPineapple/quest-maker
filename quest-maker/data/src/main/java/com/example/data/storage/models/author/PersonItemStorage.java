@@ -1,4 +1,4 @@
-package com.example.data.storage.models;
+package com.example.data.storage.models.author;
 
 public class PersonItemStorage {
 

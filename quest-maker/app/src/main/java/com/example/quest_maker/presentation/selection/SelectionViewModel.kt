@@ -1,18 +1,20 @@
 package com.example.quest_maker.presentation.selection
 
 import androidx.lifecycle.ViewModel
-import com.example.domain.models.InventoryItem
-import com.example.domain.models.Weapon
-import com.example.domain.usecase.inv_item.GetItemUseCase
-import com.example.domain.usecase.inv_item.SaveItemUseCase
-import com.example.domain.usecase.weapon.GetWeaponUseCase
+import com.example.domain.models.author.InventoryItem
+import com.example.domain.models.viewer.Weapon
+import com.example.domain.usecase.author.inv_item.GetItemUseCase
+import com.example.domain.usecase.author.inv_item.SaveItemUseCase
+import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
+import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
 
 class SelectionViewModel(
     private val getItemUseCase: GetItemUseCase,
     private val saveItemUseCase: SaveItemUseCase,
 
-    private val getWeaponUseCase: GetWeaponUseCase
+    private val getWeaponUseCase: GetWeaponUseCase,
+    private val getEquipmentUseCase: GetEquipmentUseCase
 ) : ViewModel() {
 
     private var generalDataMutable: GeneralData? = null
@@ -43,7 +45,12 @@ class SelectionViewModel(
 
         // get all weapon from DB
         for (one: Weapon in weaponList) {
-            simpleItemList.add(InventoryItem(one.name, "weapon"))
+            simpleItemList.add(
+                InventoryItem(
+                    one.name,
+                    "weapon"
+                )
+            )
         }
 
         /*for(one: Equipment in equipmentList){
@@ -72,7 +79,12 @@ class SelectionViewModel(
 
         // get all weapon from DB
         for (one: Weapon in weaponList) {
-            simpleWeaponList.add(InventoryItem(one.name, "weapon"))
+            simpleWeaponList.add(
+                InventoryItem(
+                    one.name,
+                    "weapon"
+                )
+            )
         }
 
         // mark the selected weapon

@@ -1,6 +1,6 @@
-package com.example.domain.usecase.weapon;
+package com.example.domain.usecase.viewer.weapon;
 
-import com.example.domain.models.Weapon;
+import com.example.domain.models.viewer.Weapon;
 import com.example.domain.repository.ViewerRepositoryInterface;
 
 import java.util.List;

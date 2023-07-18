@@ -1,6 +1,6 @@
-package com.example.domain.usecase.skill;
+package com.example.domain.usecase.author.skill;
 
-import com.example.domain.models.PersonItem;
+import com.example.domain.models.author.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;

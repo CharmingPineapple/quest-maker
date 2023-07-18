@@ -3,8 +3,10 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.ViewerStorageInterface;
+import com.example.data.storage.database.database.general.adapter.EquipmentDBAdapter;
 import com.example.data.storage.database.database.general.adapter.WeaponDBAdapter;
-import com.example.data.storage.models.WeaponStorage;
+import com.example.data.storage.models.viewer.EquipmentStorage;
+import com.example.data.storage.models.viewer.WeaponStorage;
 
 import java.util.List;
 
@@ -23,6 +25,15 @@ public class DatabaseViewerStorageImplementation implements ViewerStorageInterfa
         weaponDBAdapter.close();
 
         return weaponStorageList;
+    }
+
+    public List<EquipmentStorage> getAllEquipment() {
+        EquipmentDBAdapter equipmentDBAdapter = new EquipmentDBAdapter(context);
+        equipmentDBAdapter.open();
+        List<EquipmentStorage> EquipmentStorageList = equipmentDBAdapter.getAllEquipment();
+        equipmentDBAdapter.close();
+
+        return EquipmentStorageList;
     }
 
 }
