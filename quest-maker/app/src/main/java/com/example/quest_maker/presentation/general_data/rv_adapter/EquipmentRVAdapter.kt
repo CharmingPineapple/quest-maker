@@ -26,7 +26,7 @@ class EquipmentRVAdapter(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = inflater.inflate(R.layout.rv_item_equipment, parent, false)
+        val view = inflater.inflate(R.layout.rv_item_equipment_table, parent, false)
 
         return ViewHolder(view)
     }
