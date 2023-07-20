@@ -75,8 +75,8 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
     }
 
 
-    public List<Item> getAllItem(){
-        List<ItemStorage> listS = authorStorageInterface.getAllInvItem();
+    public List<Item> getAllInventoryItem(){
+        List<ItemStorage> listS = authorStorageInterface.getAllInventoryItem();
         List<Item> listD = new ArrayList<>();
 
         for (ItemStorage one: listS){
@@ -86,14 +86,35 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         return listD;
     }
 
-    public void saveAllItem(List<Item> listD){
+    public void saveAllInventoryItem(List<Item> listD){
         List<ItemStorage> listS = new ArrayList<>();
 
         for (Item one: listD){
             listS.add(inventoryItemMapToStorage(one));
         }
 
-        authorStorageInterface.saveAllInvItem(listS);
+        authorStorageInterface.saveAllInventoryItem(listS);
+    }
+
+    public List<Item> getAllPersonInjury(){
+        List<ItemStorage> listS = authorStorageInterface.getAllPersonInjury();
+        List<Item> listD = new ArrayList<>();
+
+        for (ItemStorage one: listS){
+            listD.add(inventoryItemMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public void saveAllPersonInjury(List<Item> listD){
+        List<ItemStorage> listS = new ArrayList<>();
+
+        for (Item one: listD){
+            listS.add(inventoryItemMapToStorage(one));
+        }
+
+        authorStorageInterface.saveAllPersonInjury(listS);
     }
 
 

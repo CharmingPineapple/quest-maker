@@ -3,10 +3,10 @@ package com.example.quest_maker.presentation.person_maker
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.author.Item
 import com.example.domain.models.author.PersonItem
-import com.example.domain.usecase.author.inv_item.GetItemUseCase
+import com.example.domain.usecase.author.status_item.GetInventoryItemUseCase
 import com.example.domain.usecase.author.main_parameter.GetMainParameterUseCase
 import com.example.domain.usecase.author.skill.GetSkillUseCase
-import com.example.domain.usecase.author.inv_item.SaveItemUseCase
+import com.example.domain.usecase.author.status_item.SaveInventoryItemUseCase
 import com.example.domain.usecase.author.main_parameter.SaveMainParameterUseCase
 import com.example.domain.usecase.author.skill.SaveSkillUseCase
 
@@ -15,8 +15,8 @@ class PersonMakerViewModel(
     private val saveSkillUseCase: SaveSkillUseCase,
     private val getMainParameterUseCase: GetMainParameterUseCase,
     private val saveMainParameterUseCase: SaveMainParameterUseCase,
-    private val getItemUseCase: GetItemUseCase,
-    private val saveItemUseCase: SaveItemUseCase
+    private val getInventoryItemUseCase: GetInventoryItemUseCase,
+    private val saveInventoryItemUseCase: SaveInventoryItemUseCase
 ) : ViewModel() {
 
     //private val stateLiveMutable = MutableLiveData<PersonMakerState>()
@@ -38,7 +38,7 @@ class PersonMakerViewModel(
     fun save(skillList: List<PersonItem>, mpList: List<PersonItem>, itemList: List<Item>){
         saveSkillUseCase.saveAll(skillList)
         saveMainParameterUseCase.saveAll(mpList)
-        saveItemUseCase.saveAll(itemList)
+        saveInventoryItemUseCase.saveAll(itemList)
 
 
         // Если save() вызывается не в onStop
@@ -87,7 +87,7 @@ class PersonMakerViewModel(
     fun load(){
         val skillList: List<PersonItem> = getSkillUseCase.all
         val mpList: List<PersonItem> = getMainParameterUseCase.all
-        val itemList: List<Item> = getItemUseCase.all
+        val itemList: List<Item> = getInventoryItemUseCase.all
 
         dataMutable = PersonMakerData(
             skillList,

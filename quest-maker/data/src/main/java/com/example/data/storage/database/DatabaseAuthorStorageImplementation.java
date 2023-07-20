@@ -3,8 +3,9 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.AuthorStorageInterface;
-import com.example.data.storage.database.database.personal.adapter.ItemDBAdapter;
+import com.example.data.storage.database.database.personal.adapter.InventoryItemDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.MainParameterDBAdapter;
+import com.example.data.storage.database.database.personal.adapter.PersonInjuryDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.SkillDBAdapter;
 import com.example.data.storage.models.author.ItemStorage;
 import com.example.data.storage.models.author.PersonItemStorage;
@@ -79,20 +80,36 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         mainParameterDBAdapter.close();
     }
 
-    public List<ItemStorage> getAllInvItem(){
-        ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
-        itemDBAdapter.open();
-        List<ItemStorage> list = itemDBAdapter.getAllItem();
-        itemDBAdapter.close();
+    public List<ItemStorage> getAllInventoryItem(){
+        InventoryItemDBAdapter inventoryItemDBAdapter = new InventoryItemDBAdapter(context);
+        inventoryItemDBAdapter.open();
+        List<ItemStorage> list = inventoryItemDBAdapter.getAllItem();
+        inventoryItemDBAdapter.close();
 
         return list;
     }
 
-    public void saveAllInvItem(List<ItemStorage> list){
-        ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
-        itemDBAdapter.open();
-        itemDBAdapter.saveAllItem(list);
-        itemDBAdapter.close();
+    public void saveAllInventoryItem(List<ItemStorage> list){
+        InventoryItemDBAdapter inventoryItemDBAdapter = new InventoryItemDBAdapter(context);
+        inventoryItemDBAdapter.open();
+        inventoryItemDBAdapter.saveAllItem(list);
+        inventoryItemDBAdapter.close();
+    }
+
+    public List<ItemStorage> getAllPersonInjury(){
+        PersonInjuryDBAdapter personInjuryDBAdapter = new PersonInjuryDBAdapter(context);
+        personInjuryDBAdapter.open();
+        List<ItemStorage> list = personInjuryDBAdapter.getAllItem();
+        personInjuryDBAdapter.close();
+
+        return list;
+    }
+
+    public void saveAllPersonInjury(List<ItemStorage> list){
+        PersonInjuryDBAdapter personInjuryDBAdapter = new PersonInjuryDBAdapter(context);
+        personInjuryDBAdapter.open();
+        personInjuryDBAdapter.saveAllItem(list);
+        personInjuryDBAdapter.close();
     }
 
 

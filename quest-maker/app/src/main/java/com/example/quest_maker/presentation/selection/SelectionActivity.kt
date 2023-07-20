@@ -105,7 +105,7 @@ class SelectionActivity : AppCompatActivity() {
                 selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
 
                 // (!#) - Заменить список оружия на список всех предметов
-                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleItemList(), viewModel.getMaxInventoryItem())
+                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleInventoryItemList(), viewModel.getMaxInventoryItem())
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
                 recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 

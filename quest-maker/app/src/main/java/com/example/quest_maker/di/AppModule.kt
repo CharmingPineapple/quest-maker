@@ -14,8 +14,8 @@ val appModule = module {
             saveSkillUseCase = get(),
             getMainParameterUseCase = get(),
             saveMainParameterUseCase = get(),
-            getItemUseCase = get(),
-            saveItemUseCase = get()
+            getInventoryItemUseCase = get(),
+            saveInventoryItemUseCase = get()
         )
     }
 
@@ -30,8 +30,8 @@ val appModule = module {
 
     viewModel<SelectionViewModel>{
         SelectionViewModel(
-            getItemUseCase = get(),
-            saveItemUseCase = get(),
+            getInventoryItemUseCase = get(),
+            saveInventoryItemUseCase = get(),
             getWeaponUseCase = get(),
             getEquipmentUseCase = get(),
             getTrinketUseCase = get(),

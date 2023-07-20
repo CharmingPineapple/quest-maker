@@ -12,16 +12,16 @@ import com.example.data.storage.models.author.ItemStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDBAdapter {
+public class InventoryItemDBAdapter {
 
     private InventoryItemDBHelper dbHelper;
     private SQLiteDatabase database;
 
-    public ItemDBAdapter(Context context){
+    public InventoryItemDBAdapter(Context context){
         dbHelper = new InventoryItemDBHelper(context.getApplicationContext());
     }
 
-    public ItemDBAdapter open(){
+    public InventoryItemDBAdapter open(){
         database = dbHelper.getWritableDatabase();
         return this;
     }

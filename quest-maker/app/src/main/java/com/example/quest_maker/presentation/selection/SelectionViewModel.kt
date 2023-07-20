@@ -6,8 +6,8 @@ import com.example.domain.models.viewer.Equipment
 import com.example.domain.models.viewer.Injury
 import com.example.domain.models.viewer.Trinket
 import com.example.domain.models.viewer.Weapon
-import com.example.domain.usecase.author.inv_item.GetItemUseCase
-import com.example.domain.usecase.author.inv_item.SaveItemUseCase
+import com.example.domain.usecase.author.status_item.GetInventoryItemUseCase
+import com.example.domain.usecase.author.status_item.SaveInventoryItemUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
 import com.example.domain.usecase.viewer.injury.GetInjuryUseCase
 import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
@@ -15,8 +15,8 @@ import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
 
 class SelectionViewModel(
-    private val getItemUseCase: GetItemUseCase,
-    private val saveItemUseCase: SaveItemUseCase,
+    private val getInventoryItemUseCase: GetInventoryItemUseCase,
+    private val saveInventoryItemUseCase: SaveInventoryItemUseCase,
 
     private val getWeaponUseCase: GetWeaponUseCase,
     private val getEquipmentUseCase: GetEquipmentUseCase,
@@ -30,11 +30,11 @@ class SelectionViewModel(
 
 
     fun save(itemList: List<Item>) {
-        saveItemUseCase.saveAll(itemList)
+        saveInventoryItemUseCase.saveAll(itemList)
     }
 
     fun saveInvItem(itemList: List<Item>) {
-        saveItemUseCase.saveAll(itemList)
+        saveInventoryItemUseCase.saveAll(itemList)
     }
 
 
@@ -55,7 +55,7 @@ class SelectionViewModel(
     }
 
     // (!#)
-    fun getSimpleItemList(): List<Item> {
+    fun getSimpleInventoryItemList(): List<Item> {
         val weaponList: List<Weapon> = getWeaponList()
         val equipmentList: List<Equipment> = getEquipmentList()
         val trinketList : List<Trinket> = getTrinketList()
@@ -154,7 +154,7 @@ class SelectionViewModel(
         val injuryList: List<Injury> = getInjuryUseCase.all
 
 
-        val selectedItemList: List<Item> = getItemUseCase.all
+        val selectedItemList: List<Item> = getInventoryItemUseCase.all
 
         generalDataMutable = GeneralData(
             weaponList,

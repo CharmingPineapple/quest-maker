@@ -26,7 +26,10 @@ public interface AuthorRepositoryInterface {
     void saveAllMainParameter(List<PersonItem> mpList);
 
     // ITEMS
-    List<Item> getAllItem();
+    List<Item> getAllInventoryItem();
 
-    void saveAllItem(List<Item> itemList);
+    void saveAllInventoryItem(List<Item> itemList);
+    List<Item> getAllPersonInjury();
+
+    void saveAllPersonInjury(List<Item> itemList);
 }
