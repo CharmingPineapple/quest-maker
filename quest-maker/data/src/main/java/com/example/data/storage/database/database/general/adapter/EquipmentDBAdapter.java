@@ -40,6 +40,7 @@ public class EquipmentDBAdapter {
                 EquipmentDBHelper.KEY_NAME,
                 EquipmentDBHelper.KEY_TRAITS,
                 EquipmentDBHelper.KEY_EFFECT,
+                EquipmentDBHelper.KEY_THROW_DAMAGE,
                 EquipmentDBHelper.KEY_SOURCE,
                 EquipmentDBHelper.KEY_BUY_PRICE,
                 EquipmentDBHelper.KEY_SELL_PRICE,
@@ -58,6 +59,7 @@ public class EquipmentDBAdapter {
         int name_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_NAME);
         int traits_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_TRAITS);
         int effect_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_EFFECT);
+        int throw_damage_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_THROW_DAMAGE);
         int source_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_SOURCE);
         int buy_price_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_BUY_PRICE);
         int sell_price_column_id = cursor.getColumnIndex(EquipmentDBHelper.KEY_SELL_PRICE);
@@ -69,6 +71,7 @@ public class EquipmentDBAdapter {
             String name = cursor.getString(name_column_id);
             String traits = cursor.getString(traits_column_id);
             String effect = cursor.getString(effect_column_id);
+            int throw_damage = cursor.getInt(throw_damage_column_id);
             String source = cursor.getString(source_column_id);
             int buy_price = cursor.getInt(buy_price_column_id);
             int sell_price = cursor.getInt(sell_price_column_id);
@@ -78,6 +81,7 @@ public class EquipmentDBAdapter {
                     name,
                     traits,
                     effect,
+                    throw_damage,
                     source,
                     buy_price,
                     sell_price,

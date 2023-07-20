@@ -37,6 +37,7 @@ class EquipmentRVAdapter(
         holder.name.text = one.name
         holder.traits.text = one.traits
         holder.effect.text = one.effect
+        holder.throwDamage.text = one.throw_damage
         holder.source.text = one.source
         holder.buyPrice.text = one.buy_price
         holder.sellPrice.text = one.sell_price
@@ -71,6 +72,7 @@ class EquipmentRVAdapter(
         var name: TextView
         var traits: TextView
         var effect: TextView
+        var throwDamage: TextView
         var source: TextView
         var buyPrice: TextView
         var sellPrice: TextView
@@ -88,6 +90,7 @@ class EquipmentRVAdapter(
             name = itemView.findViewById(R.id.RV_item_TV_equipment_name)
             traits = itemView.findViewById(R.id.RV_item_TV_equipment_traits)
             effect = itemView.findViewById(R.id.RV_item_TV_equipment_effect)
+            throwDamage = itemView.findViewById(R.id.RV_item_TV_equipment_throw_damage)
             source = itemView.findViewById(R.id.RV_item_TV_equipment_source)
             buyPrice = itemView.findViewById(R.id.RV_item_TV_equipment_buy_price)
             sellPrice = itemView.findViewById(R.id.RV_item_TV_equipment_sell_price)

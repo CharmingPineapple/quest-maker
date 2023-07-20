@@ -19,6 +19,7 @@ public class Equipment {
     public String name;
     public String traits;
     public String effect;
+    public String throw_damage;
     public String source;
     public String buy_price;
     public String sell_price;
@@ -26,16 +27,18 @@ public class Equipment {
 
 
     public Equipment(String name,
-                            String traits,
-                            String effect,
-                            String source,
-                            String buy_price,
-                            String sell_price,
-                            String description) {
+                     String traits,
+                     String effect,
+                     String throw_damage,
+                     String source,
+                     String buy_price,
+                     String sell_price,
+                     String description) {
 
         this.name = name;
         this.traits = traits;
         this.effect = effect;
+        this.throw_damage = throw_damage;
         this.source = source;
         this.buy_price = buy_price;
         this.sell_price = sell_price;

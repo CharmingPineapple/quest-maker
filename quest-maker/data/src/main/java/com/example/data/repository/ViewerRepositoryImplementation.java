@@ -77,6 +77,7 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
                 one.name,
                 one.traits,
                 one.effect,
+                Integer.toString(one.throw_damage),
                 one.source,
                 Integer.toString(one.buy_price),
                 Integer.toString(one.sell_price),

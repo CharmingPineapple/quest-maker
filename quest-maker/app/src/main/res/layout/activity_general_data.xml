@@ -7,28 +7,30 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/general_data_navigation_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_margin="5dp"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
 
-                <Spinner
-                    android:id="@+id/spinner_general_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+            <Spinner
+                android:id="@+id/spinner_general_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RV_general_data"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

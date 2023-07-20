@@ -83,6 +83,29 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/RV_item_TV_equipment_throw_damage_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:layout_margin="5dp"
+                android:text="Throw damage"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/RV_item_TV_equipment_throw_damage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:textSize="18sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
                 android:id="@+id/RV_item_TV_equipment_source_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

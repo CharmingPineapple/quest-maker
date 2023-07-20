@@ -15,6 +15,7 @@ public class EquipmentDBHelper extends SQLiteOpenHelper {
     public static final String KEY_NAME = "name";
     public static final String KEY_TRAITS = "traits";
     public static final String KEY_EFFECT = "effect";
+    public static final String KEY_THROW_DAMAGE = "throw_damage";
 
     // (?) - Нужен ли source или выбор будет настраиваться в сюжете
     // по идее он нужен, чтобы понимать, будет ли это в магазине,
@@ -35,7 +36,8 @@ public class EquipmentDBHelper extends SQLiteOpenHelper {
                 + KEY_ID + " integer primary key,"
                 + KEY_NAME + " text,"
                 + KEY_TRAITS + " text,"
-                + KEY_EFFECT + " integer,"
+                + KEY_EFFECT + " text,"
+                + KEY_THROW_DAMAGE + " integer,"
                 + KEY_SOURCE + " text,"
                 + KEY_BUY_PRICE + " integer,"
                 + KEY_SELL_PRICE + " integer,"
@@ -47,16 +49,15 @@ public class EquipmentDBHelper extends SQLiteOpenHelper {
                 + KEY_NAME          + ", "
                 + KEY_TRAITS        + ", "
                 + KEY_EFFECT        + ", "
+                + KEY_THROW_DAMAGE  + ", "
                 + KEY_SOURCE        + ", "
                 + KEY_BUY_PRICE     + ", "
                 + KEY_SELL_PRICE    + ", "
                 + KEY_DESCR         + ")"
                 + "values "
 
-                + "('Blue Gem', 'Important', 'Blue Gem feels cold in your hand', 'shop', 1, 0, 'It slightly vibrates in your hand.'),"
-                + "('eq 2', 'Important', 'Blue Gem feels cold in your hand', 'shop', 1, 0, 'It slightly vibrates in your hand.'),"
-                + "('eq 3', 'Important', 'Blue Gem feels cold in your hand', 'shop', 1, 0, 'It slightly vibrates in your hand.'),"
-                + "('eq 4', 'Important', 'Blue Gem feels cold in your hand', 'shop', 1, 0, 'It slightly vibrates in your hand.')");
+                + "('Backpack', 'item', 'allows 2 additional inventory slots', 2, 'shop',  2, 1, 'You could fit a lot in here...'),"
+                + "('Backpack2', 'item', 'allows 2 additional inventory slots', 2, 'shop',  2, 1, 'You could fit a lot in here...')");
 
     }
 
