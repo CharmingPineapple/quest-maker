@@ -16,11 +16,6 @@ public class InjuryDBHelper  extends SQLiteOpenHelper {
     //public static final String KEY_TRAITS = "traits";
     public static final String KEY_EFFECT = "effect"; //
 
-    // (?) - Нужен ли source или выбор будет настраиваться в сюжете
-    // по идее он нужен, чтобы понимать, будет ли это в магазине,
-    // пока что оставлю
-    //public static final String KEY_SOURCE = "source";
-
     // (?) - Возможно, не нужно и цена будет определяться просто по типу травмы (Будет же свод всех игровых параметров)
     //public static final String KEY_TREATMENT_PRICE = "treatment_price"; //
     public static final String KEY_DESCR = "description"; //

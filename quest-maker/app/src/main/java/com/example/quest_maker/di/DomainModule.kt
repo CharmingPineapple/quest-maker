@@ -7,6 +7,7 @@ import com.example.domain.usecase.author.inv_item.SaveItemUseCase
 import com.example.domain.usecase.author.main_parameter.SaveMainParameterUseCase
 import com.example.domain.usecase.author.skill.SaveSkillUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
+import com.example.domain.usecase.viewer.injury.GetInjuryUseCase
 import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
 import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import org.koin.dsl.module
@@ -52,6 +53,10 @@ val domainModule = module {
 
     factory<GetTrinketUseCase> {
         GetTrinketUseCase(get())
+    }
+
+    factory<GetInjuryUseCase> {
+        GetInjuryUseCase(get())
     }
 
 }
