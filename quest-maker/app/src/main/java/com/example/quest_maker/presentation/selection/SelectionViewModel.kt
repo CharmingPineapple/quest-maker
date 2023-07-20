@@ -55,6 +55,8 @@ class SelectionViewModel(
         val simpleItemList: MutableList<InventoryItem> = ArrayList()
         val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
 
+
+        // (!) - some hardcode
         // get all weapon from DB
         for (one: Weapon in weaponList) {
             simpleItemList.add(InventoryItem(one.name, "weapon"))
@@ -65,7 +67,7 @@ class SelectionViewModel(
         }
 
         for(one: Trinket in trinketList){
-            simpleItemList.add(InventoryItem(one.name, "trinkets"))
+            simpleItemList.add(InventoryItem(one.name, "trinket"))
         }
 
         // mark the selected weapon

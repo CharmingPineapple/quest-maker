@@ -9,7 +9,7 @@ data class GeneralData (
     val equipmentList: List<Equipment>,
     val trinketList: List<Trinket>,
 
-    val typeItemList: List<String> = listOf("weapon", "equipment", "trinkets"),
+    val typeItemList: List<String> = listOf("weapon", "equipment", "trinket"),
     val typeInjuryList: List<String> = listOf("minor", "major")
     // another lists
 )
