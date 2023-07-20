@@ -32,9 +32,14 @@ val appModule = module {
         SelectionViewModel(
             getInventoryItemUseCase = get(),
             saveInventoryItemUseCase = get(),
+
             getWeaponUseCase = get(),
             getEquipmentUseCase = get(),
             getTrinketUseCase = get(),
+
+            getPersonInjuryUseCase = get(),
+            savePersonInjuryUseCase = get(),
+
             getInjuryUseCase = get()
         )
     }

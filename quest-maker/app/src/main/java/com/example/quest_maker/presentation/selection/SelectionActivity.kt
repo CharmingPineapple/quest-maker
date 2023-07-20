@@ -99,7 +99,7 @@ class SelectionActivity : AppCompatActivity() {
             R.id.menu_inventory -> {
                 // добавить спинер
 
-                spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeItemList())
+                spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
                 spinner!!.adapter = spinnerAdapter
 
                 selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
@@ -111,6 +111,10 @@ class SelectionActivity : AppCompatActivity() {
 
 
                 //selectionCheckBoxRVAdapter!!.weaponList
+
+            }
+
+            R.id.menu_injury -> {
 
             }
 
