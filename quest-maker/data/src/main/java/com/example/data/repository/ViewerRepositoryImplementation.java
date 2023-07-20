@@ -2,9 +2,11 @@ package com.example.data.repository;
 
 import com.example.data.storage.ViewerStorageInterface;
 import com.example.data.storage.models.viewer.EquipmentStorage;
+import com.example.data.storage.models.viewer.InjuryStorage;
 import com.example.data.storage.models.viewer.TrinketStorage;
 import com.example.data.storage.models.viewer.WeaponStorage;
 import com.example.domain.models.viewer.Equipment;
+import com.example.domain.models.viewer.Injury;
 import com.example.domain.models.viewer.Trinket;
 import com.example.domain.models.viewer.Weapon;
 import com.example.domain.repository.ViewerRepositoryInterface;
@@ -48,6 +50,17 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
 
         for(TrinketStorage one : listS){
             listD.add(trinketMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public List<Injury> getAllInjury(){
+        List<InjuryStorage> listS = viewerStorageInterface.getAllInjury();
+        List<Injury> listD = new ArrayList<>();
+
+        for(InjuryStorage one : listS){
+            listD.add(injuryMapToDomain(one));
         }
 
         return listD;
@@ -106,6 +119,15 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
                 one.source,
                 Integer.toString(one.buy_price),
                 Integer.toString(one.sell_price),
+                one.description
+        );
+    }
+
+    private Injury injuryMapToDomain(InjuryStorage one){
+        return new Injury(
+                one.name,
+                one.type,
+                one.effect,
                 one.description
         );
     }

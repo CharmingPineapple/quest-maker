@@ -4,9 +4,11 @@ import android.content.Context;
 
 import com.example.data.storage.ViewerStorageInterface;
 import com.example.data.storage.database.database.general.adapter.EquipmentDBAdapter;
+import com.example.data.storage.database.database.general.adapter.InjuryDBAdapter;
 import com.example.data.storage.database.database.general.adapter.TrinketDBAdapter;
 import com.example.data.storage.database.database.general.adapter.WeaponDBAdapter;
 import com.example.data.storage.models.viewer.EquipmentStorage;
+import com.example.data.storage.models.viewer.InjuryStorage;
 import com.example.data.storage.models.viewer.TrinketStorage;
 import com.example.data.storage.models.viewer.WeaponStorage;
 
@@ -45,6 +47,15 @@ public class DatabaseViewerStorageImplementation implements ViewerStorageInterfa
         trinketDBAdapter.close();
 
         return trinketStorageList;
+    }
+
+    public List<InjuryStorage> getAllInjury() {
+        InjuryDBAdapter injuryDBAdapter = new InjuryDBAdapter(context);
+        injuryDBAdapter.open();
+        List<InjuryStorage> injuryStorageList = injuryDBAdapter.getAllInjury();
+        injuryDBAdapter.close();
+
+        return injuryStorageList;
     }
 
 }
