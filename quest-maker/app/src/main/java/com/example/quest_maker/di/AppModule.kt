@@ -22,7 +22,8 @@ val appModule = module {
     viewModel<GeneralDataViewModel>{
         GeneralDataViewModel(
             getWeaponUseCase = get(),
-            getEquipmentUseCase = get()
+            getEquipmentUseCase = get(),
+            getTrinketUseCase = get()
         )
     }
 
@@ -31,7 +32,8 @@ val appModule = module {
             getItemUseCase = get(),
             saveItemUseCase = get(),
             getWeaponUseCase = get(),
-            getEquipmentUseCase = get()
+            getEquipmentUseCase = get(),
+            getTrinketUseCase = get()
         )
     }
 

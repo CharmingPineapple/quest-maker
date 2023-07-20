@@ -2,8 +2,10 @@ package com.example.data.repository;
 
 import com.example.data.storage.ViewerStorageInterface;
 import com.example.data.storage.models.viewer.EquipmentStorage;
+import com.example.data.storage.models.viewer.TrinketStorage;
 import com.example.data.storage.models.viewer.WeaponStorage;
 import com.example.domain.models.viewer.Equipment;
+import com.example.domain.models.viewer.Trinket;
 import com.example.domain.models.viewer.Weapon;
 import com.example.domain.repository.ViewerRepositoryInterface;
 
@@ -35,6 +37,17 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
 
         for(EquipmentStorage one : listS){
             listD.add(equipmentMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public List<Trinket> getAllTrinket(){
+        List<TrinketStorage> listS = viewerStorageInterface.getAllTrinket();
+        List<Trinket> listD = new ArrayList<>();
+
+        for(TrinketStorage one : listS){
+            listD.add(trinketMapToDomain(one));
         }
 
         return listD;
@@ -78,6 +91,18 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
                 one.traits,
                 one.effect,
                 Integer.toString(one.throw_damage),
+                one.source,
+                Integer.toString(one.buy_price),
+                Integer.toString(one.sell_price),
+                one.description
+        );
+    }
+
+    private Trinket trinketMapToDomain(TrinketStorage one){
+        return new Trinket(
+                one.name,
+                one.traits,
+                one.effect,
                 one.source,
                 Integer.toString(one.buy_price),
                 Integer.toString(one.sell_price),

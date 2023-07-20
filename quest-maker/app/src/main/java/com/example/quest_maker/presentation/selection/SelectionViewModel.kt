@@ -3,10 +3,12 @@ package com.example.quest_maker.presentation.selection
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.author.InventoryItem
 import com.example.domain.models.viewer.Equipment
+import com.example.domain.models.viewer.Trinket
 import com.example.domain.models.viewer.Weapon
 import com.example.domain.usecase.author.inv_item.GetItemUseCase
 import com.example.domain.usecase.author.inv_item.SaveItemUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
+import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
 import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
 
@@ -15,7 +17,8 @@ class SelectionViewModel(
     private val saveItemUseCase: SaveItemUseCase,
 
     private val getWeaponUseCase: GetWeaponUseCase,
-    private val getEquipmentUseCase: GetEquipmentUseCase
+    private val getEquipmentUseCase: GetEquipmentUseCase,
+    private val getTrinketUseCase: GetTrinketUseCase,
 ) : ViewModel() {
 
     private var generalDataMutable: GeneralData? = null
@@ -39,11 +42,15 @@ class SelectionViewModel(
         return generalDataMutable!!.equipmentList
     }
 
+    private fun getTrinketList(): List<Trinket> {
+        return generalDataMutable!!.trinketList
+    }
+
     // (!#)
     fun getSimpleItemList(): List<InventoryItem> {
         val weaponList: List<Weapon> = getWeaponList()
         val equipmentList: List<Equipment> = getEquipmentList()
-        //val trinketsList : List<Weapon> = getTrinketsList()
+        val trinketList : List<Trinket> = getTrinketList()
 
         val simpleItemList: MutableList<InventoryItem> = ArrayList()
         val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
@@ -57,9 +64,9 @@ class SelectionViewModel(
             simpleItemList.add(InventoryItem(one.name, "equipment"))
         }
 
-        /*for(one: Trinkets in trinketsList){
+        for(one: Trinket in trinketList){
             simpleItemList.add(InventoryItem(one.name, "trinkets"))
-        }*/
+        }
 
         // mark the selected weapon
         if (selectedItemList.isNotEmpty()) {
@@ -72,7 +79,7 @@ class SelectionViewModel(
         return simpleItemList
     }
 
-    fun getSimpleWeaponList(): List<InventoryItem> {
+    /*fun getSimpleWeaponList(): List<InventoryItem> {
         val weaponList: List<Weapon> = getWeaponList()
         val simpleWeaponList: MutableList<InventoryItem> = ArrayList()
         val selectedItemList: List<InventoryItem> = selectionDataMutable!!.selectedItemList
@@ -95,7 +102,7 @@ class SelectionViewModel(
         }
 
         return simpleWeaponList
-    }
+    }*/
 
     private fun getIndexElement(list: List<InventoryItem>, element: InventoryItem): Int {
         for (one: InventoryItem in list) {
@@ -118,11 +125,14 @@ class SelectionViewModel(
     fun load() {
         val weaponList: List<Weapon> = getWeaponUseCase.all
         val equipmentList: List<Equipment> = getEquipmentUseCase.all
+        val trinketList: List<Trinket> = getTrinketUseCase.all
+
         val selectedItemList: List<InventoryItem> = getItemUseCase.all
 
         generalDataMutable = GeneralData(
             weaponList,
-            equipmentList
+            equipmentList,
+            trinketList
         )
 
         selectionDataMutable = SelectionData(

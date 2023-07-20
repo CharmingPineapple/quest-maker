@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.viewer.Weapon
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.general_data.rv_adapter.EquipmentRVAdapter
+import com.example.quest_maker.presentation.general_data.rv_adapter.TrinketRVAdapter
 import com.example.quest_maker.presentation.general_data.rv_adapter.WeaponRVAdapter
 import com.example.quest_maker.presentation.selection.rv_adapter.SelectionCheckBoxRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,8 +24,10 @@ class GeneralDataActivity : AppCompatActivity() {
     private val viewModel by viewModel<GeneralDataViewModel>()
 
     private var recycleView: RecyclerView? = null
+
     private var weaponRVAdapter: WeaponRVAdapter? = null
     private var equipmentRVAdapter: EquipmentRVAdapter? = null
+    private var trinketRVAdapter: TrinketRVAdapter? = null
 
     private var spinner: Spinner? = null
     private var spinnerAdapter: ArrayAdapter<String>? = null
@@ -47,6 +50,7 @@ class GeneralDataActivity : AppCompatActivity() {
 
         weaponRVAdapter = WeaponRVAdapter(this)
         equipmentRVAdapter = EquipmentRVAdapter(this)
+        trinketRVAdapter = TrinketRVAdapter(this)
 
         recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
@@ -65,6 +69,7 @@ class GeneralDataActivity : AppCompatActivity() {
                 when(spinnerAdapter!!.getItem(position).toString()){
                     typeItemList[0] -> recycleView!!.adapter = weaponRVAdapter
                     typeItemList[1] -> recycleView!!.adapter = equipmentRVAdapter
+                    typeItemList[2] -> recycleView!!.adapter = trinketRVAdapter
                 }
             }
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -103,6 +108,7 @@ class GeneralDataActivity : AppCompatActivity() {
     private fun setRVData(){
         weaponRVAdapter!!.setData(viewModel.getWeaponList())
         equipmentRVAdapter!!.setData(viewModel.getEquipmentList())
+        trinketRVAdapter!!.setData(viewModel.getTrinketList())
     }
 
 
