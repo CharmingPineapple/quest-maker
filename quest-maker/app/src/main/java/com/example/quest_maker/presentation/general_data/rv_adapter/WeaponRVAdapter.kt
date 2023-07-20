@@ -29,7 +29,7 @@ class WeaponRVAdapter(private val context: Context,
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = inflater.inflate(R.layout.rv_item_weapon, parent, false)
+        val view = inflater.inflate(R.layout.rv_item_weapon_table, parent, false)
 
         return ViewHolder(view)
     }
