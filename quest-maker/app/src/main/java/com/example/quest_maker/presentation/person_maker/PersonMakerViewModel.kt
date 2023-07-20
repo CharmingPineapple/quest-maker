@@ -81,7 +81,7 @@ class PersonMakerViewModel(
     }
 
     fun getItemList() : List<Item>{
-        return dataMutable!!.itemList
+        return dataMutable!!.inventoryItemList
     }
 
     fun load(){

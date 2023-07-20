@@ -6,7 +6,7 @@ import com.example.domain.models.author.PersonItem
 data class PersonMakerData(
     val skillList: List<PersonItem>,
     val mpList: List<PersonItem>,
-    val itemList: List<Item>,
+    val inventoryItemList: List<Item>,
 
     val maxSkillScore: Int = 40,
     val minSkillScore: Int = 34,
