@@ -9,7 +9,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.author.InventoryItem
+import com.example.domain.models.author.Item
 import com.example.quest_maker.R
 
 class SelectionCheckBoxRVAdapter (
@@ -20,13 +20,13 @@ class SelectionCheckBoxRVAdapter (
 
     private var intent: Intent = Intent("current-selected-num-action")
 
-    private var listAll: MutableList<InventoryItem>? = null
+    private var listAll: MutableList<Item>? = null
 
-    private var currentList: MutableList<InventoryItem> = ArrayList()
+    private var currentList: MutableList<Item> = ArrayList()
 
     private var maxItemNum: Int? = 0
 
-    fun setData(newList: List<InventoryItem>, newMaxItemNum: Int) {
+    fun setData(newList: List<Item>, newMaxItemNum: Int) {
         this.listAll = newList.toMutableList()
 
         this.maxItemNum = newMaxItemNum
@@ -37,7 +37,7 @@ class SelectionCheckBoxRVAdapter (
 
         currentList.clear()
 
-        for (one: InventoryItem in listAll!!) {
+        for (one: Item in listAll!!) {
             if (one.type == type)
                 currentList.add(one)
         }
@@ -45,10 +45,10 @@ class SelectionCheckBoxRVAdapter (
         notifyDataSetChanged()
     }
 
-    fun getSelectedItemList(): List<InventoryItem> {
-        val selectedItemList: MutableList<InventoryItem> = ArrayList()
+    fun getSelectedItemList(): List<Item> {
+        val selectedItemList: MutableList<Item> = ArrayList()
 
-        for (one: InventoryItem in listAll!!) {
+        for (one: Item in listAll!!) {
             if (one.selected)
                 selectedItemList.add(one)
         }
@@ -66,7 +66,7 @@ class SelectionCheckBoxRVAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val one: InventoryItem = currentList[position]
+        val one: Item = currentList[position]
         holder.nameTextView.text = one.name
 
         if (calcNumSelected() == maxItemNum && !one.selected)
@@ -100,7 +100,7 @@ class SelectionCheckBoxRVAdapter (
     private fun calcNumSelected(): Int {
         var count = 0
 
-        for (one: InventoryItem in listAll!!) {
+        for (one: Item in listAll!!) {
             if (one.selected)
                 count++
         }

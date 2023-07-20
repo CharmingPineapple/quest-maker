@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.author.InventoryItem
+import com.example.domain.models.author.Item
 import com.example.quest_maker.R
 
 class InvItemRVAdapter (
@@ -16,14 +16,14 @@ class InvItemRVAdapter (
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var list: MutableList<InventoryItem>? = null
+    private var list: MutableList<Item>? = null
 
-    fun setData(newList: List<InventoryItem>){
+    fun setData(newList: List<Item>){
         this.list = newList.toMutableList()
         notifyDataSetChanged()
     }
 
-    fun getList(): List<InventoryItem> {
+    fun getList(): List<Item> {
         return list!!
     }
 
@@ -37,7 +37,7 @@ class InvItemRVAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val one: InventoryItem = list!![position]
+        val one: Item = list!![position]
         holder.nameTextView.text = one.name
         holder.typeTextView.text = "("+ one.type + ")"
 

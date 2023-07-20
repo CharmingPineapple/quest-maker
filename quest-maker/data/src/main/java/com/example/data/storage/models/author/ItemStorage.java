@@ -1,11 +1,11 @@
 package com.example.data.storage.models.author;
 
-public class InventoryItemStorage {
+public class ItemStorage {
 
     public String name;
     public String type;
 
-    public InventoryItemStorage(String name, String type){
+    public ItemStorage(String name, String type){
         this.name = name;
         this.type = type;
     }

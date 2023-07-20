@@ -1,6 +1,6 @@
 package com.example.domain.usecase.author.inv_item;
 
-import com.example.domain.models.author.InventoryItem;
+import com.example.domain.models.author.Item;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class SaveItemUseCase {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
-    public void saveAll(List<InventoryItem> itemList){
+    public void saveAll(List<Item> itemList){
         authorRepositoryInterface.saveAllItem(itemList);
     }
 

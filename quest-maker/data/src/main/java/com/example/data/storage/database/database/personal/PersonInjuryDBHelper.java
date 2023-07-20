@@ -4,19 +4,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class ItemDBHelper extends SQLiteOpenHelper {
+public class PersonInjuryDBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "ItemDB";
-    public static final String TABLE_NAME = "ItemTable";
+    public static final String DB_NAME = "injuryDB";
+    public static final String TABLE_NAME = "injuryTable";
     public static final int DB_VERSION = 1;
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";
     public static final String KEY_TYPE = "type";
-    //public static final String KEY_ITEM_ID = "item_id";
 
-
-
-    public ItemDBHelper(Context context) {
+    public PersonInjuryDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -27,7 +24,6 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                 + KEY_ID + " integer primary key,"
                 + KEY_NAME + " text, "
                 + KEY_TYPE + " text "
-                //+ KEY_ITEM_ID + " integer"
                 + ") ");
 
         // (#)
@@ -35,12 +31,10 @@ public class ItemDBHelper extends SQLiteOpenHelper {
                 + "("
                 + KEY_NAME    + ", "
                 + KEY_TYPE    + " "
-                //+ KEY_ITEM_ID
                 + ")"
                 + "values "
 
-                + "('Baseball Bat', 'weapon')");
-                //+ "('Baseball Bat', 'weapon',  0)");
+                + "('Broken Bone', 'major')");
     }
 
     @Override

@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/inv"
-        android:title="inv" />
+        android:id="@+id/menu_inventory"
+        android:title="inventory" />
         <!--android:icon="@drawable/ic_open_book"-->
 
 
     <item
-        android:id="@+id/exmp1"
-        android:title="exmp1" />
+        android:id="@+id/menu_injury"
+        android:title="injury" />
         <!--android:icon="@drawable/ic_books"-->
 
     <item

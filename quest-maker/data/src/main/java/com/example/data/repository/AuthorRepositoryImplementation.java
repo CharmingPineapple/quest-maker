@@ -1,9 +1,9 @@
 package com.example.data.repository;
 
 import com.example.data.storage.AuthorStorageInterface;
-import com.example.data.storage.models.author.InventoryItemStorage;
+import com.example.data.storage.models.author.ItemStorage;
 import com.example.data.storage.models.author.PersonItemStorage;
-import com.example.domain.models.author.InventoryItem;
+import com.example.domain.models.author.Item;
 import com.example.domain.models.author.PersonItem;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
@@ -75,21 +75,21 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
     }
 
 
-    public List<InventoryItem> getAllItem(){
-        List<InventoryItemStorage> listS = authorStorageInterface.getAllInvItem();
-        List<InventoryItem> listD = new ArrayList<>();
+    public List<Item> getAllItem(){
+        List<ItemStorage> listS = authorStorageInterface.getAllInvItem();
+        List<Item> listD = new ArrayList<>();
 
-        for (InventoryItemStorage one: listS){
+        for (ItemStorage one: listS){
             listD.add(inventoryItemMapToDomain(one));
         }
 
         return listD;
     }
 
-    public void saveAllItem(List<InventoryItem> listD){
-        List<InventoryItemStorage> listS = new ArrayList<>();
+    public void saveAllItem(List<Item> listD){
+        List<ItemStorage> listS = new ArrayList<>();
 
-        for (InventoryItem one: listD){
+        for (Item one: listD){
             listS.add(inventoryItemMapToStorage(one));
         }
 
@@ -107,12 +107,12 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         return new PersonItem(one.text, Integer.toString(one.value));
     }
 
-    private InventoryItemStorage inventoryItemMapToStorage(InventoryItem one){
-        return new InventoryItemStorage(one.name, one.type);
+    private ItemStorage inventoryItemMapToStorage(Item one){
+        return new ItemStorage(one.name, one.type);
     }
 
-    private InventoryItem inventoryItemMapToDomain(InventoryItemStorage one){
-        return new InventoryItem(one.name, one.type, true);
+    private Item inventoryItemMapToDomain(ItemStorage one){
+        return new Item(one.name, one.type, true);
     }
 
 }

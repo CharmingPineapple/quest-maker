@@ -1,6 +1,6 @@
 package com.example.domain.repository;
 
-import com.example.domain.models.author.InventoryItem;
+import com.example.domain.models.author.Item;
 import com.example.domain.models.author.PersonItem;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public interface AuthorRepositoryInterface {
     void saveAllMainParameter(List<PersonItem> mpList);
 
     // ITEMS
-    List<InventoryItem> getAllItem();
+    List<Item> getAllItem();
 
-    void saveAllItem(List<InventoryItem> itemList);
+    void saveAllItem(List<Item> itemList);
 }

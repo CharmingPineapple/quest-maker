@@ -6,7 +6,7 @@ import com.example.data.storage.AuthorStorageInterface;
 import com.example.data.storage.database.database.personal.adapter.ItemDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.MainParameterDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.SkillDBAdapter;
-import com.example.data.storage.models.author.InventoryItemStorage;
+import com.example.data.storage.models.author.ItemStorage;
 import com.example.data.storage.models.author.PersonItemStorage;
 
 
@@ -79,16 +79,16 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         mainParameterDBAdapter.close();
     }
 
-    public List<InventoryItemStorage> getAllInvItem(){
+    public List<ItemStorage> getAllInvItem(){
         ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
         itemDBAdapter.open();
-        List<InventoryItemStorage> list = itemDBAdapter.getAllItem();
+        List<ItemStorage> list = itemDBAdapter.getAllItem();
         itemDBAdapter.close();
 
         return list;
     }
 
-    public void saveAllInvItem(List<InventoryItemStorage> list){
+    public void saveAllInvItem(List<ItemStorage> list){
         ItemDBAdapter itemDBAdapter = new ItemDBAdapter(context);
         itemDBAdapter.open();
         itemDBAdapter.saveAllItem(list);

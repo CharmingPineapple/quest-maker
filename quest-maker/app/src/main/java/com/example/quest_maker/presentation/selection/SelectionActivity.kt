@@ -53,7 +53,7 @@ class SelectionActivity : AppCompatActivity() {
         spinner = findViewById(R.id.spinner_selection)
 
 
-        displayView(R.id.inv)
+        displayView(R.id.menu_inventory)
 
         selectedNumTV = findViewById(R.id.TV_selected_num_selection)
         selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
@@ -96,7 +96,7 @@ class SelectionActivity : AppCompatActivity() {
             R.id.collection -> fragment = CollectionFragment()
             R.id.game -> fragment = GameFragment()*/
 
-            R.id.inv -> {
+            R.id.menu_inventory -> {
                 // добавить спинер
 
                 spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeItemList())

@@ -23,7 +23,8 @@ val appModule = module {
         GeneralDataViewModel(
             getWeaponUseCase = get(),
             getEquipmentUseCase = get(),
-            getTrinketUseCase = get()
+            getTrinketUseCase = get(),
+            getInjuryUseCase = get()
         )
     }
 
@@ -33,7 +34,8 @@ val appModule = module {
             saveItemUseCase = get(),
             getWeaponUseCase = get(),
             getEquipmentUseCase = get(),
-            getTrinketUseCase = get()
+            getTrinketUseCase = get(),
+            getInjuryUseCase = get()
         )
     }
 

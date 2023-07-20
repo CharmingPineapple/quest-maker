@@ -9,12 +9,11 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.viewer.Weapon
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.general_data.rv_adapter.EquipmentRVAdapter
+import com.example.quest_maker.presentation.general_data.rv_adapter.InjuryRVAdapter
 import com.example.quest_maker.presentation.general_data.rv_adapter.TrinketRVAdapter
 import com.example.quest_maker.presentation.general_data.rv_adapter.WeaponRVAdapter
-import com.example.quest_maker.presentation.selection.rv_adapter.SelectionCheckBoxRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,6 +27,7 @@ class GeneralDataActivity : AppCompatActivity() {
     private var weaponRVAdapter: WeaponRVAdapter? = null
     private var equipmentRVAdapter: EquipmentRVAdapter? = null
     private var trinketRVAdapter: TrinketRVAdapter? = null
+    private var injuryRVAdapter: InjuryRVAdapter? = null
 
     private var spinner: Spinner? = null
     private var spinnerAdapter: ArrayAdapter<String>? = null
@@ -47,14 +47,16 @@ class GeneralDataActivity : AppCompatActivity() {
         viewModel.load()
 
         val typeItemList: List<String> = viewModel.getTypeItemList()
+        val typeInjuryList: List<String> = viewModel.getTypeInjuryList()
 
         weaponRVAdapter = WeaponRVAdapter(this)
         equipmentRVAdapter = EquipmentRVAdapter(this)
         trinketRVAdapter = TrinketRVAdapter(this)
+        injuryRVAdapter = InjuryRVAdapter(this)
 
         recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
-        displayView(R.id.inv)
+        displayView(R.id.menu_inventory)
 
         // recycleView!!.adapter = selectionCheckBoxRVAdapter
 
@@ -70,6 +72,13 @@ class GeneralDataActivity : AppCompatActivity() {
                     typeItemList[0] -> recycleView!!.adapter = weaponRVAdapter
                     typeItemList[1] -> recycleView!!.adapter = equipmentRVAdapter
                     typeItemList[2] -> recycleView!!.adapter = trinketRVAdapter
+
+                    /*typeInjuryList[0] -> recycleView!!.adapter = weaponRVAdapter
+                    typeInjuryList[1] -> recycleView!!.adapter = weaponRVAdapter*/
+
+                    typeInjuryList[0] -> injuryRVAdapter!!.setList(typeInjuryList[0])
+                    typeInjuryList[1] -> injuryRVAdapter!!.setList(typeInjuryList[1])
+
                 }
             }
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -89,11 +98,25 @@ class GeneralDataActivity : AppCompatActivity() {
 
         when (viewId) {
 
-            R.id.inv -> {
+            R.id.menu_inventory -> {
                 // добавить спинер
 
                 spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeItemList())
                 spinner!!.adapter = spinnerAdapter
+
+                // (#) - Это ускоряет появление данных, как бы тупо это не выглядело
+                recycleView!!.adapter = weaponRVAdapter
+
+
+            }
+
+            R.id.menu_injury -> {
+                // добавить спинер
+
+                spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInjuryList())
+                spinner!!.adapter = spinnerAdapter
+
+                recycleView!!.adapter = injuryRVAdapter
             }
 
         }
@@ -109,6 +132,7 @@ class GeneralDataActivity : AppCompatActivity() {
         weaponRVAdapter!!.setData(viewModel.getWeaponList())
         equipmentRVAdapter!!.setData(viewModel.getEquipmentList())
         trinketRVAdapter!!.setData(viewModel.getTrinketList())
+        injuryRVAdapter!!.setData(viewModel.getInjuryList())
     }
 
 
