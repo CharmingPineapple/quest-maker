@@ -6,7 +6,7 @@ import com.example.domain.models.viewer.Status
 import com.example.domain.models.viewer.Trinket
 import com.example.domain.models.viewer.Weapon
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
-import com.example.domain.usecase.viewer.injury.GetInjuryUseCase
+import com.example.domain.usecase.viewer.status.GetInjuryUseCase
 import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
 import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 

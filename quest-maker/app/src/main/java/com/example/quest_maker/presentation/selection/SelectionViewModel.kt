@@ -11,7 +11,7 @@ import com.example.domain.usecase.author.status_item.GetPersonInjuryUseCase
 import com.example.domain.usecase.author.status_item.SaveInventoryItemUseCase
 import com.example.domain.usecase.author.status_item.SavePersonInjuryUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
-import com.example.domain.usecase.viewer.injury.GetInjuryUseCase
+import com.example.domain.usecase.viewer.status.GetInjuryUseCase
 import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
 import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
