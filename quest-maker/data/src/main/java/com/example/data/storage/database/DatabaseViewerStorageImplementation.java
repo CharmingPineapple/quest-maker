@@ -3,12 +3,13 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.ViewerStorageInterface;
+import com.example.data.storage.database.database.general.adapter.CurseDBAdapter;
 import com.example.data.storage.database.database.general.adapter.EquipmentDBAdapter;
 import com.example.data.storage.database.database.general.adapter.InjuryDBAdapter;
 import com.example.data.storage.database.database.general.adapter.TrinketDBAdapter;
 import com.example.data.storage.database.database.general.adapter.WeaponDBAdapter;
 import com.example.data.storage.models.viewer.EquipmentStorage;
-import com.example.data.storage.models.viewer.InjuryStorage;
+import com.example.data.storage.models.viewer.StatusStorage;
 import com.example.data.storage.models.viewer.TrinketStorage;
 import com.example.data.storage.models.viewer.WeaponStorage;
 
@@ -49,13 +50,22 @@ public class DatabaseViewerStorageImplementation implements ViewerStorageInterfa
         return trinketStorageList;
     }
 
-    public List<InjuryStorage> getAllInjury() {
+    public List<StatusStorage> getAllInjury() {
         InjuryDBAdapter injuryDBAdapter = new InjuryDBAdapter(context);
         injuryDBAdapter.open();
-        List<InjuryStorage> injuryStorageList = injuryDBAdapter.getAllInjury();
+        List<StatusStorage> injuryStorageList = injuryDBAdapter.getAllInjury();
         injuryDBAdapter.close();
 
         return injuryStorageList;
+    }
+
+    public List<StatusStorage> getAllCurse() {
+        CurseDBAdapter curseDBAdapter = new CurseDBAdapter(context);
+        curseDBAdapter.open();
+        List<StatusStorage> curseStorageList = curseDBAdapter.getAllCurse();
+        curseDBAdapter.close();
+
+        return curseStorageList;
     }
 
 }

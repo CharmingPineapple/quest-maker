@@ -1,6 +1,6 @@
 package com.example.data.storage.models.viewer;
 
-public class InjuryStorage {
+public class StatusStorage {
 
     /*
 
@@ -16,7 +16,7 @@ public class InjuryStorage {
     public String effect;
     public String description;
 
-    public InjuryStorage(String name,
+    public StatusStorage(String name,
                          String type,
                          String effect,
                          String description) {

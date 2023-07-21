@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.models.viewer.Injury
+import com.example.domain.models.viewer.Status
 import com.example.quest_maker.R
 
 class InjuryRVAdapter(
@@ -15,11 +15,11 @@ class InjuryRVAdapter(
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    private var listAll: List<Injury>? = null
-    private var currentList: MutableList<Injury> = ArrayList()
+    private var listAll: List<Status>? = null
+    private var currentList: MutableList<Status> = ArrayList()
 
 
-    fun setData(newList: List<Injury>) {
+    fun setData(newList: List<Status>) {
         this.listAll = newList
         notifyDataSetChanged()
     }
@@ -27,7 +27,7 @@ class InjuryRVAdapter(
     fun setList(type: String) {
         currentList.clear()
 
-        for (one: Injury in listAll!!) {
+        for (one: Status in listAll!!) {
             if (one.type == type)
                 currentList.add(one)
         }
@@ -46,7 +46,7 @@ class InjuryRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val one: Injury = currentList[position]
+        val one: Status = currentList[position]
         holder.name.text = one.name
         holder.type.text = one.type
         holder.effect.text = one.effect

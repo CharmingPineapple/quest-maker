@@ -155,14 +155,15 @@ class SelectionActivity : AppCompatActivity() {
     }
 
     private fun setSpinnerData(list: List<String>){
-        spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
+        spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, list)
         spinner!!.adapter = spinnerAdapter
+        spinner
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.load()
-        spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
+        spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeInventoryItemList())
     }
 
     override fun onPause() {

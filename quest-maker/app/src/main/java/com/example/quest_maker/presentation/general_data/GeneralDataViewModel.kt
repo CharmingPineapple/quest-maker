@@ -2,7 +2,7 @@ package com.example.quest_maker.presentation.general_data
 
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.viewer.Equipment
-import com.example.domain.models.viewer.Injury
+import com.example.domain.models.viewer.Status
 import com.example.domain.models.viewer.Trinket
 import com.example.domain.models.viewer.Weapon
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
@@ -37,8 +37,8 @@ class GeneralDataViewModel (
         return generalDataMutable!!.typeItemList
     }
 
-    fun getInjuryList() : List<Injury>{
-        return generalDataMutable!!.injuryList
+    fun getInjuryList() : List<Status>{
+        return generalDataMutable!!.statusList
     }
     fun getTypeInjuryList(): List<String> {
         return generalDataMutable!!.typeInjuryList
@@ -48,13 +48,13 @@ class GeneralDataViewModel (
         val weaponList: List<Weapon> = getWeaponUseCase.all
         val equipmentList: List<Equipment> = getEquipmentUseCase.all
         val trinketList: List<Trinket> = getTrinketUseCase.all
-        val injuryList: List<Injury> = getInjuryUseCase.all
+        val statusList: List<Status> = getInjuryUseCase.all
 
         generalDataMutable = GeneralData(
             weaponList,
             equipmentList,
             trinketList,
-            injuryList
+            statusList
         )
     }
 

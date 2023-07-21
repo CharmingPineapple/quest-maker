@@ -2,11 +2,11 @@ package com.example.data.repository;
 
 import com.example.data.storage.ViewerStorageInterface;
 import com.example.data.storage.models.viewer.EquipmentStorage;
-import com.example.data.storage.models.viewer.InjuryStorage;
+import com.example.data.storage.models.viewer.StatusStorage;
 import com.example.data.storage.models.viewer.TrinketStorage;
 import com.example.data.storage.models.viewer.WeaponStorage;
 import com.example.domain.models.viewer.Equipment;
-import com.example.domain.models.viewer.Injury;
+import com.example.domain.models.viewer.Status;
 import com.example.domain.models.viewer.Trinket;
 import com.example.domain.models.viewer.Weapon;
 import com.example.domain.repository.ViewerRepositoryInterface;
@@ -55,12 +55,23 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
         return listD;
     }
 
-    public List<Injury> getAllInjury(){
-        List<InjuryStorage> listS = viewerStorageInterface.getAllInjury();
-        List<Injury> listD = new ArrayList<>();
+    public List<Status> getAllInjury(){
+        List<StatusStorage> listS = viewerStorageInterface.getAllInjury();
+        List<Status> listD = new ArrayList<>();
 
-        for(InjuryStorage one : listS){
-            listD.add(injuryMapToDomain(one));
+        for(StatusStorage one : listS){
+            listD.add(statusMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public List<Status> getAllCurse(){
+        List<StatusStorage> listS = viewerStorageInterface.getAllCurse();
+        List<Status> listD = new ArrayList<>();
+
+        for(StatusStorage one : listS){
+            listD.add(statusMapToDomain(one));
         }
 
         return listD;
@@ -123,8 +134,8 @@ public class ViewerRepositoryImplementation  implements ViewerRepositoryInterfac
         );
     }
 
-    private Injury injuryMapToDomain(InjuryStorage one){
-        return new Injury(
+    private Status statusMapToDomain(StatusStorage one){
+        return new Status(
                 one.name,
                 one.type,
                 one.effect,

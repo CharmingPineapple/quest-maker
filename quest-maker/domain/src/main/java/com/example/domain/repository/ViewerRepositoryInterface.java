@@ -1,7 +1,7 @@
 package com.example.domain.repository;
 
 import com.example.domain.models.viewer.Equipment;
-import com.example.domain.models.viewer.Injury;
+import com.example.domain.models.viewer.Status;
 import com.example.domain.models.viewer.Trinket;
 import com.example.domain.models.viewer.Weapon;
 
@@ -13,6 +13,7 @@ public interface ViewerRepositoryInterface {
     List<Equipment> getAllEquipment();
     List<Trinket> getAllTrinket();
 
-    List<Injury> getAllInjury();
+    List<Status> getAllInjury();
+    List<Status> getAllCurse();
 
 }

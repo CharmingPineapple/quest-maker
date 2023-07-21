@@ -3,7 +3,7 @@ package com.example.quest_maker.presentation.selection
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.author.Item
 import com.example.domain.models.viewer.Equipment
-import com.example.domain.models.viewer.Injury
+import com.example.domain.models.viewer.Status
 import com.example.domain.models.viewer.Trinket
 import com.example.domain.models.viewer.Weapon
 import com.example.domain.usecase.author.status_item.GetInventoryItemUseCase
@@ -63,8 +63,8 @@ class SelectionViewModel(
         return generalDataMutable!!.trinketList
     }
 
-    private fun getInjuryList(): List<Injury> {
-        return generalDataMutable!!.injuryList
+    private fun getInjuryList(): List<Status> {
+        return generalDataMutable!!.statusList
     }
 
     // get simple list
@@ -117,14 +117,14 @@ class SelectionViewModel(
     }
 
     fun getSimplePersonInjuryList(): List<Item> {
-        val injuryList: List<Injury> = getInjuryList()
+        val statusList: List<Status> = getInjuryList()
 
         val simpleInjuryList: MutableList<Item> = ArrayList()
         val selectedInjuryList: List<Item> = selectionDataMutable!!.selectedInjuryList
 
         // (!) - some hardcode
         // get all weapon from DB
-        for (one: Injury in injuryList) {
+        for (one: Status in statusList) {
             simpleInjuryList.add(
                 Item(
                     one.name,
@@ -185,7 +185,7 @@ class SelectionViewModel(
         val weaponList: List<Weapon> = getWeaponUseCase.all
         val equipmentList: List<Equipment> = getEquipmentUseCase.all
         val trinketList: List<Trinket> = getTrinketUseCase.all
-        val injuryList: List<Injury> = getInjuryUseCase.all
+        val statusList: List<Status> = getInjuryUseCase.all
 
 
         val selectedItemList: List<Item> = getInventoryItemUseCase.all
@@ -195,7 +195,7 @@ class SelectionViewModel(
             weaponList,
             equipmentList,
             trinketList,
-            injuryList
+            statusList
         )
 
         selectionDataMutable = SelectionData(

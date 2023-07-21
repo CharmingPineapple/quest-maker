@@ -1,16 +1,16 @@
 package com.example.domain.models.viewer;
 
-public class Injury {
+public class Status {
 
     public String name;
     public String type;
     public String effect;
     public String description;
 
-    public Injury(String name,
-                         String type,
-                         String effect,
-                         String description) {
+    public Status(String name,
+                  String type,
+                  String effect,
+                  String description) {
 
         this.name = name;
         this.type = type;
