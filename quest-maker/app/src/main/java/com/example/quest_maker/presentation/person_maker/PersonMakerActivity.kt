@@ -12,7 +12,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
-import com.example.quest_maker.presentation.person_maker.rv_adapter.InvItemRVAdapter
+import com.example.quest_maker.presentation.person_maker.rv_adapter.ItemRVAdapter
 import com.example.quest_maker.presentation.person_maker.rv_adapter.MainParameterRVAdapter
 import com.example.quest_maker.presentation.person_maker.rv_adapter.SkillRVAdapter
 import com.example.quest_maker.presentation.selection.SelectionActivity
@@ -25,11 +25,13 @@ class PersonMakerActivity : AppCompatActivity(){
 
     private var skillRV: RecyclerView? = null
     private var mpRV: RecyclerView? = null
-    private var itemRV: RecyclerView? = null
+    private var inventoryItemRV: RecyclerView? = null
+    private var personInjuryRV: RecyclerView? = null
 
     private var skillRVAdapter: SkillRVAdapter? = null
     private var mpRVAdapter: MainParameterRVAdapter? = null
-    private var invItemRVAdapter: InvItemRVAdapter? = null
+    private var inventoryItemRVAdapter: ItemRVAdapter? = null
+    private var personInjuryRVAdapter: ItemRVAdapter? = null
 
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
@@ -55,9 +57,11 @@ class PersonMakerActivity : AppCompatActivity(){
         mpRV = findViewById(R.id.RV_main_param_list)
         mpRVAdapter = MainParameterRVAdapter(this)
 
-        itemRV = findViewById(R.id.RV_item_list)
-        invItemRVAdapter = InvItemRVAdapter(this)
+        inventoryItemRV = findViewById(R.id.RV_inventory_item_list)
+        inventoryItemRVAdapter = ItemRVAdapter(this)
 
+        personInjuryRV = findViewById(R.id.RV_person_injury_list)
+        personInjuryRVAdapter = ItemRVAdapter(this)
 
         viewModel.load()
 
@@ -70,8 +74,12 @@ class PersonMakerActivity : AppCompatActivity(){
         mpRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Setting Item RV
-        itemRV!!.adapter = invItemRVAdapter
-        itemRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        inventoryItemRV!!.adapter = inventoryItemRVAdapter
+        inventoryItemRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        // Setting person injury RV
+        personInjuryRV!!.adapter = personInjuryRVAdapter
+        personInjuryRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Show min/max and current sum of skills
         limitScoreText?.text = "Limit sum score: " + viewModel.getMinSkillScore().toString() + "-" + viewModel.getMaxSkillScore().toString()
@@ -96,12 +104,14 @@ class PersonMakerActivity : AppCompatActivity(){
     private fun setRVData(){
         skillRVAdapter!!.setData(viewModel.getSkillList(), viewModel.getMaxSkillScore(), viewModel.getMinSkillScore())
         mpRVAdapter!!.setData(viewModel.getMPList(), viewModel.getMaxHealth(), viewModel.getMinHealth(), viewModel.getMaxFND(), viewModel.getMaxBullet())
-        invItemRVAdapter!!.setData(viewModel.getItemList())
+        //inventoryItemRVAdapter!!.setData(viewModel.getInventoryItemList())
+        inventoryItemRVAdapter!!.setData(viewModel.getInventoryItemList())
+        personInjuryRVAdapter!!.setData(viewModel.getPersonInjuryList())
     }
 
     // (!) - Сделать save с rvMainParam
     override fun onPause(){
-        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList(), invItemRVAdapter!!.getList())
+        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList(), inventoryItemRVAdapter!!.getList(), personInjuryRVAdapter!!.getList())
 
         super.onPause()
     }

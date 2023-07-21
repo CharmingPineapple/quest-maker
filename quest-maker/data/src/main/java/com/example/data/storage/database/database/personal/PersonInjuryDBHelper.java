@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class PersonInjuryDBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "injuryDB";
-    public static final String TABLE_NAME = "injuryTable";
+    public static final String DB_NAME = "person_injuryDB";
+    public static final String TABLE_NAME = "person_injuryTable";
     public static final int DB_VERSION = 1;
     public static final String KEY_ID = "_id";
     public static final String KEY_NAME = "name";

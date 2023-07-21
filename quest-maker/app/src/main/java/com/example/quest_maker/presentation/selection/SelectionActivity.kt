@@ -32,7 +32,6 @@ class SelectionActivity : AppCompatActivity() {
 
     private var spinner: Spinner? = null
     private var spinnerAdapter: ArrayAdapter<String>? = null
-    private var spinnerList: List<String>? = null
 
     private var selectedNumTV: TextView? = null
     private var selectedLimitTV: TextView? = null
@@ -53,16 +52,10 @@ class SelectionActivity : AppCompatActivity() {
         recycleView = findViewById(R.id.RV_selection)
         spinner = findViewById(R.id.spinner_selection)
 
-
-
         selectedNumTV = findViewById(R.id.TV_selected_num_selection)
         selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
 
         saveButton = findViewById(R.id.Button_save_selection)
-
-        //spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item)
-        //spinner!!.adapter = spinnerAdapter
-
 
         selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
 
@@ -72,7 +65,6 @@ class SelectionActivity : AppCompatActivity() {
             viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
         }
 
-        selectedLimitTV?.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
 
 
         spinner!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -100,39 +92,27 @@ class SelectionActivity : AppCompatActivity() {
     }
 
     private fun displayView(viewId: Int) {
-        //var fragment: Fragment? = null
         when (viewId) {
-            /*R.id.inv -> fragment = DictionaryFragment()
-            R.id.collection -> fragment = CollectionFragment()
-            R.id.game -> fragment = GameFragment()*/
 
             R.id.menu_inventory -> {
-                // добавить спинер
 
-
+                viewModel.load()
 
                 setSpinnerData(viewModel.getTypeInventoryItemList())
 
-                /*spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
-                spinner!!.adapter = spinnerAdapter*/
+                selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
 
-
-
-                // (!#) - Заменить список оружия на список всех предметов
                 selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleInventoryItemList(), viewModel.getMaxInventoryItem())
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
-
-
-                //selectionCheckBoxRVAdapter!!.weaponList
-
             }
 
             R.id.menu_injury -> {
+
+                viewModel.load()
+
                 setSpinnerData(viewModel.getTypePersonInjuryList())
 
-               /* spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypePersonInjuryList())
-                spinner!!.adapter = spinnerAdapter*/
-
+                selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxPersonInjury().toString()
 
                 selectionCheckBoxRVAdapter!!.setData(viewModel.getSimplePersonInjuryList(), viewModel.getMaxPersonInjury())
                 recycleView!!.adapter = selectionCheckBoxRVAdapter

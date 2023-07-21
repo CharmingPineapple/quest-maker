@@ -80,7 +80,7 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         List<Item> listD = new ArrayList<>();
 
         for (ItemStorage one: listS){
-            listD.add(inventoryItemMapToDomain(one));
+            listD.add(itemMapToDomain(one));
         }
 
         return listD;
@@ -90,7 +90,7 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         List<ItemStorage> listS = new ArrayList<>();
 
         for (Item one: listD){
-            listS.add(inventoryItemMapToStorage(one));
+            listS.add(itemMapToStorage(one));
         }
 
         authorStorageInterface.saveAllInventoryItem(listS);
@@ -101,7 +101,7 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         List<Item> listD = new ArrayList<>();
 
         for (ItemStorage one: listS){
-            listD.add(inventoryItemMapToDomain(one));
+            listD.add(itemMapToDomain(one));
         }
 
         return listD;
@@ -111,7 +111,7 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         List<ItemStorage> listS = new ArrayList<>();
 
         for (Item one: listD){
-            listS.add(inventoryItemMapToStorage(one));
+            listS.add(itemMapToStorage(one));
         }
 
         authorStorageInterface.saveAllPersonInjury(listS);
@@ -128,11 +128,11 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         return new PersonItem(one.text, Integer.toString(one.value));
     }
 
-    private ItemStorage inventoryItemMapToStorage(Item one){
+    private ItemStorage itemMapToStorage(Item one){
         return new ItemStorage(one.name, one.type);
     }
 
-    private Item inventoryItemMapToDomain(ItemStorage one){
+    private Item itemMapToDomain(ItemStorage one){
         return new Item(one.name, one.type, true);
     }
 

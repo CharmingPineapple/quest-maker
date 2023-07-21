@@ -130,12 +130,20 @@ class SelectionViewModel(
         }
 
         // mark the selected weapon
+        /*if (selectedInjuryList.isNotEmpty()) {
+
+            for (one: Item in selectedInjuryList) {
+                simpleInjuryList[getIndexElement(simpleInjuryList, one)].selected = true
+            }
+        }*/
+
         if (selectedInjuryList.isNotEmpty()) {
 
             for (one: Item in selectedInjuryList) {
                 simpleInjuryList[getIndexElement(simpleInjuryList, one)].selected = true
             }
         }
+
 
         return simpleInjuryList
     }
@@ -148,7 +156,7 @@ class SelectionViewModel(
             }
         }
 
-        return 0
+        return -1
     }
 
 

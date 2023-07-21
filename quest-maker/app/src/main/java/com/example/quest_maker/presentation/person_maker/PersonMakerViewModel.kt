@@ -9,15 +9,23 @@ import com.example.domain.usecase.author.skill.GetSkillUseCase
 import com.example.domain.usecase.author.status_item.SaveInventoryItemUseCase
 import com.example.domain.usecase.author.main_parameter.SaveMainParameterUseCase
 import com.example.domain.usecase.author.skill.SaveSkillUseCase
+import com.example.domain.usecase.author.status_item.GetPersonInjuryUseCase
+import com.example.domain.usecase.author.status_item.SavePersonInjuryUseCase
 
 class PersonMakerViewModel(
     private val getSkillUseCase: GetSkillUseCase,
     private val saveSkillUseCase: SaveSkillUseCase,
+
     private val getMainParameterUseCase: GetMainParameterUseCase,
     private val saveMainParameterUseCase: SaveMainParameterUseCase,
+
     private val getInventoryItemUseCase: GetInventoryItemUseCase,
-    private val saveInventoryItemUseCase: SaveInventoryItemUseCase
-) : ViewModel() {
+    private val saveInventoryItemUseCase: SaveInventoryItemUseCase,
+
+    private val getPersonInjuryUseCase: GetPersonInjuryUseCase,
+    private val savePersonInjuryUseCase: SavePersonInjuryUseCase,
+
+    ) : ViewModel() {
 
     //private val stateLiveMutable = MutableLiveData<PersonMakerState>()
     private var dataMutable: PersonMakerData? = null
@@ -35,10 +43,11 @@ class PersonMakerViewModel(
         }
     }*/
 
-    fun save(skillList: List<PersonItem>, mpList: List<PersonItem>, itemList: List<Item>){
+    fun save(skillList: List<PersonItem>, mpList: List<PersonItem>, inventoryItemList: List<Item>, personInjuryList: List<Item>){
         saveSkillUseCase.saveAll(skillList)
         saveMainParameterUseCase.saveAll(mpList)
-        saveInventoryItemUseCase.saveAll(itemList)
+        saveInventoryItemUseCase.saveAll(inventoryItemList)
+        savePersonInjuryUseCase.saveAll(personInjuryList)
 
 
         // Если save() вызывается не в onStop
@@ -80,19 +89,25 @@ class PersonMakerViewModel(
         return dataMutable!!.maxBullet
     }
 
-    fun getItemList() : List<Item>{
+    fun getInventoryItemList() : List<Item>{
         return dataMutable!!.inventoryItemList
+    }
+
+    fun getPersonInjuryList() : List<Item>{
+        return dataMutable!!.personInjuryList
     }
 
     fun load(){
         val skillList: List<PersonItem> = getSkillUseCase.all
         val mpList: List<PersonItem> = getMainParameterUseCase.all
-        val itemList: List<Item> = getInventoryItemUseCase.all
+        val inventoryItemList: List<Item> = getInventoryItemUseCase.all
+        val personInjuryList: List<Item> = getPersonInjuryUseCase.all
 
         dataMutable = PersonMakerData(
             skillList,
             mpList,
-            itemList
+            inventoryItemList,
+            personInjuryList
         )
     }
 

@@ -12,10 +12,15 @@ val appModule = module {
         PersonMakerViewModel(
             getSkillUseCase = get(),
             saveSkillUseCase = get(),
+
             getMainParameterUseCase = get(),
             saveMainParameterUseCase = get(),
+
             getInventoryItemUseCase = get(),
-            saveInventoryItemUseCase = get()
+            saveInventoryItemUseCase = get(),
+
+            getPersonInjuryUseCase = get(),
+            savePersonInjuryUseCase = get()
         )
     }
 

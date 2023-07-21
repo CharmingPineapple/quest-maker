@@ -45,6 +45,7 @@ public class InjuryDBHelper  extends SQLiteOpenHelper {
 
                 + "('Broken Bone', 'major', '-1 Strength -1 Dexterity', 'terrible pain'),"
                 + "('Coughing Blood', 'minor', '-2 Dexterity', '*cough-cough*'),"
+                + "('Tiny Cuts', 'minor', 'No effect', 'Nothing unusual'),"
                 + "('Abdominal Cut', 'major', '-10% Max Stamina', 'I feel weak')");
 
     }

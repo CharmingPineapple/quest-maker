@@ -40,7 +40,7 @@ val domainModule = module {
     }
 
 
-    // status
+    // status item
 
     factory<GetInventoryItemUseCase> {
         GetInventoryItemUseCase(get())

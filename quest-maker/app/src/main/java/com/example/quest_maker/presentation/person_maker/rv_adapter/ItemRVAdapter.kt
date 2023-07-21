@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.author.Item
 import com.example.quest_maker.R
 
-class InvItemRVAdapter (
+class ItemRVAdapter (
     private val context: Context,
-    ) : RecyclerView.Adapter<InvItemRVAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<ItemRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -31,7 +31,7 @@ class InvItemRVAdapter (
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = inflater.inflate(R.layout.rv_item_inv_item_input, parent, false)
+        val view = inflater.inflate(R.layout.rv_item_status_item_input, parent, false)
 
         return ViewHolder(view)
     }
