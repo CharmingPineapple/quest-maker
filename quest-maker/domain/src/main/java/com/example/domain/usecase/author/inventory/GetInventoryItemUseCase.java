@@ -1,20 +1,20 @@
-package com.example.domain.usecase.author.status_item;
+package com.example.domain.usecase.author.inventory;
 
 import com.example.domain.models.author.Item;
 import com.example.domain.repository.AuthorRepositoryInterface;
 
 import java.util.List;
 
-public class GetPersonInjuryUseCase {
+public class GetInventoryItemUseCase {
 
     private final AuthorRepositoryInterface authorRepositoryInterface;
 
-    public GetPersonInjuryUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
+    public GetInventoryItemUseCase(AuthorRepositoryInterface authorRepositoryInterface) {
         this.authorRepositoryInterface = authorRepositoryInterface;
     }
 
     public List<Item> getAll(){
-        return authorRepositoryInterface.getAllPersonInjury();
+        return authorRepositoryInterface.getAllInventoryItem();
     }
 
 }

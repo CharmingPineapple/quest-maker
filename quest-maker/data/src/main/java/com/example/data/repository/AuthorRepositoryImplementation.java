@@ -117,6 +117,27 @@ public class AuthorRepositoryImplementation implements AuthorRepositoryInterface
         authorStorageInterface.saveAllPersonInjury(listS);
     }
 
+    public List<Item> getAllPersonCurse(){
+        List<ItemStorage> listS = authorStorageInterface.getAllPersonCurse();
+        List<Item> listD = new ArrayList<>();
+
+        for (ItemStorage one: listS){
+            listD.add(itemMapToDomain(one));
+        }
+
+        return listD;
+    }
+
+    public void saveAllPersonCurse(List<Item> listD){
+        List<ItemStorage> listS = new ArrayList<>();
+
+        for (Item one: listD){
+            listS.add(itemMapToStorage(one));
+        }
+
+        authorStorageInterface.saveAllPersonCurse(listS);
+    }
+
 
 
 

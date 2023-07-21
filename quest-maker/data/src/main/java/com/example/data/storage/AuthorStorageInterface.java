@@ -25,6 +25,9 @@ public interface AuthorStorageInterface {
     List<ItemStorage> getAllPersonInjury();
 
     void saveAllPersonInjury(List<ItemStorage> list);
+    List<ItemStorage> getAllPersonCurse();
+
+    void saveAllPersonCurse(List<ItemStorage> list);
 
 
 }

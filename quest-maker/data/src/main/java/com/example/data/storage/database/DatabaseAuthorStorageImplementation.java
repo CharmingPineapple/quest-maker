@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.data.storage.AuthorStorageInterface;
 import com.example.data.storage.database.database.personal.adapter.InventoryItemDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.MainParameterDBAdapter;
+import com.example.data.storage.database.database.personal.adapter.PersonCurseDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.PersonInjuryDBAdapter;
 import com.example.data.storage.database.database.personal.adapter.SkillDBAdapter;
 import com.example.data.storage.models.author.ItemStorage;
@@ -110,6 +111,22 @@ public class DatabaseAuthorStorageImplementation implements AuthorStorageInterfa
         personInjuryDBAdapter.open();
         personInjuryDBAdapter.saveAllItem(list);
         personInjuryDBAdapter.close();
+    }
+
+    public List<ItemStorage> getAllPersonCurse(){
+        PersonCurseDBAdapter personCurseDBAdapter = new PersonCurseDBAdapter(context);
+        personCurseDBAdapter.open();
+        List<ItemStorage> list = personCurseDBAdapter.getAllItem();
+        personCurseDBAdapter.close();
+
+        return list;
+    }
+
+    public void saveAllPersonCurse(List<ItemStorage> list){
+        PersonCurseDBAdapter personCurseDBAdapter = new PersonCurseDBAdapter(context);
+        personCurseDBAdapter.open();
+        personCurseDBAdapter.saveAllItem(list);
+        personCurseDBAdapter.close();
     }
 
 
