@@ -36,7 +36,7 @@ class SelectionActivity : AppCompatActivity() {
     private var selectedNumTV: TextView? = null
     private var selectedLimitTV: TextView? = null
 
-    private var saveButton: Button?= null
+    private var lastViewId: Int? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,15 +55,10 @@ class SelectionActivity : AppCompatActivity() {
         selectedNumTV = findViewById(R.id.TV_selected_num_selection)
         selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
 
-        saveButton = findViewById(R.id.Button_save_selection)
 
         selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
 
         recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-
-        saveButton!!.setOnClickListener {
-            viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
-        }
 
 
 
@@ -92,8 +87,12 @@ class SelectionActivity : AppCompatActivity() {
     }
 
     private fun displayView(viewId: Int) {
-        when (viewId) {
 
+        lastViewId?.let { saveLast() }
+
+        lastViewId = viewId
+
+            when (viewId) {
             R.id.menu_inventory -> {
 
                 viewModel.load()
@@ -119,12 +118,32 @@ class SelectionActivity : AppCompatActivity() {
 
             }
 
+
         }
         /*if (fragment != null) {
             val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
             ft.replace(R.id.fragment_container_view, fragment)
             ft.commit()
         }*/
+    }
+
+    private fun saveLast(){
+        // viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
+
+        when(lastViewId){
+
+            R.id.menu_inventory ->{
+                viewModel.saveInventoryItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
+            }
+
+            R.id.menu_injury ->{
+                viewModel.savePersonInjury(selectionCheckBoxRVAdapter!!.getSelectedItemList())
+            }
+
+
+        }
+
+
     }
 
     private var mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
@@ -144,6 +163,13 @@ class SelectionActivity : AppCompatActivity() {
         super.onResume()
         viewModel.load()
         spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        saveLast()
+
     }
 
 }

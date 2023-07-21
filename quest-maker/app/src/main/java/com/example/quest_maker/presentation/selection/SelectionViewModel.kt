@@ -35,13 +35,17 @@ class SelectionViewModel(
     private var selectionDataMutable: SelectionData? = null
 
 
-    fun save(inventoryItemList: List<Item>, personInjuryList: List<Item>) {
+    /*fun save(inventoryItemList: List<Item>, personInjuryList: List<Item>) {
         saveInventoryItemUseCase.saveAll(inventoryItemList)
         savePersonInjuryUseCase.saveAll(personInjuryList)
+    }*/
+
+    fun saveInventoryItem(itemList: List<Item>) {
+        saveInventoryItemUseCase.saveAll(itemList)
     }
 
-    fun saveInvItem(itemList: List<Item>) {
-        saveInventoryItemUseCase.saveAll(itemList)
+    fun savePersonInjury(itemList: List<Item>) {
+        savePersonInjuryUseCase.saveAll(itemList)
     }
 
 
