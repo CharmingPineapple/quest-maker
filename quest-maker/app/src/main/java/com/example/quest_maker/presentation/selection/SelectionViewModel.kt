@@ -6,10 +6,10 @@ import com.example.domain.models.viewer.Equipment
 import com.example.domain.models.viewer.Status
 import com.example.domain.models.viewer.Trinket
 import com.example.domain.models.viewer.Weapon
-import com.example.domain.usecase.author.status_item.GetInventoryItemUseCase
-import com.example.domain.usecase.author.status_item.GetPersonInjuryUseCase
-import com.example.domain.usecase.author.status_item.SaveInventoryItemUseCase
-import com.example.domain.usecase.author.status_item.SavePersonInjuryUseCase
+import com.example.domain.usecase.author.inventory.GetInventoryItemUseCase
+import com.example.domain.usecase.author.status.GetPersonInjuryUseCase
+import com.example.domain.usecase.author.inventory.SaveInventoryItemUseCase
+import com.example.domain.usecase.author.status.SavePersonInjuryUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
 import com.example.domain.usecase.viewer.status.GetInjuryUseCase
 import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
@@ -29,7 +29,7 @@ class SelectionViewModel(
 
     private val getInjuryUseCase: GetInjuryUseCase,
 
-) : ViewModel() {
+    ) : ViewModel() {
 
     private var generalDataMutable: GeneralData? = null
     private var selectionDataMutable: SelectionData? = null
@@ -64,7 +64,7 @@ class SelectionViewModel(
     }
 
     private fun getInjuryList(): List<Status> {
-        return generalDataMutable!!.statusList
+        return generalDataMutable!!.injuryList
     }
 
     // get simple list

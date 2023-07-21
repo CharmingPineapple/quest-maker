@@ -3,14 +3,14 @@ package com.example.quest_maker.presentation.person_maker
 import androidx.lifecycle.ViewModel
 import com.example.domain.models.author.Item
 import com.example.domain.models.author.PersonItem
-import com.example.domain.usecase.author.status_item.GetInventoryItemUseCase
+import com.example.domain.usecase.author.inventory.GetInventoryItemUseCase
 import com.example.domain.usecase.author.main_parameter.GetMainParameterUseCase
 import com.example.domain.usecase.author.skill.GetSkillUseCase
-import com.example.domain.usecase.author.status_item.SaveInventoryItemUseCase
+import com.example.domain.usecase.author.inventory.SaveInventoryItemUseCase
 import com.example.domain.usecase.author.main_parameter.SaveMainParameterUseCase
 import com.example.domain.usecase.author.skill.SaveSkillUseCase
-import com.example.domain.usecase.author.status_item.GetPersonInjuryUseCase
-import com.example.domain.usecase.author.status_item.SavePersonInjuryUseCase
+import com.example.domain.usecase.author.status.GetPersonInjuryUseCase
+import com.example.domain.usecase.author.status.SavePersonInjuryUseCase
 
 class PersonMakerViewModel(
     private val getSkillUseCase: GetSkillUseCase,

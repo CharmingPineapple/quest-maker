@@ -13,7 +13,7 @@
         <!--android:icon="@drawable/ic_books"-->
 
     <item
-        android:id="@+id/exmp2"
-        android:title="exmp2" />
+        android:id="@+id/menu_curse"
+        android:title="curse" />
     <!--android:icon="@drawable/ic_play"-->
 </menu>

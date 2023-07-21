@@ -30,6 +30,7 @@ public interface AuthorRepositoryInterface {
 
     void saveAllInventoryItem(List<Item> itemList);
     List<Item> getAllPersonInjury();
-
     void saveAllPersonInjury(List<Item> itemList);
+    List<Item> getAllPersonCurse();
+    void saveAllPersonCurse(List<Item> itemList);
 }

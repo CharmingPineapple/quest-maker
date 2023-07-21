@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.models.viewer.Status
 import com.example.quest_maker.R
 
-class InjuryRVAdapter(
+class StatusRVAdapter(
     private val context: Context,
-) : RecyclerView.Adapter<InjuryRVAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<StatusRVAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 

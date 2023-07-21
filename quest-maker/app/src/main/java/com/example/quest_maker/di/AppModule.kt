@@ -1,5 +1,6 @@
 package com.example.quest_maker.di
 
+import com.example.domain.usecase.viewer.status.GetCurseUseCase
 import com.example.quest_maker.presentation.general_data.GeneralDataViewModel
 import com.example.quest_maker.presentation.person_maker.PersonMakerViewModel
 import com.example.quest_maker.presentation.selection.SelectionViewModel
@@ -29,7 +30,8 @@ val appModule = module {
             getWeaponUseCase = get(),
             getEquipmentUseCase = get(),
             getTrinketUseCase = get(),
-            getInjuryUseCase = get()
+            getInjuryUseCase = get(),
+            getCurseUseCase = get()
         )
     }
 

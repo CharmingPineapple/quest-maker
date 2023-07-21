@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quest_maker.R
 import com.example.quest_maker.presentation.general_data.rv_adapter.EquipmentRVAdapter
-import com.example.quest_maker.presentation.general_data.rv_adapter.InjuryRVAdapter
+import com.example.quest_maker.presentation.general_data.rv_adapter.StatusRVAdapter
 import com.example.quest_maker.presentation.general_data.rv_adapter.TrinketRVAdapter
 import com.example.quest_maker.presentation.general_data.rv_adapter.WeaponRVAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +27,8 @@ class GeneralDataActivity : AppCompatActivity() {
     private var weaponRVAdapter: WeaponRVAdapter? = null
     private var equipmentRVAdapter: EquipmentRVAdapter? = null
     private var trinketRVAdapter: TrinketRVAdapter? = null
-    private var injuryRVAdapter: InjuryRVAdapter? = null
+    private var injuryRVAdapter: StatusRVAdapter? = null
+    private var curseRVAdapter: StatusRVAdapter? = null
 
     private var spinner: Spinner? = null
     private var spinnerAdapter: ArrayAdapter<String>? = null
@@ -48,11 +49,13 @@ class GeneralDataActivity : AppCompatActivity() {
 
         val typeItemList: List<String> = viewModel.getTypeItemList()
         val typeInjuryList: List<String> = viewModel.getTypeInjuryList()
+        val typeCurseList: List<String> = viewModel.getTypeCurseList()
 
         weaponRVAdapter = WeaponRVAdapter(this)
         equipmentRVAdapter = EquipmentRVAdapter(this)
         trinketRVAdapter = TrinketRVAdapter(this)
-        injuryRVAdapter = InjuryRVAdapter(this)
+        injuryRVAdapter = StatusRVAdapter(this)
+        curseRVAdapter = StatusRVAdapter(this)
 
         recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
@@ -101,7 +104,7 @@ class GeneralDataActivity : AppCompatActivity() {
             R.id.menu_inventory -> {
                 // добавить спинер
 
-                spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeItemList())
+                spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeItemList())
                 spinner!!.adapter = spinnerAdapter
 
                 // (#) - Это ускоряет появление данных, как бы тупо это не выглядело
@@ -113,10 +116,19 @@ class GeneralDataActivity : AppCompatActivity() {
             R.id.menu_injury -> {
                 // добавить спинер
 
-                spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInjuryList())
+                spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeInjuryList())
                 spinner!!.adapter = spinnerAdapter
 
                 recycleView!!.adapter = injuryRVAdapter
+            }
+
+            R.id.menu_curse -> {
+                // добавить спинер
+
+                spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeCurseList())
+                spinner!!.adapter = spinnerAdapter
+
+                recycleView!!.adapter = curseRVAdapter
             }
 
         }
