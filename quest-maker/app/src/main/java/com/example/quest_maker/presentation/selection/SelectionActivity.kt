@@ -32,6 +32,7 @@ class SelectionActivity : AppCompatActivity() {
 
     private var spinner: Spinner? = null
     private var spinnerAdapter: ArrayAdapter<String>? = null
+    private var spinnerList: List<String>? = null
 
     private var selectedNumTV: TextView? = null
     private var selectedLimitTV: TextView? = null
@@ -53,12 +54,19 @@ class SelectionActivity : AppCompatActivity() {
         spinner = findViewById(R.id.spinner_selection)
 
 
-        displayView(R.id.menu_inventory)
 
         selectedNumTV = findViewById(R.id.TV_selected_num_selection)
         selectedLimitTV = findViewById(R.id.TV_selected_limit_selection)
 
         saveButton = findViewById(R.id.Button_save_selection)
+
+        //spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item)
+        //spinner!!.adapter = spinnerAdapter
+
+
+        selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
+
+        recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         saveButton!!.setOnClickListener {
             viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
@@ -81,6 +89,8 @@ class SelectionActivity : AppCompatActivity() {
             }
         }
 
+        displayView(R.id.menu_inventory)
+
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-selected-num-action"))
     }
 
@@ -99,15 +109,18 @@ class SelectionActivity : AppCompatActivity() {
             R.id.menu_inventory -> {
                 // добавить спинер
 
-                spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
-                spinner!!.adapter = spinnerAdapter
 
-                selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
+
+                setSpinnerData(viewModel.getTypeInventoryItemList())
+
+                /*spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
+                spinner!!.adapter = spinnerAdapter*/
+
+
 
                 // (!#) - Заменить список оружия на список всех предметов
                 selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleInventoryItemList(), viewModel.getMaxInventoryItem())
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
-                recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
 
                 //selectionCheckBoxRVAdapter!!.weaponList
@@ -115,6 +128,14 @@ class SelectionActivity : AppCompatActivity() {
             }
 
             R.id.menu_injury -> {
+                setSpinnerData(viewModel.getTypePersonInjuryList())
+
+               /* spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypePersonInjuryList())
+                spinner!!.adapter = spinnerAdapter*/
+
+
+                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimplePersonInjuryList(), viewModel.getMaxPersonInjury())
+                recycleView!!.adapter = selectionCheckBoxRVAdapter
 
             }
 
@@ -134,9 +155,15 @@ class SelectionActivity : AppCompatActivity() {
         }
     }
 
+    private fun setSpinnerData(list: List<String>){
+        spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, list)
+        spinner!!.adapter = spinnerAdapter
+    }
+
     override fun onResume() {
         super.onResume()
         viewModel.load()
+        spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, viewModel.getTypeInventoryItemList())
     }
 
 }
