@@ -10,6 +10,7 @@ import com.example.domain.usecase.author.inventory.GetInventoryItemUseCase
 import com.example.domain.usecase.author.status.GetPersonInjuryUseCase
 import com.example.domain.usecase.author.inventory.SaveInventoryItemUseCase
 import com.example.domain.usecase.author.status.GetPersonCurseUseCase
+import com.example.domain.usecase.author.status.SavePersonCurseUseCase
 import com.example.domain.usecase.author.status.SavePersonInjuryUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
 import com.example.domain.usecase.viewer.status.GetCurseUseCase
@@ -19,7 +20,6 @@ import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
 
 class SelectionViewModel(
-    // (?) - Это что такое? зачем тут весь инвентарь и метод сейва?
     private val getInventoryItemUseCase: GetInventoryItemUseCase,
     private val saveInventoryItemUseCase: SaveInventoryItemUseCase,
 
@@ -28,11 +28,13 @@ class SelectionViewModel(
     private val getTrinketUseCase: GetTrinketUseCase,
 
     private val getPersonInjuryUseCase: GetPersonInjuryUseCase,
-    // Зачем тут save??
     private val savePersonInjuryUseCase: SavePersonInjuryUseCase,
-    private val getPersonCurseUseCase: GetPersonCurseUseCase,
 
     private val getInjuryUseCase: GetInjuryUseCase,
+
+    private val getPersonCurseUseCase: GetPersonCurseUseCase,
+    private val savePersonCurseUseCase: SavePersonCurseUseCase,
+
 
     private val getCurseUseCase: GetCurseUseCase
 
@@ -54,6 +56,9 @@ class SelectionViewModel(
     fun savePersonInjury(itemList: List<Item>) {
         savePersonInjuryUseCase.saveAll(itemList)
     }
+    fun savePersonCurse(itemList: List<Item>) {
+        savePersonCurseUseCase.saveAll(itemList)
+    }
 
 
     // get list from general data
@@ -72,6 +77,9 @@ class SelectionViewModel(
 
     private fun getInjuryList(): List<Status> {
         return generalDataMutable!!.injuryList
+    }
+    private fun getCurseList(): List<Status> {
+        return generalDataMutable!!.curseList
     }
 
     // get simple list
@@ -130,7 +138,6 @@ class SelectionViewModel(
         val selectedInjuryList: List<Item> = selectionDataMutable!!.selectedInjuryList
 
         // (!) - some hardcode
-        // get all weapon from DB
         for (one: Status in statusList) {
             simpleInjuryList.add(
                 Item(
@@ -140,14 +147,6 @@ class SelectionViewModel(
             )
         }
 
-        // mark the selected weapon
-        /*if (selectedInjuryList.isNotEmpty()) {
-
-            for (one: Item in selectedInjuryList) {
-                simpleInjuryList[getIndexElement(simpleInjuryList, one)].selected = true
-            }
-        }*/
-
         if (selectedInjuryList.isNotEmpty()) {
 
             for (one: Item in selectedInjuryList) {
@@ -155,8 +154,33 @@ class SelectionViewModel(
             }
         }
 
-
         return simpleInjuryList
+    }
+
+    fun getSimplePersonCurseList(): List<Item> {
+        val statusList: List<Status> = getCurseList()
+
+        val simpleCurseList: MutableList<Item> = ArrayList()
+        val selectedCurseList: List<Item> = selectionDataMutable!!.selectedCurseList
+
+        // (!) - some hardcode
+        for (one: Status in statusList) {
+            simpleCurseList.add(
+                Item(
+                    one.name,
+                    one.type
+                )
+            )
+        }
+
+        if (selectedCurseList.isNotEmpty()) {
+
+            for (one: Item in selectedCurseList) {
+                simpleCurseList[getIndexElement(simpleCurseList, one)].selected = true
+            }
+        }
+
+        return simpleCurseList
     }
 
 
@@ -178,6 +202,9 @@ class SelectionViewModel(
     fun getTypePersonInjuryList(): List<String> {
         return generalDataMutable!!.typeInjuryList
     }
+    fun getTypePersonCurseList(): List<String> {
+        return generalDataMutable!!.typeCurseList
+    }
 
     // max count
     fun getMaxInventoryItem(): Int {
@@ -186,6 +213,10 @@ class SelectionViewModel(
 
     fun getMaxPersonInjury(): Int {
         return selectionDataMutable!!.maxInjury
+    }
+
+    fun getMaxPersonCurse(): Int {
+        return selectionDataMutable!!.maxCurse
     }
 
     fun load() {

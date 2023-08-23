@@ -44,7 +44,7 @@ class SelectionActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_selection)
 
-        val bottomNavigation : BottomNavigationView = findViewById(R.id.selection_navigation_bar)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.selection_navigation_bar)
         bottomNavigation.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
 
         viewModel.load()
@@ -58,7 +58,8 @@ class SelectionActivity : AppCompatActivity() {
 
         selectionCheckBoxRVAdapter = SelectionCheckBoxRVAdapter(this)
 
-        recycleView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        recycleView!!.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
 
 
@@ -71,6 +72,7 @@ class SelectionActivity : AppCompatActivity() {
             ) {
                 selectionCheckBoxRVAdapter!!.setList(spinnerAdapter!!.getItem(position).toString())
             }
+
             override fun onNothingSelected(parentView: AdapterView<*>?) {
                 // your code here
             }
@@ -78,7 +80,8 @@ class SelectionActivity : AppCompatActivity() {
 
         displayView(R.id.menu_inventory)
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, IntentFilter("current-selected-num-action"))
+        LocalBroadcastManager.getInstance(this)
+            .registerReceiver(mMessageReceiver, IntentFilter("current-selected-num-action"))
     }
 
     private fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -92,7 +95,7 @@ class SelectionActivity : AppCompatActivity() {
 
         lastViewId = viewId
 
-            when (viewId) {
+        when (viewId) {
             R.id.menu_inventory -> {
 
                 viewModel.load()
@@ -101,7 +104,10 @@ class SelectionActivity : AppCompatActivity() {
 
                 selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxInventoryItem().toString()
 
-                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimpleInventoryItemList(), viewModel.getMaxInventoryItem())
+                selectionCheckBoxRVAdapter!!.setData(
+                    viewModel.getSimpleInventoryItemList(),
+                    viewModel.getMaxInventoryItem()
+                )
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
             }
 
@@ -113,9 +119,26 @@ class SelectionActivity : AppCompatActivity() {
 
                 selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxPersonInjury().toString()
 
-                selectionCheckBoxRVAdapter!!.setData(viewModel.getSimplePersonInjuryList(), viewModel.getMaxPersonInjury())
+                selectionCheckBoxRVAdapter!!.setData(
+                    viewModel.getSimplePersonInjuryList(),
+                    viewModel.getMaxPersonInjury()
+                )
                 recycleView!!.adapter = selectionCheckBoxRVAdapter
+            }
 
+            R.id.menu_curse -> {
+
+                viewModel.load()
+
+                setSpinnerData(viewModel.getTypePersonCurseList())
+
+                selectedLimitTV!!.text = "Limit num: " + viewModel.getMaxPersonCurse().toString()
+
+                selectionCheckBoxRVAdapter!!.setData(
+                    viewModel.getSimplePersonCurseList(),
+                    viewModel.getMaxPersonCurse()
+                )
+                recycleView!!.adapter = selectionCheckBoxRVAdapter
             }
 
 
@@ -127,17 +150,21 @@ class SelectionActivity : AppCompatActivity() {
         }*/
     }
 
-    private fun saveLast(){
+    private fun saveLast() {
         // viewModel.saveInvItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
 
-        when(lastViewId){
+        when (lastViewId) {
 
-            R.id.menu_inventory ->{
+            R.id.menu_inventory -> {
                 viewModel.saveInventoryItem(selectionCheckBoxRVAdapter!!.getSelectedItemList())
             }
 
-            R.id.menu_injury ->{
+            R.id.menu_injury -> {
                 viewModel.savePersonInjury(selectionCheckBoxRVAdapter!!.getSelectedItemList())
+            }
+
+            R.id.menu_injury -> {
+                viewModel.savePersonCurse(selectionCheckBoxRVAdapter!!.getSelectedItemList())
             }
 
 
@@ -154,7 +181,7 @@ class SelectionActivity : AppCompatActivity() {
         }
     }
 
-    private fun setSpinnerData(list: List<String>){
+    private fun setSpinnerData(list: List<String>) {
         spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, list)
         spinner!!.adapter = spinnerAdapter
         spinner
@@ -163,7 +190,11 @@ class SelectionActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.load()
-        spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeInventoryItemList())
+        spinnerAdapter = ArrayAdapter(
+            this,
+            android.R.layout.select_dialog_item,
+            viewModel.getTypeInventoryItemList()
+        )
     }
 
     override fun onPause() {

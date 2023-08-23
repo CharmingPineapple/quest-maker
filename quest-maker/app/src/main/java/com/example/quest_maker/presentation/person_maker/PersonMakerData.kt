@@ -8,6 +8,7 @@ data class PersonMakerData(
     val mpList: List<PersonItem>,
     val inventoryItemList: List<Item>,
     val personInjuryList: List<Item>,
+    val personCurseList: List<Item>,
 
     val maxSkillScore: Int = 40,
     val minSkillScore: Int = 34,

@@ -21,7 +21,10 @@ val appModule = module {
             saveInventoryItemUseCase = get(),
 
             getPersonInjuryUseCase = get(),
-            savePersonInjuryUseCase = get()
+            savePersonInjuryUseCase = get(),
+
+            getPersonCurseUseCase = get(),
+            savePersonCurseUseCase = get()
         )
     }
 
@@ -50,7 +53,9 @@ val appModule = module {
             savePersonInjuryUseCase = get(),
 
             getCurseUseCase = get(),
-            getPersonCurseUseCase = get()
+
+            getPersonCurseUseCase = get(),
+            savePersonCurseUseCase = get()
         )
     }
 

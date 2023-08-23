@@ -27,11 +27,13 @@ class PersonMakerActivity : AppCompatActivity(){
     private var mpRV: RecyclerView? = null
     private var inventoryItemRV: RecyclerView? = null
     private var personInjuryRV: RecyclerView? = null
+    private var personCurseRV: RecyclerView? = null
 
     private var skillRVAdapter: SkillRVAdapter? = null
     private var mpRVAdapter: MainParameterRVAdapter? = null
     private var inventoryItemRVAdapter: ItemRVAdapter? = null
     private var personInjuryRVAdapter: ItemRVAdapter? = null
+    private var personCurseRVAdapter: ItemRVAdapter? = null
 
     private var limitScoreText: TextView? = null
     private var currentScoreText: TextView? = null
@@ -63,6 +65,9 @@ class PersonMakerActivity : AppCompatActivity(){
         personInjuryRV = findViewById(R.id.RV_person_injury_list)
         personInjuryRVAdapter = ItemRVAdapter(this)
 
+        personCurseRV = findViewById(R.id.RV_person_curse_list)
+        personCurseRVAdapter = ItemRVAdapter(this)
+
         viewModel.load()
 
         // Setting Skill RV
@@ -80,6 +85,10 @@ class PersonMakerActivity : AppCompatActivity(){
         // Setting person injury RV
         personInjuryRV!!.adapter = personInjuryRVAdapter
         personInjuryRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+
+        // Setting person curse RV
+        personCurseRV!!.adapter = personCurseRVAdapter
+        personCurseRV!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         // Show min/max and current sum of skills
         limitScoreText?.text = "Limit sum score: " + viewModel.getMinSkillScore().toString() + "-" + viewModel.getMaxSkillScore().toString()
@@ -107,11 +116,17 @@ class PersonMakerActivity : AppCompatActivity(){
         //inventoryItemRVAdapter!!.setData(viewModel.getInventoryItemList())
         inventoryItemRVAdapter!!.setData(viewModel.getInventoryItemList())
         personInjuryRVAdapter!!.setData(viewModel.getPersonInjuryList())
+        personCurseRVAdapter!!.setData(viewModel.getPersonCurseList())
     }
 
     // (!) - Сделать save с rvMainParam
     override fun onPause(){
-        viewModel.save(skillRVAdapter!!.getList(), mpRVAdapter!!.getList(), inventoryItemRVAdapter!!.getList(), personInjuryRVAdapter!!.getList())
+        viewModel.save(
+            skillRVAdapter!!.getList(),
+            mpRVAdapter!!.getList(),
+            inventoryItemRVAdapter!!.getList(),
+            personInjuryRVAdapter!!.getList(),
+            personCurseRVAdapter!!.getList())
 
         super.onPause()
     }
