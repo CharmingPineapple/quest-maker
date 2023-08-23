@@ -163,7 +163,7 @@ class SelectionActivity : AppCompatActivity() {
                 viewModel.savePersonInjury(selectionCheckBoxRVAdapter!!.getSelectedItemList())
             }
 
-            R.id.menu_injury -> {
+            R.id.menu_curse -> {
                 viewModel.savePersonCurse(selectionCheckBoxRVAdapter!!.getSelectedItemList())
             }
 
