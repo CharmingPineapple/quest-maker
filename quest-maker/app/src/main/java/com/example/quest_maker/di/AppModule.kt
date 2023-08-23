@@ -44,10 +44,13 @@ val appModule = module {
             getEquipmentUseCase = get(),
             getTrinketUseCase = get(),
 
+            getInjuryUseCase = get(),
+
             getPersonInjuryUseCase = get(),
             savePersonInjuryUseCase = get(),
 
-            getInjuryUseCase = get()
+            getCurseUseCase = get(),
+            getPersonCurseUseCase = get()
         )
     }
 

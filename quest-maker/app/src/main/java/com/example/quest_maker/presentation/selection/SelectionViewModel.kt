@@ -9,14 +9,17 @@ import com.example.domain.models.viewer.Weapon
 import com.example.domain.usecase.author.inventory.GetInventoryItemUseCase
 import com.example.domain.usecase.author.status.GetPersonInjuryUseCase
 import com.example.domain.usecase.author.inventory.SaveInventoryItemUseCase
+import com.example.domain.usecase.author.status.GetPersonCurseUseCase
 import com.example.domain.usecase.author.status.SavePersonInjuryUseCase
 import com.example.domain.usecase.viewer.equipment.GetEquipmentUseCase
+import com.example.domain.usecase.viewer.status.GetCurseUseCase
 import com.example.domain.usecase.viewer.status.GetInjuryUseCase
 import com.example.domain.usecase.viewer.trinket.GetTrinketUseCase
 import com.example.domain.usecase.viewer.weapon.GetWeaponUseCase
 import com.example.quest_maker.presentation.general_data.GeneralData
 
 class SelectionViewModel(
+    // (?) - Это что такое? зачем тут весь инвентарь и метод сейва?
     private val getInventoryItemUseCase: GetInventoryItemUseCase,
     private val saveInventoryItemUseCase: SaveInventoryItemUseCase,
 
@@ -25,9 +28,13 @@ class SelectionViewModel(
     private val getTrinketUseCase: GetTrinketUseCase,
 
     private val getPersonInjuryUseCase: GetPersonInjuryUseCase,
+    // Зачем тут save??
     private val savePersonInjuryUseCase: SavePersonInjuryUseCase,
+    private val getPersonCurseUseCase: GetPersonCurseUseCase,
 
     private val getInjuryUseCase: GetInjuryUseCase,
+
+    private val getCurseUseCase: GetCurseUseCase
 
     ) : ViewModel() {
 
@@ -185,24 +192,30 @@ class SelectionViewModel(
         val weaponList: List<Weapon> = getWeaponUseCase.all
         val equipmentList: List<Equipment> = getEquipmentUseCase.all
         val trinketList: List<Trinket> = getTrinketUseCase.all
-        val statusList: List<Status> = getInjuryUseCase.all
+        val injuryList: List<Status> = getInjuryUseCase.all
+        val curseList: List<Status> = getCurseUseCase.all
 
 
         val selectedItemList: List<Item> = getInventoryItemUseCase.all
         val selectedInjuryList: List<Item> = getPersonInjuryUseCase.all
+        val selectedCurseList: List<Item> = getPersonCurseUseCase.all
 
         generalDataMutable = GeneralData(
             weaponList,
             equipmentList,
             trinketList,
-            statusList
+            injuryList,
+            curseList
         )
 
         selectionDataMutable = SelectionData(
             selectedItemList,
-            selectedInjuryList
+            selectedInjuryList,
+            selectedCurseList
         )
     }
+
+
 
 
     override fun onCleared() {

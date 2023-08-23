@@ -82,6 +82,9 @@ class GeneralDataActivity : AppCompatActivity() {
                     typeInjuryList[0] -> injuryRVAdapter!!.setList(typeInjuryList[0])
                     typeInjuryList[1] -> injuryRVAdapter!!.setList(typeInjuryList[1])
 
+                    typeCurseList[0] -> curseRVAdapter!!.setList(typeCurseList[0])
+                    typeCurseList[1] -> curseRVAdapter!!.setList(typeCurseList[1])
+
                 }
             }
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -102,7 +105,6 @@ class GeneralDataActivity : AppCompatActivity() {
         when (viewId) {
 
             R.id.menu_inventory -> {
-                // добавить спинер
 
                 spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeItemList())
                 spinner!!.adapter = spinnerAdapter
@@ -114,7 +116,6 @@ class GeneralDataActivity : AppCompatActivity() {
             }
 
             R.id.menu_injury -> {
-                // добавить спинер
 
                 spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeInjuryList())
                 spinner!!.adapter = spinnerAdapter
@@ -123,7 +124,6 @@ class GeneralDataActivity : AppCompatActivity() {
             }
 
             R.id.menu_curse -> {
-                // добавить спинер
 
                 spinnerAdapter = ArrayAdapter(this, android.R.layout.select_dialog_item, viewModel.getTypeCurseList())
                 spinner!!.adapter = spinnerAdapter
@@ -145,6 +145,7 @@ class GeneralDataActivity : AppCompatActivity() {
         equipmentRVAdapter!!.setData(viewModel.getEquipmentList())
         trinketRVAdapter!!.setData(viewModel.getTrinketList())
         injuryRVAdapter!!.setData(viewModel.getInjuryList())
+        curseRVAdapter!!.setData(viewModel.getCurseList())
     }
 
 
