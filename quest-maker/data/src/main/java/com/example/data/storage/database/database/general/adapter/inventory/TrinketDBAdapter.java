@@ -1,11 +1,11 @@
-package com.example.data.storage.database.database.general.adapter;
+package com.example.data.storage.database.database.general.adapter.inventory;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.data.storage.database.database.general.TrinketDBHelper;
+import com.example.data.storage.database.database.general.inventory.TrinketDBHelper;
 import com.example.data.storage.models.viewer.TrinketStorage;
 
 import java.util.ArrayList;

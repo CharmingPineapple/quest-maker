@@ -1,10 +1,10 @@
-package com.example.data.storage.database.database.general;
+package com.example.data.storage.database.database.general.status;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class InjuryDBHelper  extends SQLiteOpenHelper {
+public class InjuryDBHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "injuryDB";
     public static final String TABLE_NAME = "injuryTable";

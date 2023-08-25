@@ -3,11 +3,11 @@ package com.example.data.storage.database;
 import android.content.Context;
 
 import com.example.data.storage.ViewerStorageInterface;
-import com.example.data.storage.database.database.general.adapter.CurseDBAdapter;
-import com.example.data.storage.database.database.general.adapter.EquipmentDBAdapter;
-import com.example.data.storage.database.database.general.adapter.InjuryDBAdapter;
-import com.example.data.storage.database.database.general.adapter.TrinketDBAdapter;
-import com.example.data.storage.database.database.general.adapter.WeaponDBAdapter;
+import com.example.data.storage.database.database.general.adapter.status.CurseDBAdapter;
+import com.example.data.storage.database.database.general.adapter.inventory.EquipmentDBAdapter;
+import com.example.data.storage.database.database.general.adapter.status.InjuryDBAdapter;
+import com.example.data.storage.database.database.general.adapter.inventory.TrinketDBAdapter;
+import com.example.data.storage.database.database.general.adapter.inventory.WeaponDBAdapter;
 import com.example.data.storage.models.viewer.EquipmentStorage;
 import com.example.data.storage.models.viewer.StatusStorage;
 import com.example.data.storage.models.viewer.TrinketStorage;

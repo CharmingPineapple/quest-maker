@@ -1,26 +1,27 @@
-package com.example.data.storage.database.database.general.adapter;
+package com.example.data.storage.database.database.general.adapter.status;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.data.storage.database.database.general.CurseDBHelper;
+
+import com.example.data.storage.database.database.general.status.InjuryDBHelper;
 import com.example.data.storage.models.viewer.StatusStorage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurseDBAdapter {
+public class InjuryDBAdapter {
 
-    private CurseDBHelper dbHelper;
+    private InjuryDBHelper dbHelper;
     private SQLiteDatabase database;
 
-    public CurseDBAdapter(Context context) {
-        dbHelper = new CurseDBHelper(context.getApplicationContext());
+    public InjuryDBAdapter(Context context) {
+        dbHelper = new InjuryDBHelper(context.getApplicationContext());
     }
 
-    public CurseDBAdapter open() {
+    public InjuryDBAdapter open() {
         database = dbHelper.getWritableDatabase();
         return this;
     }
@@ -30,32 +31,32 @@ public class CurseDBAdapter {
     }
 
     public long getCount() {
-        return DatabaseUtils.queryNumEntries(database, CurseDBHelper.TABLE_NAME);
+        return DatabaseUtils.queryNumEntries(database, InjuryDBHelper.TABLE_NAME);
     }
 
     // (#)
     private Cursor getAllEntries() {
         String[] columns = new String[]{
-                CurseDBHelper.KEY_ID,
-                CurseDBHelper.KEY_NAME,
-                CurseDBHelper.KEY_TYPE,
-                CurseDBHelper.KEY_EFFECT,
-                CurseDBHelper.KEY_DESCR
+                InjuryDBHelper.KEY_ID,
+                InjuryDBHelper.KEY_NAME,
+                InjuryDBHelper.KEY_TYPE,
+                InjuryDBHelper.KEY_EFFECT,
+                InjuryDBHelper.KEY_DESCR
         };
 
-        return database.query(CurseDBHelper.TABLE_NAME, columns, null, null, null, null, null);
+        return database.query(InjuryDBHelper.TABLE_NAME, columns, null, null, null, null, null);
     }
 
     // (#)
-    public List<StatusStorage> getAllCurse() {
+    public List<StatusStorage> getAllInjury() {
         ArrayList<StatusStorage> statusStorageStorageArrayList = new ArrayList<>();
         Cursor cursor = getAllEntries();
 
-        int id_column_id = cursor.getColumnIndex(CurseDBHelper.KEY_ID);
-        int name_column_id = cursor.getColumnIndex(CurseDBHelper.KEY_NAME);
-        int type_column_id = cursor.getColumnIndex(CurseDBHelper.KEY_TYPE);
-        int effect_column_id = cursor.getColumnIndex(CurseDBHelper.KEY_EFFECT);
-        int description_column_id = cursor.getColumnIndex(CurseDBHelper.KEY_DESCR);
+        int id_column_id = cursor.getColumnIndex(InjuryDBHelper.KEY_ID);
+        int name_column_id = cursor.getColumnIndex(InjuryDBHelper.KEY_NAME);
+        int type_column_id = cursor.getColumnIndex(InjuryDBHelper.KEY_TYPE);
+        int effect_column_id = cursor.getColumnIndex(InjuryDBHelper.KEY_EFFECT);
+        int description_column_id = cursor.getColumnIndex(InjuryDBHelper.KEY_DESCR);
 
         while (cursor.moveToNext()) {
 

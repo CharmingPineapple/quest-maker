@@ -1,11 +1,11 @@
-package com.example.data.storage.database.database.general.adapter;
+package com.example.data.storage.database.database.general.adapter.inventory;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.data.storage.database.database.general.WeaponDBHelper;
+import com.example.data.storage.database.database.general.inventory.WeaponDBHelper;
 import com.example.data.storage.models.viewer.WeaponStorage;
 
 import java.util.ArrayList;
